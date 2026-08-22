@@ -1,57 +1,565 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BustonIQ v0.4</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#172454">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BustonIQ">
+<title>BustonIQ v0.5 — Play. Learn. Level Up.</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#142653,#694ea7);color:#182033;padding:16px}.app{max-width:800px;margin:auto}.hide{display:none}.brand{text-align:center;color:white;margin:15px}.brand h1{font-size:48px;margin:0}.card{background:white;border-radius:22px;padding:20px;margin:12px 0;box-shadow:0 12px 30px #0003}.btn{border:0;border-radius:14px;padding:14px;font-weight:bold;font-size:16px;cursor:pointer;width:100%;margin:5px 0}.gold{background:#ffd34e}.navy{background:#1c2d62;color:white}.green{background:#2aaa6c;color:white}.purple{background:#7457c8;color:white}.ghost{background:white;border:1px solid #ddd}.grid{display:grid;gap:10px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}input,select{width:100%;padding:13px;border:2px solid #e1e5ee;border-radius:12px;font-size:17px}.small{font-size:13px;color:#667085}.profile{padding:12px;border:1px solid #e2e5ec;border-radius:14px;margin:8px 0;display:flex;justify-content:space-between;align-items:center}.heroStage{height:300px;background:linear-gradient(#dbe8ff,#fff);border-radius:20px;display:grid;place-items:center;position:relative}.hero{position:relative;width:180px;height:230px}.head{position:absolute;left:60px;top:25px;width:60px;height:60px;border-radius:50%;background:#d9a47c;border:4px solid #283149}.hair{position:absolute;left:57px;top:17px;width:66px;height:32px;border-radius:50%;background:#2c2530}.body{position:absolute;left:48px;top:85px;width:84px;height:85px;border-radius:20px;background:#5873c8;border:4px solid #283149}.leg1,.leg2{position:absolute;top:165px;width:30px;height:60px;background:#354984;border:4px solid #283149}.leg1{left:52px}.leg2{left:98px}.armor{position:absolute;left:43px;top:80px;width:94px;height:98px;border-radius:18px;background:#9ba7ba;border:5px solid #465064;z-index:2}.helmet{position:absolute;left:52px;top:12px;width:76px;height:62px;border-radius:38px 38px 14px 14px;background:#9ba7ba;border:5px solid #465064;z-index:4}.shield{position:absolute;left:7px;top:110px;width:55px;height:68px;background:#c58a3a;border:5px solid #704b23;z-index:5;border-radius:45%}.cape{position:absolute;right:20px;top:88px;width:55px;height:110px;background:#7b3c9c;z-index:1;transform:skew(-8deg)}.aura{position:absolute;inset:5px;border-radius:50%;box-shadow:0 0 35px 15px #ffd34e}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{text-align:center;background:#f2f4f8;padding:12px;border-radius:12px}.stat b{display:block;font-size:22px}.upgrade{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid #e2e5ec;border-radius:14px;margin:8px 0}.upgrade .info{flex:1}.choice{padding:12px;border:2px solid transparent;border-radius:13px;background:#f2f4f8;font-weight:bold;cursor:pointer}.choice.on{border-color:#365fb2;background:#e9efff}.top{display:grid;grid-template-columns:1fr auto 1fr;color:white;align-items:center}.timer{width:65px;height:65px;border-radius:50%;background:#253e7b;display:grid;place-items:center;font-size:22px;font-weight:bold}.right{text-align:right}.question{text-align:center;font-size:38px;font-weight:bold;min-height:100px;display:grid;place-items:center}.ans{display:grid;grid-template-columns:1fr auto;gap:8px}.ans button{width:auto}.feedback{text-align:center;min-height:30px;font-weight:bold;margin-top:10px}.bar{height:10px;background:#e6e9ef;border-radius:9px;overflow:hidden}.bar div{height:100%;background:#ffd34e}.assess{margin:12px 0}.row{display:flex;justify-content:space-between;font-size:13px;font-weight:bold}.rec{background:#fff8d9;border-left:4px solid #ffd34e;padding:12px;border-radius:8px}@media(max-width:600px){.g2,.g3{grid-template-columns:1fr}.ans{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}}
-</style></head><body><div class="app">
-<section id="welcome"><div class="brand"><h1>BustonIQ</h1><b>Play. Learn. Level Up.</b><div>Think Fast. Solve Smart.</div></div><div class="card"><div class="grid g2"><button class="btn navy" onclick="show('plog')">Parent Login</button><button class="btn gold" onclick="openChildLogin()">Child Login</button></div><p class="small">First-time parent password: <b>bustoniq</b></p></div></section>
-<section id="plog" class="hide"><div class="brand"><h1>BustonIQ</h1><b>Parent Portal</b></div><div class="card"><input id="pp" type="password" placeholder="Parent password"><button class="btn navy" onclick="parentLogin()">Login</button><button class="btn ghost" onclick="show('welcome')">Back</button><p id="pm" class="small"></p></div></section>
-<section id="pdash" class="hide"><div class="brand"><h1>BustonIQ</h1><b>Parent Dashboard</b></div><div class="card"><div class="grid g3"><button class="btn gold" onclick="show('add')">+ Add Child</button><button class="btn purple" onclick="allAssess()">Assessments</button><button class="btn ghost" onclick="show('welcome')">Logout</button></div><h3>Child Profiles</h3><div id="plist"></div></div></section>
-<section id="add" class="hide"><div class="brand"><h1>BustonIQ</h1><b>Add Child</b></div><div class="card"><input id="nm" placeholder="Name"><br><br><input id="pn" maxlength="4" inputmode="numeric" placeholder="4-digit PIN"><br><br><select id="gr"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option></select><button class="btn green" onclick="saveChild()">Save</button><button class="btn ghost" onclick="show('pdash')">Cancel</button><p id="am" class="small"></p></div></section>
-<section id="clog" class="hide"><div class="brand"><h1>BustonIQ</h1><b>Choose Your Hero</b></div><div class="card"><div id="clist"></div><button class="btn ghost" onclick="show('welcome')">Back</button></div></section>
-<section id="pinS" class="hide"><div class="brand"><h1>BustonIQ</h1><b id="pint"></b></div><div class="card"><input id="cpin" type="password" maxlength="4" inputmode="numeric" placeholder="PIN"><button class="btn gold" onclick="pinLogin()">Enter BustonIQ World</button><button class="btn ghost" onclick="openChildLogin()">Back</button><p id="cm" class="small"></p></div></section>
-<section id="home" class="hide"><div class="brand"><h1>BustonIQ</h1><b id="hn"></b><div id="hs"></div></div><div class="grid g2"><div class="card"><div class="heroStage"><div class="hero" id="hero"><div class="hair"></div><div class="head"></div><div class="body"></div><div class="leg1"></div><div class="leg2"></div></div></div></div><div class="card"><h3>My Hero Progress</h3><div class="stats"><div class="stat"><b id="xp"></b><span>XP</span></div><div class="stat"><b id="mp"></b><span>MATH POINTS</span></div><div class="stat"><b id="missions"></b><span>MISSIONS</span></div></div><br><div class="small">Next level</div><div class="bar"><div id="lvlbar"></div></div><br><button class="btn gold" onclick="menu()">Start Math Mission</button><button class="btn purple" onclick="workshop()">Hero Workshop</button><button class="btn green" onclick="assessment()">Progress Assessment</button><button class="btn ghost" onclick="show('welcome')">Logout</button></div></div></section>
-<section id="shop" class="hide"><div class="brand"><h1>BustonIQ</h1><b>Hero Workshop</b><div id="shopmp"></div></div><div class="card"><p class="small">Use Math Points earned from learning to unlock hero improvements.</p><div id="ups"></div><button class="btn ghost" onclick="heroHome()">Back</button></div></section>
-<section id="menu" class="hide"><div class="brand"><h1>BustonIQ</h1><b>Choose Your Mission</b></div><div class="card"><h3>Mission Type</h3><div class="grid g3" id="modes"></div><h3>Challenge Level</h3><div class="grid g3" id="diffs"></div><button class="btn gold" onclick="start()">Begin Mission</button><button class="btn ghost" onclick="heroHome()">Back</button></div></section>
-<section id="game" class="hide"><div class="top"><div><b id="prog"></b><div id="str"></div></div><div class="timer" id="tm"></div><div class="right"><b id="sc"></b><div id="gmp"></div></div></div><div class="card"><div class="small" id="cat"></div><div class="question" id="ques"></div><div class="ans"><input id="answer" inputmode="decimal" placeholder="Answer"><button class="btn green" onclick="submit()">Submit</button></div><div class="feedback" id="fb"></div></div></section>
-<section id="result" class="hide"><div class="brand"><h1>BustonIQ</h1><b>Mission Complete!</b></div><div class="card" style="text-align:center"><h2 id="rmsg"></h2><div class="stats"><div class="stat"><b id="rscore"></b><span>SCORE</span></div><div class="stat"><b id="rxp"></b><span>XP EARNED</span></div><div class="stat"><b id="rmp"></b><span>MATH POINTS</span></div></div><h3 id="racc"></h3><button class="btn purple" onclick="workshop()">Upgrade My Hero</button><button class="btn green" onclick="assessment()">View Assessment</button><button class="btn gold" onclick="menu()">Next Mission</button></div></section>
-<section id="assess" class="hide"><div class="brand"><h1>BustonIQ</h1><b id="at"></b></div><div class="card"><div id="ac"></div><button class="btn gold" onclick="recommended()">Start Recommended Practice</button><button class="btn ghost" onclick="heroHome()">Back</button></div></section>
-<section id="allA" class="hide"><div class="brand"><h1>BustonIQ</h1><b>Learning Assessments</b></div><div id="aac"></div><button class="btn ghost" onclick="show('pdash')">Back</button></section>
-</div><script>
-const ids=['welcome','plog','pdash','add','clog','pinS','home','shop','menu','game','result','assess','allA'],$=x=>document.getElementById(x),show=x=>ids.forEach(i=>$(i).classList.toggle('hide',i!==x));
-const KEY='bustoniq04';let D;try{D=JSON.parse(localStorage.getItem(KEY))}catch(e){}if(!D)D={parentPassword:'bustoniq',profiles:[]};const save=()=>localStorage.setItem(KEY,JSON.stringify(D));
-let selected,active,mode='contest',diff='medium',focus=null;const ensure=p=>{p.history=p.history||[];p.xp=p.xp||0;p.mp=p.mp||0;p.unlocked=p.unlocked||[];p.equipped=p.equipped||[];p.stats=p.stats||{};p.recent=p.recent||[];return p},level=p=>Math.floor(p.xp/500)+1;
-function parentLogin(){if($('pp').value===D.parentPassword){renderParent();show('pdash')}else $('pm').textContent='Incorrect password.'}
-function renderParent(){$('plist').innerHTML='';D.profiles.forEach(p=>{ensure(p);$('plist').innerHTML+=`<div class="profile"><b>${p.name}</b><span class="small">Grade ${p.grade} • Level ${level(p)} • ${p.mp} MP • ${p.history.length} missions</span></div>`})}
-function saveChild(){let n=$('nm').value.trim(),p=$('pn').value.trim();if(!n)return $('am').textContent='Enter name.';if(!/^\d{4}$/.test(p))return $('am').textContent='PIN must be 4 digits.';D.profiles.push({id:Date.now()+'',name:n,pin:p,grade:+$('gr').value,history:[],xp:0,mp:0,unlocked:[],equipped:[],stats:{},recent:[]});save();renderParent();show('pdash')}
-function openChildLogin(){$('clist').innerHTML='';D.profiles.forEach(p=>{$('clist').innerHTML+=`<button class="profile" style="width:100%;background:white" onclick="selectKid('${p.id}')"><b>${p.name}</b><span>Grade ${p.grade} • Level ${level(ensure(p))} ›</span></button>`});show('clog')}
-function selectKid(id){selected=id;let p=D.profiles.find(x=>x.id===id);$('pint').textContent=p.name+"'s Hero";$('cpin').value='';show('pinS')}
-function pinLogin(){let p=D.profiles.find(x=>x.id===selected);if(p&&$('cpin').value===p.pin){active=ensure(p);heroHome()}else $('cm').textContent='Incorrect PIN.'}
-function heroHome(){let l=level(active);$('hn').textContent=active.name+"'s Hero";$('hs').textContent=`Grade ${active.grade} • Level ${l}`;$('xp').textContent=active.xp;$('mp').textContent=active.mp;$('missions').textContent=active.history.length;$('lvlbar').style.width=(active.xp%500)/5+'%';let h=$('hero');h.querySelectorAll('.armor,.helmet,.shield,.cape,.aura').forEach(e=>e.remove());active.equipped.forEach(x=>{let e=document.createElement('div');e.className=x;h.appendChild(e)});show('home')}
-const U=[['shield','🛡️','Bronze Math Shield',300,1],['cape','🦸','Explorer Cape',600,2],['armor','🥋','Silver Solver Armor',1000,3],['helmet','⛑️','Champion Helmet',1500,4],['aura','✨','Legendary Math Aura',2500,6]];
-function workshop(){$('shopmp').textContent=active.mp+' Math Points available';$('ups').innerHTML='';U.forEach(u=>{let owned=active.unlocked.includes(u[0]),eq=active.equipped.includes(u[0]),ok=level(active)>=u[4];let d=document.createElement('div');d.className='upgrade';d.innerHTML=`<div style="font-size:30px">${u[1]}</div><div class="info"><b>${u[2]}</b><div class="small">${u[3]} MP • Level ${u[4]}</div></div>`;let b=document.createElement('button');b.className='btn '+(owned?'ghost':'gold');b.style.width='auto';b.textContent=!ok?'Locked':!owned?'Unlock':eq?'Remove':'Equip';b.disabled=!ok;b.onclick=()=>owned?toggle(u[0]):unlock(u);d.appendChild(b);$('ups').appendChild(d)});show('shop')}
-function unlock(u){if(active.mp<u[3])return alert('Keep learning! You need more Math Points.');active.mp-=u[3];active.unlocked.push(u[0]);active.equipped.push(u[0]);save();workshop()}function toggle(x){active.equipped=active.equipped.includes(x)?active.equipped.filter(a=>a!==x):[...active.equipped,x];save();workshop()}
-const M={sprint:['Speed Mission','60 seconds',999,60,true],contest:['Contest Mission','20 questions',20,30,false],marathon:['Adventure Mission','30 questions',30,45,false]},F={easy:['Explorer','Warm-up'],medium:['Challenger','Contest practice'],hard:['Champion','Harder reasoning']};
-function menu(){$('modes').innerHTML='';Object.entries(M).forEach(([k,v])=>{$('modes').innerHTML+=`<button class="choice ${mode===k?'on':''}" onclick="mode='${k}';menu()">${v[0]}<div class="small">${v[1]}</div></button>`});$('diffs').innerHTML='';Object.entries(F).forEach(([k,v])=>{$('diffs').innerHTML+=`<button class="choice ${diff===k?'on':''}" onclick="diff='${k}';menu()">${v[0]}<div class="small">${v[1]}</div></button>`});show('menu')}
-const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a,pick=a=>a[rand(0,a.length-1)],gcd=(a,b)=>b?gcd(b,a%b):a,Q=(t,s,p,a)=>({t,s,p,a:String(a),sig:t+'|'+p});
-function arithmetic(){let g=active.grade,m=[0,12,40,120,600,1400][g],o=pick(g<3?['+','-']:['+','-','x','d']);if(o==='+'){let a=rand(2,m),b=rand(2,m);return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b)}if(o==='-'){let a=rand(5,m),b=rand(1,a);return Q('Arithmetic','Subtraction',`${a} - ${b} = ?`,a-b)}if(o==='x'){let a=rand(2,15),b=rand(2,15);return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b)}let d=rand(2,12),a=rand(2,15);return Q('Arithmetic','Division',`${d*a} ÷ ${d} = ?`,a)}
-function frac(){if(active.grade<3)return arithmetic();let d=pick([2,3,4,5,6,8]),n=rand(1,d-1),u=rand(2,12);return Q('Fractions','Fraction of Whole',`What is ${n}/${d} of ${d*u}?`,n*u)}
-function geo(){if(active.grade<3)return arithmetic();let l=rand(3,15),w=rand(2,l);return Math.random()<.5?Q('Geometry','Area',`Rectangle length ${l}, width ${w}. Area?`,l*w):Q('Geometry','Perimeter',`Rectangle length ${l}, width ${w}. Perimeter?`,2*(l+w))}
-function pat(){let s=rand(1,35),d=rand(2,15);return Q('Patterns','Sequences',`${s}, ${s+d}, ${s+2*d}, ${s+3*d}, ?`,s+4*d)}
-function theory(){if(active.grade<3)return arithmetic();let a=pick([12,18,24,30,36,42]),b=pick([18,24,30,36,48,54]);return Q('Number Theory','GCF',`GCF of ${a} and ${b}?`,gcd(a,b))}
-function reason(){if(active.grade<4)return arithmetic();let a=rand(2,9),b=rand(2,9),c=rand(2,8);return Q('Reasoning','Order of Operations',`${a} + ${b} × ${c} = ?`,a+b*c)}
-function word(){if(active.grade<3){let a=rand(10,35),b=rand(2,a-1);return Q('Word Problems','One Step',`Mia has ${a} stars and gives away ${b}. How many remain?`,a-b)}let b=rand(3,9),e=rand(5,15),u=rand(4,18);return Q('Word Problems','Multi-Step',`${b} boxes have ${e} pencils each. ${u} are used. How many remain?`,b*e-u)}
-function newQ(){let map={Arithmetic:arithmetic,Fractions:frac,Geometry:geo,Patterns:pat,'Number Theory':theory,Reasoning:reason,'Word Problems':word},pool=[arithmetic,pat,word];if(active.grade>=3)pool.push(frac,geo,theory);if(active.grade>=4)pool.push(reason);let q;for(let i=0;i<30;i++){q=focus&&map[focus]&&Math.random()<.65?map[focus]():pick(pool)();if(!active.recent.includes(q.sig))break}active.recent=[q.sig,...active.recent].slice(0,150);return q}
-let qi,score,correct,attempts,streak,emp,eXP,current,timer,timeLeft,startT,accept;
-function start(){qi=score=correct=attempts=streak=emp=eXP=0;clearInterval(timer);show('game');if(M[mode][4]){timeLeft=M[mode][3];timer=setInterval(()=>{timeLeft--;hud();if(timeLeft<=0)finish()},1000)}next()}
-function next(){if(!M[mode][4]&&qi>=M[mode][2])return finish();if(M[mode][4]&&timeLeft<=0)return finish();qi++;current=newQ();$('cat').textContent=current.t+' • '+current.s;$('ques').textContent=current.p;$('answer').value='';$('fb').textContent='';accept=true;startT=Date.now();if(!M[mode][4]){clearInterval(timer);timeLeft=M[mode][3];timer=setInterval(()=>{timeLeft--;hud();if(timeLeft<=0)timeout()},1000)}hud();$('answer').focus()}
-function hud(){$('prog').textContent=M[mode][4]?'Q '+qi:qi+' / '+M[mode][2];$('str').textContent='🔥 '+streak+' streak';$('tm').textContent=timeLeft;$('sc').textContent='⭐ '+score;$('gmp').textContent='🧠 +'+emp+' MP'}
-function record(ok){let s=active.stats[current.t]||(active.stats[current.t]={c:0,n:0});s.n++;if(ok)s.c++}
-function submit(){if(!accept)return;let v=$('answer').value.trim();if(!v)return;accept=false;if(!M[mode][4])clearInterval(timer);attempts++;let ok=Number(v)===Number(current.a);record(ok);if(ok){correct++;streak++;let p=5+(streak>=5?3:0)+(diff==='hard'?2:0);emp+=p;eXP+=10+(diff==='hard'?5:0);score+=100+streak*5;$('fb').textContent='✅ Correct! +'+p+' Math Points';$('fb').style.color='#2aaa6c'}else{streak=0;$('fb').textContent='❌ Answer: '+current.a;$('fb').style.color='#db4d52'}hud();setTimeout(next,600)}
-function timeout(){if(!accept)return;accept=false;clearInterval(timer);attempts++;streak=0;record(false);$('fb').textContent='⏰ Time! Answer: '+current.a;setTimeout(next,600)}
-function finish(){clearInterval(timer);accept=false;let acc=attempts?Math.round(correct/attempts*100):0;emp+=correct>=10?30:10;eXP+=Math.max(20,correct*5);active.mp+=emp;active.xp+=eXP;active.history.unshift({date:new Date().toLocaleString(),score,accuracy:acc});active.history=active.history.slice(0,50);save();$('rscore').textContent=score;$('rxp').textContent='+'+eXP;$('rmp').textContent='+'+emp;$('racc').textContent=acc+'% Accuracy';$('rmsg').textContent=acc>=90?'🏆 Excellent Mission!':acc>=75?'⭐ Strong Work!':'💪 Keep Training!';focus=null;show('result')}
-$('answer').addEventListener('keydown',e=>{if(e.key==='Enter')submit()});
-function weak(p){let a=Object.entries(p.stats).filter(x=>x[1].n>=2);if(!a.length)return null;a.sort((x,y)=>x[1].c/x[1].n-y[1].c/y[1].n);return a[0][0]}
-function assessHTML(p){let vals=Object.values(p.stats),n=vals.reduce((s,x)=>s+x.n,0),c=vals.reduce((s,x)=>s+x.c,0),overall=n?Math.round(c/n*100):0,w=weak(p);let rows=Object.entries(p.stats).map(([k,s])=>{let pc=Math.round(s.c/s.n*100);return `<div class="assess"><div class="row"><span>${k}</span><span>${pc}% • ${s.n} questions</span></div><div class="bar"><div style="width:${pc}%"></div></div></div>`}).join('');return `<h3>Overall Evaluation</h3><p><b>${overall>=90?'Excellent progress':overall>=80?'Strong progress':overall>=65?'Developing well':'Building foundations'}</b><br><span class="small">${overall}% accuracy across ${n} assessed questions.</span></p><h3>Performance by Topic</h3>${rows||'<p class="small">Complete more missions for an assessment.</p>'}<h3>BustonIQ Recommendation</h3><div class="rec">${w?'Focus next on <b>'+w+'</b>. BustonIQ will give extra practice with new numbers and examples.':'Complete more missions to generate a personalized recommendation.'}</div>`}
-function assessment(){$('at').textContent=active.name+"'s Progress Assessment";$('ac').innerHTML=assessHTML(active);show('assess')}function recommended(){focus=weak(active);mode='contest';diff='medium';menu()}function allAssess(){$('aac').innerHTML=D.profiles.map(p=>`<div class="card"><h2>${p.name} — Grade ${p.grade}</h2>${assessHTML(ensure(p))}</div>`).join('');show('allA')}
+:root{
+--navy:#172454;--navy2:#253d7b;--blue:#416bc1;--gold:#ffd34e;--green:#2aaa6c;--red:#db4d52;
+--purple:#7457c8;--ink:#172033;--muted:#667085;--soft:#f3f5f9;--line:#e2e6ef;--sky:#dbe8ff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(140deg,#10204b,#654aa4);color:var(--ink);padding:14px}
+.app{width:min(100%,980px);margin:auto;padding-bottom:45px}
+.hide{display:none!important}
+.brand{text-align:center;color:white;margin:15px 0 18px}.brand h1{font-size:clamp(38px,8vw,60px);margin:0;font-weight:950;letter-spacing:-1.5px}.brand .tag{font-weight:900;font-size:18px}.brand .sub{font-size:13px;opacity:.86;margin-top:3px}
+.card{background:#fff;border-radius:24px;padding:20px;margin:12px 0;box-shadow:0 14px 36px rgba(0,0,0,.18)}
+.title{font-size:19px;font-weight:950;margin-bottom:11px}.small{font-size:13px;color:var(--muted);line-height:1.45}.space{height:12px}
+.grid{display:grid;gap:10px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.btn{width:100%;border:0;border-radius:15px;padding:14px 16px;font-size:16px;font-weight:900;cursor:pointer}.gold{background:var(--gold);color:#191919}.navy{background:var(--navy);color:#fff}.green{background:var(--green);color:#fff}.purple{background:var(--purple);color:#fff}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.danger{background:#fff0f0;border:1px solid #f0caca;color:#a22}
+input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:13px;font-size:17px;background:#fbfcfe;outline:none}input:focus,select:focus{border-color:#7b96d7}label{font-size:13px;font-weight:850;color:var(--muted)}
+.notice{padding:11px 13px;background:#fff8d8;border-radius:12px;color:#705800;font-size:13px}
+.row{display:flex;gap:10px;align-items:center}.grow{flex:1;min-width:0}
+.profile{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:16px;margin-top:9px}.avatarMini{width:52px;height:52px;border-radius:50%;background:#edf1ff;display:grid;place-items:center;font-size:26px}.profile .main{flex:1}.profile b{display:block}.profile span{font-size:12px;color:var(--muted)}
+.heroStage{min-height:330px;background:linear-gradient(#dce9ff,#f9fcff);border-radius:22px;display:grid;place-items:center;position:relative;overflow:hidden;padding:18px}
+.heroWrap{position:relative;width:210px;height:270px}
+.head{position:absolute;left:74px;top:30px;width:64px;height:64px;border-radius:50%;background:#d9a47c;border:4px solid #283149;z-index:3}
+.hair{position:absolute;left:70px;top:21px;width:72px;height:35px;border-radius:50% 50% 35% 35%;background:#2c2530;z-index:4}
+.body{position:absolute;left:60px;top:94px;width:92px;height:90px;border-radius:22px 22px 14px 14px;background:#5576ca;border:4px solid #283149;z-index:2}
+.leg1,.leg2{position:absolute;top:178px;width:31px;height:70px;background:#354984;border:4px solid #283149;border-radius:8px;z-index:1}.leg1{left:65px}.leg2{left:112px}
+.weapon{position:absolute;right:12px;top:98px;font-size:65px;transform:rotate(10deg);z-index:5}.pet{position:absolute;right:5px;bottom:18px;font-size:54px;filter:drop-shadow(0 3px 3px #0003)}
+.armor{position:absolute;left:54px;top:89px;width:104px;height:104px;border-radius:21px;background:linear-gradient(#cdd4df,#77859c);border:5px solid #455065;z-index:3}
+.helmet{position:absolute;left:64px;top:18px;width:84px;height:67px;border-radius:42px 42px 14px 14px;background:linear-gradient(#d8dde6,#7e899d);border:5px solid #455065;z-index:6}
+.shield{position:absolute;left:4px;top:118px;width:65px;height:78px;background:#bd8034;border:5px solid #6b471f;border-radius:48%;z-index:6}
+.cape{position:absolute;right:36px;top:96px;width:62px;height:126px;background:#793b9b;transform:skew(-8deg);z-index:1}.aura{position:absolute;inset:8px;border-radius:50%;box-shadow:0 0 40px 18px #ffd34e;opacity:.7}
+.heroName{position:absolute;bottom:9px;background:#fff;padding:7px 12px;border-radius:999px;font-weight:900;box-shadow:0 4px 14px #0002}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{text-align:center;background:var(--soft);padding:11px 7px;border-radius:13px}.stat strong{display:block;font-size:22px}.stat span{font-size:10px;color:var(--muted);font-weight:850}
+.bar{height:10px;background:#e6e9ef;border-radius:999px;overflow:hidden}.bar div{height:100%;background:var(--gold)}
+.choice{border:2px solid transparent;background:var(--soft);border-radius:14px;padding:12px 9px;font-weight:900;cursor:pointer}.choice.on{border-color:var(--blue);background:#e9efff}.choice small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+.avatarChoice{border:2px solid transparent;border-radius:18px;background:#f4f6fb;padding:12px;text-align:center;cursor:pointer}.avatarChoice.on{border-color:var(--purple);background:#f0ebff}.avatarEmoji{font-size:48px}.avatarChoice b{display:block;margin-top:6px}.avatarChoice small{font-size:11px;color:var(--muted)}
+.worldMap{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.world{position:relative;border:0;border-radius:22px;padding:18px;text-align:left;min-height:155px;color:#fff;font-weight:900;cursor:pointer;overflow:hidden}.world small{display:block;font-weight:700;opacity:.9;margin-top:6px}.world .emoji{font-size:42px;display:block;margin-bottom:10px}.world.locked{opacity:.55;filter:grayscale(.3);cursor:not-allowed}.w1{background:linear-gradient(135deg,#3d7fd4,#56a8e8)}.w2{background:linear-gradient(135deg,#3d9b68,#6ac97e)}.w3{background:linear-gradient(135deg,#aa6dcb,#7b4ec2)}.w4{background:linear-gradient(135deg,#e47b42,#f2aa54)}.w5{background:linear-gradient(135deg,#46506f,#252d46)}.w6{background:linear-gradient(135deg,#b48b22,#f0ca55);color:#352800}
+.mission{border:1px solid var(--line);border-radius:16px;padding:14px;margin:8px 0;display:flex;gap:12px;align-items:center}.mission .micon{font-size:30px}.mission .minfo{flex:1}.mission .minfo b{display:block}.mission .minfo span{font-size:12px;color:var(--muted)}
+.upgrade{border:1px solid var(--line);border-radius:16px;padding:13px;display:flex;gap:11px;align-items:center}.uicon{width:56px;height:56px;border-radius:14px;background:#f0f3fa;display:grid;place-items:center;font-size:30px}.uinfo{flex:1}.uinfo b{display:block}.uinfo span{font-size:12px;color:var(--muted)}
+.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{padding:8px 10px;border-radius:999px;background:#eef2ff;color:#334f94;font-size:12px;font-weight:850}.badge.locked{background:#f0f1f4;color:#979ca8}
+.topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;color:#fff;gap:8px;margin-bottom:10px}.topbar .right{text-align:right}.timer{width:68px;height:68px;border-radius:50%;background:var(--navy2);display:grid;place-items:center;font-size:22px;font-weight:950}
+.gamecard{background:#fff;border-radius:24px;padding:22px;text-align:center}.cat{font-size:12px;color:var(--blue);font-weight:950;text-transform:uppercase;letter-spacing:.5px}.question{font-size:clamp(27px,6vw,46px);font-weight:950;min-height:95px;display:grid;place-items:center;line-height:1.2}
+.answer{display:grid;grid-template-columns:1fr auto;gap:9px}.answer button{width:auto}.feedback{min-height:30px;margin-top:10px;font-weight:900}
+.boss{font-size:72px;text-align:center}.hearts{font-size:28px;text-align:center;letter-spacing:3px}.bossName{text-align:center;font-size:22px;font-weight:950}
+.assessRow{margin:12px 0}.assessHead{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:850}.rec{background:#fff8d9;border-left:4px solid var(--gold);padding:12px;border-radius:8px;margin-top:10px}
+.report{border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.report h4{margin:0 0 6px}
+.rewardReveal{text-align:center;padding:18px;background:linear-gradient(#fff8d8,#fff);border-radius:18px;font-size:20px;font-weight:900}.rewardReveal .big{font-size:70px}
+.toggle{display:flex;justify-content:space-between;align-items:center;padding:10px;border:1px solid var(--line);border-radius:13px}.toggle input{width:auto}
+@media(max-width:760px){.g2,.g3,.g4,.worldMap{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.answer{grid-template-columns:1fr}.answer button{width:100%;min-height:48px}.heroStage{min-height:300px}}
+</style>
+</head>
+<body>
+<div class="app">
+
+<section id="welcome">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">Play. Learn. Level Up.</div><div class="sub">Think Fast. Solve Smart.</div></div>
+<div class="card">
+<div class="grid g2">
+<button class="btn navy" id="parentBtn">👨‍👩‍👧 Parent Login</button>
+<button class="btn gold" id="childBtn">🎮 Child Login</button>
+</div>
+<div class="space"></div>
+<div class="small">BustonIQ turns screen time into active math practice through missions, hero progression and personalized learning.</div>
+</div>
+</section>
+
+<section id="parentLogin" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag" id="parentLoginTitle">Parent Portal</div></div>
+<div class="card">
+<div id="parentSetupBox" class="hide">
+<div class="title">First-Time Family Setup</div>
+<label>Family Name</label><input id="familyNameInput" placeholder="Example: Buston">
+<div class="space"></div><label>Create Parent Password</label><input id="parentNew1" type="password" placeholder="At least 6 characters">
+<div class="space"></div><label>Confirm Parent Password</label><input id="parentNew2" type="password">
+<button class="btn navy" id="createFamilyBtn">Create Family Account</button>
+</div>
+<div id="parentLoginBox">
+<label>Family Name</label><input id="familyLoginName" placeholder="Family name">
+<div class="space"></div><label>Password</label><input id="parentPass" type="password">
+<button class="btn navy" id="parentLoginAction">Login</button>
+</div>
+<button class="btn ghost" id="parentBack">Back</button>
+<div id="parentMsg" class="small"></div>
+</div>
+</section>
+
+<section id="parentDash" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag" id="familyWelcome"></div></div>
+<div class="card">
+<div class="grid g4">
+<button class="btn gold" id="addChildBtn">+ Add Child</button>
+<button class="btn purple" id="parentAssessBtn">📊 Assessments</button>
+<button class="btn green" id="weeklyBtn">📅 Weekly Report</button>
+<button class="btn ghost" id="parentSettingsBtn">⚙️ Settings</button>
+</div>
+<div class="space"></div><button class="btn ghost" id="parentLogout">Logout</button>
+<div class="space"></div><div class="title">Child Profiles</div><div id="parentProfiles"></div>
+</div>
+</section>
+
+<section id="parentSettings" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">Parent Settings</div></div>
+<div class="card">
+<div class="title">Family Settings</div>
+<label>Family Name</label><input id="settingsFamily">
+<div class="space"></div><label>Current Password</label><input id="settingsOld" type="password">
+<div class="space"></div><label>New Password</label><input id="settingsNew1" type="password" placeholder="Leave blank to keep current password">
+<div class="space"></div><label>Confirm New Password</label><input id="settingsNew2" type="password">
+<div class="space"></div><label>Daily Active Learning Goal (minutes)</label><input id="dailyGoal" type="number" min="5" max="120">
+<div class="space"></div><div class="toggle"><span><b>Game Sounds</b><br><span class="small">Correct answers, streaks and level-up effects</span></span><input id="soundToggle" type="checkbox"></div>
+<button class="btn navy" id="saveSettingsBtn">Save Settings</button>
+<button class="btn ghost" id="settingsBack">Back</button>
+<div id="settingsMsg" class="small"></div>
+</div>
+</section>
+
+<section id="childEditor" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">Create Child Profile</div></div>
+<div class="card">
+<div class="grid g2">
+<div><label>Name</label><input id="childName"></div>
+<div><label>4-digit PIN</label><input id="childPin" maxlength="4" inputmode="numeric"></div>
+</div>
+<div class="space"></div><label>Grade</label><select id="childGrade"><option value="1">Grade 1</option><option value="2">Grade 2</option><option value="3">Grade 3</option><option value="4" selected>Grade 4</option><option value="5">Grade 5</option></select>
+<button class="btn green" id="saveChild">Save Profile</button><button class="btn ghost" id="cancelChild">Cancel</button><div id="childEditMsg" class="small"></div>
+</div>
+</section>
+
+<section id="childLogin" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">Choose Your Hero</div></div>
+<div class="card"><div id="childProfiles"></div><button class="btn ghost" id="childLoginBack">Back</button></div>
+</section>
+
+<section id="pinScreen" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag" id="pinTitle"></div></div>
+<div class="card"><label>Hero PIN</label><input id="pinInput" type="password" maxlength="4" inputmode="numeric"><button class="btn gold" id="pinGo">Enter BustonIQ World</button><button class="btn ghost" id="pinBack">Back</button><div id="pinMsg" class="small"></div></div>
+</section>
+
+<section id="avatarSelect" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">Create Your Hero</div><div class="sub">Choose your starting hero style. You can improve it by learning.</div></div>
+<div class="card"><div class="grid g3" id="avatarChoices"></div><div class="space"></div><button class="btn gold" id="confirmAvatar">Start My Adventure</button></div>
+</section>
+
+<section id="heroHome" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag" id="heroTitle"></div><div class="sub" id="heroSub"></div></div>
+<div class="grid g2">
+<div class="card"><div class="heroStage"><div class="heroWrap" id="heroVisual"><div class="hair"></div><div class="head"></div><div class="body"></div><div class="leg1"></div><div class="leg2"></div><div class="weapon" id="heroWeapon"></div><div class="pet" id="heroPet"></div></div><div class="heroName" id="heroNameLabel"></div></div></div>
+<div class="card">
+<div class="title">My Hero Progress</div>
+<div class="stats">
+<div class="stat"><strong id="xpVal"></strong><span>XP</span></div>
+<div class="stat"><strong id="mpVal"></strong><span>MATH POINTS</span></div>
+<div class="stat"><strong id="missionVal"></strong><span>MISSIONS</span></div>
+<div class="stat"><strong id="accuracyVal"></strong><span>ACCURACY</span></div>
+</div>
+<div class="space"></div><div class="small">Next hero level</div><div class="bar"><div id="levelBar"></div></div>
+<div class="space"></div><div class="small">Today's active learning goal</div><div class="bar"><div id="dailyBar"></div></div><div id="dailyText" class="small"></div>
+<div class="space"></div>
+<button class="btn gold" id="worldBtn">🗺️ Adventure Map</button>
+<button class="btn purple" id="workshopBtn">🛡️ Hero Workshop</button>
+<button class="btn green" id="assessmentBtn">📊 Progress Assessment</button>
+<button class="btn navy" id="badgesBtn">🏅 My Achievements</button>
+<button class="btn ghost" id="childLogout">Logout</button>
+</div>
+</div>
+</section>
+
+<section id="worldMapScreen" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">BustonIQ Adventure World</div><div class="sub">Every world strengthens a different kind of math power.</div></div>
+<div class="card"><div class="worldMap" id="worlds"></div><div class="space"></div><button class="btn ghost" id="worldBack">Back to Hero</button></div>
+</section>
+
+<section id="dailyMissions" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag" id="worldTitle"></div></div>
+<div class="card"><div class="title">Today's Missions</div><div id="missionList"></div><button class="btn ghost" id="missionBack">Back to Map</button></div>
+</section>
+
+<section id="workshop" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">Hero Workshop</div><div class="sub" id="workshopMP"></div></div>
+<div class="card"><div class="title">Hero Improvements</div><div class="small">Math Points are earned from learning. Unlock, equip or remove improvements anytime.</div><div class="space"></div><div class="grid g2" id="upgradeList"></div>
+<div class="space"></div><div class="title">Companions</div><div class="grid g2" id="petList"></div><button class="btn ghost" id="workshopBack">Back to Hero</button></div>
+</section>
+
+<section id="badgesScreen" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">My Achievements</div></div>
+<div class="card"><div id="badgeGrid" class="badges"></div><div class="space"></div><div class="title">Personal Bests</div><div id="bestList"></div><button class="btn ghost" id="badgesBack">Back</button></div>
+</section>
+
+<section id="game" class="hide">
+<div class="topbar"><div><b id="qProgress"></b><br><span id="streakText"></span></div><div class="timer" id="timerVal"></div><div class="right"><b id="scoreVal"></b><br><span id="sessionMP"></span></div></div>
+<div class="gamecard"><div id="bossBox" class="hide"><div class="boss" id="bossEmoji"></div><div class="bossName" id="bossName"></div><div class="hearts" id="bossHearts"></div><div class="space"></div></div><div class="cat" id="category"></div><div class="question" id="question"></div><div class="answer"><input id="answerInput" inputmode="decimal" autocomplete="off" placeholder="Your answer"><button class="btn green" id="submitBtn">Submit</button></div><div class="feedback" id="feedback" aria-live="polite"></div></div>
+</section>
+
+<section id="results" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">Mission Complete!</div></div>
+<div class="card" style="text-align:center"><div class="title" id="resultMessage"></div><div class="stats"><div class="stat"><strong id="rScore"></strong><span>SCORE</span></div><div class="stat"><strong id="rXP"></strong><span>XP EARNED</span></div><div class="stat"><strong id="rMP"></strong><span>MATH POINTS</span></div><div class="stat"><strong id="rAccuracy"></strong><span>ACCURACY</span></div></div><div class="space"></div><div id="rewardBox" class="rewardReveal hide"></div><button class="btn purple" id="resultWorkshop">Upgrade My Hero</button><button class="btn green" id="resultAssess">View Assessment</button><button class="btn gold" id="resultMap">Adventure Map</button></div>
+</section>
+
+<section id="assessment" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag" id="assessmentTitle"></div></div>
+<div class="card"><div id="assessmentContent"></div><button class="btn gold" id="recommendedBtn">🎯 Start Recommended Practice</button><button class="btn ghost" id="assessmentBack">Back</button></div>
+</section>
+
+<section id="parentAssess" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">Learning Assessments</div></div><div id="allAssessmentContent"></div><button class="btn ghost" id="allAssessBack">Back</button>
+</section>
+
+<section id="weeklyReport" class="hide">
+<div class="brand"><h1>BustonIQ</h1><div class="tag">Weekly Learning Report</div></div><div id="weeklyContent"></div><button class="btn ghost" id="weeklyBack">Back</button>
+</section>
+
+</div>
+
+<script>
+(() => {
+const ids=['welcome','parentLogin','parentDash','parentSettings','childEditor','childLogin','pinScreen','avatarSelect','heroHome','worldMapScreen','dailyMissions','workshop','badgesScreen','game','results','assessment','parentAssess','weeklyReport'];
+const $=id=>document.getElementById(id);
+const show=id=>ids.forEach(x=>$(x).classList.toggle('hide',x!==id));
+const KEY='bustoniq_v05';
+let D; try{D=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!D)D={familyName:null,parentPassword:null,dailyGoal:20,sound:true,profiles:[]};
+const save=()=>localStorage.setItem(KEY,JSON.stringify(D));
+let selectedId=null,active=null,selectedAvatar='knight',selectedWorld='numbers',currentMission=null,focusTopic=null;
+let adaptiveLevel=1;
+
+const avatars={
+ knight:{name:'Knight',emoji:'🛡️',weapon:'⚔️',desc:'Brave and steady'},
+ mage:{name:'Mage',emoji:'🧙',weapon:'🪄',desc:'Master of number magic'},
+ ninja:{name:'Ninja',emoji:'🥷',weapon:'🗡️',desc:'Fast and focused'},
+ space:{name:'Space Explorer',emoji:'🧑‍🚀',weapon:'🔭',desc:'Explore the math universe'},
+ tech:{name:'Tech Hero',emoji:'🤖',weapon:'⚡',desc:'Powered by logic'},
+ adventurer:{name:'Adventurer',emoji:'🧭',weapon:'🪃',desc:'Ready for every challenge'}
+};
+const worlds=[
+ {id:'numbers',name:'Number Kingdom',emoji:'🏰',topic:'Arithmetic',cls:'w1',level:1,desc:'Addition, subtraction, multiplication and division'},
+ {id:'fractions',name:'Fraction Island',emoji:'🏝️',topic:'Fractions',cls:'w2',level:2,desc:'Fractions, equivalents and parts of a whole'},
+ {id:'geometry',name:'Geometry City',emoji:'🏙️',topic:'Geometry',cls:'w3',level:3,desc:'Area, perimeter and shape reasoning'},
+ {id:'patterns',name:'Logic Temple',emoji:'🧩',topic:'Reasoning',cls:'w4',level:3,desc:'Patterns, order of operations and number logic'},
+ {id:'problems',name:'Word Problem Valley',emoji:'📚',topic:'Word Problems',cls:'w5',level:4,desc:'Real-world and multi-step reasoning'},
+ {id:'arena',name:'Champion Arena',emoji:'🏆',topic:'Mixed',cls:'w6',level:5,desc:'Boss battles and contest-style mixed challenges'}
+];
+const upgrades=[
+ {id:'shield',icon:'🛡️',name:'Bronze Math Shield',cost:300,level:1},
+ {id:'cape',icon:'🦸',name:'Explorer Cape',cost:600,level:2},
+ {id:'armor',icon:'🥋',name:'Silver Solver Armor',cost:1000,level:3},
+ {id:'helmet',icon:'⛑️',name:'Champion Helmet',cost:1500,level:4},
+ {id:'aura',icon:'✨',name:'Legendary Math Aura',cost:2500,level:6}
+];
+const pets=[
+ {id:'owl',icon:'🦉',name:'Wisdom Owl',cost:500,level:2},
+ {id:'robot',icon:'🤖',name:'Logic Bot',cost:900,level:3},
+ {id:'dragon',icon:'🐉',name:'Number Dragon',cost:1600,level:4},
+ {id:'fox',icon:'🦊',name:'Clever Fox',cost:2200,level:5}
+];
+const badges=[
+ {id:'first',name:'🎯 First Mission',test:p=>p.history.length>=1},
+ {id:'hundred',name:'💯 100 Questions',test:p=>totalQuestions(p)>=100},
+ {id:'perfect',name:'🌟 Perfect Mission',test:p=>p.history.some(h=>h.accuracy===100)},
+ {id:'streak',name:'🔥 10 Correct Streak',test:p=>(p.bestStreak||0)>=10},
+ {id:'fraction',name:'🏝️ Fraction Explorer',test:p=>topicAccuracy(p,'Fractions')>=85 && topicCount(p,'Fractions')>=15},
+ {id:'reason',name:'🧩 Logic Master',test:p=>topicAccuracy(p,'Reasoning')>=85 && topicCount(p,'Reasoning')>=15},
+ {id:'fiveDay',name:'📅 5 Learning Days',test:p=>uniqueDays(p)>=5},
+ {id:'champ',name:'🏆 Champion Solver',test:p=>level(p)>=6}
+];
+
+function ensure(p){
+ p.history=p.history||[];p.xp=p.xp||0;p.mp=p.mp||0;p.avatar=p.avatar||null;p.unlocked=p.unlocked||[];p.equipped=p.equipped||[];
+ p.petUnlocked=p.petUnlocked||[];p.petEquipped=p.petEquipped||null;p.stats=p.stats||{};p.recent=p.recent||[];p.bestStreak=p.bestStreak||0;
+ p.activeSeconds=p.activeSeconds||{};p.mysteryRewards=p.mysteryRewards||[];return p
+}
+const level=p=>Math.floor((p.xp||0)/500)+1;
+const totalQuestions=p=>Object.values(p.stats||{}).reduce((s,x)=>s+(x.total||0),0);
+const topicCount=(p,t)=>Object.entries(p.stats||{}).filter(([k])=>k.startsWith(t+'|')).reduce((s,[,x])=>s+x.total,0);
+const topicCorrect=(p,t)=>Object.entries(p.stats||{}).filter(([k])=>k.startsWith(t+'|')).reduce((s,[,x])=>s+x.correct,0);
+const topicAccuracy=(p,t)=>{let n=topicCount(p,t);return n?Math.round(topicCorrect(p,t)/n*100):0};
+const uniqueDays=p=>new Set((p.history||[]).map(h=>h.day)).size;
+const today=()=>new Date().toISOString().slice(0,10);
+const daySeconds=p=>p.activeSeconds[today()]||0;
+const totalAccuracy=p=>{let vals=Object.values(p.stats||{}),n=vals.reduce((s,x)=>s+x.total,0),c=vals.reduce((s,x)=>s+x.correct,0);return n?Math.round(c/n*100):0};
+function beep(freq=660,dur=.08){
+ if(!D.sound)return;
+ try{const A=window.AudioContext||window.webkitAudioContext;const c=new A(),o=c.createOscillator(),g=c.createGain();o.frequency.value=freq;o.connect(g);g.connect(c.destination);g.gain.value=.07;o.start();o.stop(c.currentTime+dur)}catch(e){}
+}
+function successSound(){beep(720,.07);setTimeout(()=>beep(900,.09),80)}
+function failSound(){beep(240,.08)}
+function levelSound(){beep(600,.08);setTimeout(()=>beep(800,.08),90);setTimeout(()=>beep(1050,.12),180)}
+
+function openParent(){
+ $('parentMsg').textContent='';
+ const setup=!D.parentPassword;
+ $('parentSetupBox').classList.toggle('hide',!setup);$('parentLoginBox').classList.toggle('hide',setup);
+ $('parentLoginTitle').textContent=setup?'Create Family Account':'Parent Portal';
+ if(!setup)$('familyLoginName').value=D.familyName||'';
+ show('parentLogin')
+}
+function createFamily(){
+ const fam=$('familyNameInput').value.trim(),a=$('parentNew1').value,b=$('parentNew2').value;
+ if(fam.length<2)return msg('parentMsg','Enter your family name.');
+ if(a.length<6)return msg('parentMsg','Password must be at least 6 characters.');
+ if(a!==b)return msg('parentMsg','Passwords do not match.');
+ D.familyName=fam;D.parentPassword=a;save();renderParent();show('parentDash')
+}
+function parentLogin(){
+ const fam=$('familyLoginName').value.trim(),pass=$('parentPass').value;
+ if(fam.toLowerCase()===(D.familyName||'').toLowerCase() && pass===D.parentPassword){renderParent();show('parentDash')}
+ else msg('parentMsg','Family name or password is incorrect.')
+}
+function msg(id,t){$(id).textContent=t}
+function renderParent(){
+ $('familyWelcome').textContent=`Welcome, ${D.familyName||''} Family`;
+ $('parentProfiles').innerHTML='';
+ if(!D.profiles.length)$('parentProfiles').innerHTML='<div class="small">No child profiles yet.</div>';
+ D.profiles.forEach(p=>{ensure(p);const d=document.createElement('div');d.className='profile';d.innerHTML=`<div class="avatarMini">${p.avatar?avatars[p.avatar].emoji:'🧠'}</div><div class="main"><b>${p.name}</b><span>Grade ${p.grade} • Level ${level(p)} • ${p.history.length} missions • ${totalAccuracy(p)}% accuracy</span></div>`;$('parentProfiles').appendChild(d)})
+}
+function openSettings(){
+ $('settingsFamily').value=D.familyName||'';$('dailyGoal').value=D.dailyGoal||20;$('soundToggle').checked=D.sound!==false;$('settingsOld').value='';$('settingsNew1').value='';$('settingsNew2').value='';$('settingsMsg').textContent='';show('parentSettings')
+}
+function saveSettings(){
+ if($('settingsOld').value!==D.parentPassword)return msg('settingsMsg','Current password is incorrect.');
+ const fam=$('settingsFamily').value.trim(),n1=$('settingsNew1').value,n2=$('settingsNew2').value,goal=Math.max(5,Math.min(120,Number($('dailyGoal').value)||20));
+ if(fam.length<2)return msg('settingsMsg','Enter a valid family name.');
+ if(n1 && n1.length<6)return msg('settingsMsg','New password must be at least 6 characters.');
+ if(n1!==n2)return msg('settingsMsg','New passwords do not match.');
+ D.familyName=fam;if(n1)D.parentPassword=n1;D.dailyGoal=goal;D.sound=$('soundToggle').checked;save();msg('settingsMsg','Settings saved successfully.')
+}
+function addChild(){$('childName').value='';$('childPin').value='';$('childGrade').value='4';$('childEditMsg').textContent='';show('childEditor')}
+function saveChild(){
+ const n=$('childName').value.trim(),pin=$('childPin').value.trim(),g=+$('childGrade').value;
+ if(!n)return msg('childEditMsg','Enter a child name.');if(!/^\d{4}$/.test(pin))return msg('childEditMsg','PIN must be exactly 4 digits.');
+ D.profiles.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:n,pin,grade:g,history:[],xp:0,mp:0,avatar:null,unlocked:[],equipped:[],petUnlocked:[],petEquipped:null,stats:{},recent:[],bestStreak:0,activeSeconds:{},mysteryRewards:[]});
+ save();renderParent();show('parentDash')
+}
+function renderChildLogin(){
+ $('childProfiles').innerHTML='';
+ if(!D.profiles.length)$('childProfiles').innerHTML='<div class="small">No child profiles yet. Ask a parent to create one.</div>';
+ D.profiles.forEach(p=>{ensure(p);const b=document.createElement('button');b.className='profile';b.style.width='100%';b.style.background='white';b.style.cursor='pointer';b.innerHTML=`<div class="avatarMini">${p.avatar?avatars[p.avatar].emoji:'🎮'}</div><div class="main" style="text-align:left"><b>${p.name}</b><span>Grade ${p.grade} • Hero Level ${level(p)}</span></div><div>›</div>`;b.onclick=()=>{selectedId=p.id;$('pinTitle').textContent=`${p.name}'s Hero`;$('pinInput').value='';$('pinMsg').textContent='';show('pinScreen')};$('childProfiles').appendChild(b)})
+}
+function pinLogin(){
+ const p=D.profiles.find(x=>x.id===selectedId);
+ if(p && $('pinInput').value===p.pin){active=ensure(p);if(!active.avatar)openAvatarSelect();else heroHome()}
+ else msg('pinMsg','Incorrect PIN.')
+}
+function openAvatarSelect(){
+ $('avatarChoices').innerHTML='';Object.entries(avatars).forEach(([id,a])=>{const b=document.createElement('button');b.className='avatarChoice'+(selectedAvatar===id?' on':'');b.innerHTML=`<div class="avatarEmoji">${a.emoji}</div><b>${a.name}</b><small>${a.desc}</small>`;b.onclick=()=>{selectedAvatar=id;openAvatarSelect()};$('avatarChoices').appendChild(b)});show('avatarSelect')
+}
+function confirmAvatar(){active.avatar=selectedAvatar;save();heroHome()}
+function heroHome(){
+ renderHero();show('heroHome')
+}
+function renderHero(){
+ ensure(active);const l=level(active),acc=totalAccuracy(active),secs=daySeconds(active),goal=(D.dailyGoal||20)*60;
+ $('heroTitle').textContent=`${active.name}'s Hero`;$('heroSub').textContent=`Grade ${active.grade} • Level ${l} ${avatars[active.avatar]?.name||''}`;
+ $('xpVal').textContent=active.xp;$('mpVal').textContent=active.mp;$('missionVal').textContent=active.history.length;$('accuracyVal').textContent=acc+'%';
+ $('levelBar').style.width=((active.xp%500)/5)+'%';$('dailyBar').style.width=Math.min(100,secs/goal*100)+'%';$('dailyText').textContent=`${Math.floor(secs/60)} of ${D.dailyGoal||20} active learning minutes`;
+ $('heroNameLabel').textContent=`Level ${l} ${avatars[active.avatar]?.name||'Hero'}`;$('heroWeapon').textContent=avatars[active.avatar]?.weapon||'';
+ $('heroPet').textContent=active.petEquipped?pets.find(x=>x.id===active.petEquipped)?.icon||'':'';
+ const h=$('heroVisual');h.querySelectorAll('.armor,.helmet,.shield,.cape,.aura').forEach(e=>e.remove());active.equipped.forEach(id=>{const e=document.createElement('div');e.className=id;h.appendChild(e)})
+}
+function renderWorlds(){
+ $('worlds').innerHTML='';worlds.forEach(w=>{const locked=level(active)<w.level;const b=document.createElement('button');b.className=`world ${w.cls} ${locked?'locked':''}`;b.innerHTML=`<span class="emoji">${w.emoji}</span>${w.name}<small>${w.desc}<br>Requires Level ${w.level}</small>`;b.onclick=()=>{if(locked)return;selectedWorld=w.id;renderMissions();show('dailyMissions')};$('worlds').appendChild(b)});show('worldMapScreen')
+}
+function renderMissions(){
+ const w=worlds.find(x=>x.id===selectedWorld);$('worldTitle').textContent=w.name;$('missionList').innerHTML='';
+ const rec=weakestTopic(active);
+ const missions=[
+  {id:'warm',icon:'☀️',name:'Warm-Up Mission',desc:'10 questions • relaxed pace',count:10,time:45,diff:'easy',boss:false,topic:w.topic},
+  {id:'skill',icon:'🎯',name:'Skill Builder',desc:`15 questions • ${w.topic==='Mixed'?'mixed skills':w.topic}`,count:15,time:35,diff:'medium',boss:false,topic:w.topic},
+  {id:'challenge',icon:'⚡',name:'Challenge Mission',desc:'20 questions • contest pace',count:20,time:25,diff:'hard',boss:false,topic:w.topic},
+  {id:'recommend',icon:'🧠',name:'Recommended Practice',desc:rec?`Extra practice: ${rec}`:'Adaptive mixed practice',count:15,time:35,diff:'medium',boss:false,topic:rec||w.topic},
+  {id:'boss',icon:'🐉',name:'Boss Battle',desc:'Defeat the boss with 5 correct answers',count:12,time:25,diff:'hard',boss:true,topic:w.topic}
+ ];
+ missions.forEach(m=>{const d=document.createElement('div');d.className='mission';d.innerHTML=`<div class="micon">${m.icon}</div><div class="minfo"><b>${m.name}</b><span>${m.desc}</span></div>`;const b=document.createElement('button');b.className='btn gold';b.style.width='auto';b.textContent='Start';b.onclick=()=>{currentMission=m;startGame()};d.appendChild(b);$('missionList').appendChild(d)})
+}
+
+function workshop(){
+ $('workshopMP').textContent=`${active.mp} Math Points available`;$('upgradeList').innerHTML='';$('petList').innerHTML='';
+ upgrades.forEach(u=>renderUnlockItem(u,'upgradeList','gear'));pets.forEach(p=>renderUnlockItem(p,'petList','pet'));show('workshop')
+}
+function renderUnlockItem(u,target,type){
+ const owned=(type==='gear'?active.unlocked:active.petUnlocked).includes(u.id),equipped=type==='gear'?active.equipped.includes(u.id):active.petEquipped===u.id,eligible=level(active)>=u.level;
+ const d=document.createElement('div');d.className='upgrade';d.innerHTML=`<div class="uicon">${u.icon}</div><div class="uinfo"><b>${u.name}</b><span>${u.cost} MP • Level ${u.level}</span></div>`;
+ const b=document.createElement('button');b.className='btn '+(owned?'ghost':'gold');b.style.width='auto';if(!eligible){b.textContent='🔒';b.disabled=true}else if(!owned){b.textContent='Unlock';b.onclick=()=>unlockItem(u,type)}else{b.textContent=equipped?'Remove':'Equip';b.onclick=()=>toggleItem(u.id,type)};d.appendChild(b);$(target).appendChild(d)
+}
+function unlockItem(u,type){
+ if(active.mp<u.cost)return alert('Keep learning! You need more Math Points.');
+ active.mp-=u.cost;if(type==='gear'){active.unlocked.push(u.id);active.equipped.push(u.id)}else{active.petUnlocked.push(u.id);active.petEquipped=u.id}
+ save();successSound();workshop()
+}
+function toggleItem(id,type){
+ if(type==='gear')active.equipped=active.equipped.includes(id)?active.equipped.filter(x=>x!==id):[...active.equipped,id];
+ else active.petEquipped=active.petEquipped===id?null:id;save();workshop()
+}
+
+function renderBadges(){
+ $('badgeGrid').innerHTML='';badges.forEach(b=>{const s=document.createElement('span');const got=b.test(active);s.className='badge'+(got?'':' locked');s.textContent=got?b.name:'🔒 '+b.name.replace(/^.\s?/,'');$('badgeGrid').appendChild(s)});
+ const best=Math.max(0,...active.history.map(h=>h.score||0)),perfect=active.history.filter(h=>h.accuracy===100).length;
+ $('bestList').innerHTML=`<div class="report"><b>Best Mission Score:</b> ${best}</div><div class="report"><b>Best Correct Streak:</b> ${active.bestStreak}</div><div class="report"><b>Perfect Missions:</b> ${perfect}</div><div class="report"><b>Questions Solved:</b> ${totalQuestions(active)}</div>`;
+ show('badgesScreen')
+}
+
+const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[rand(0,a.length-1)];
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+const Q=(topic,sub,prompt,answer,difficulty)=>({topic,sub,prompt,answer:String(answer),difficulty,sig:`${topic}|${sub}|${prompt}`});
+function arithmetic(){
+ const g=active.grade,scale=Math.max(1,adaptiveLevel),max=Math.round([0,12,40,120,600,1400][g]*(1+(.18*(scale-1))));
+ const ops=g<=2?['+','-']:['+','-','×','÷'],op=pick(ops);
+ if(op==='+'){let a=rand(2,max),b=rand(2,max);return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,scale)}
+ if(op==='-'){let a=rand(5,max),b=rand(1,a);return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,scale)}
+ if(op==='×'){let lim=(g<=3?10:15)+(scale-1)*2,a=rand(2,lim),b=rand(2,lim);return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,scale)}
+ let d=rand(2,12+(scale-1)*2),ans=rand(2,15+(scale-1)*2);return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,scale)
+}
+function fraction(){
+ if(active.grade<3)return arithmetic();
+ const type=pick(['whole','equiv','compare']);
+ if(type==='whole'){let d=pick([2,3,4,5,6,8]),n=rand(1,d-1),u=rand(2,12+adaptiveLevel);return Q('Fractions','Fraction of Whole',`What is ${n}/${d} of ${d*u}?`,n*u,adaptiveLevel)}
+ if(type==='equiv'){let d=pick([2,3,4,5,6]),n=rand(1,d-1),k=rand(2,5);return Q('Fractions','Equivalent Fractions',`${n}/${d} = ?/${d*k}. Enter the missing numerator.`,n*k,adaptiveLevel)}
+ let d=pick([4,5,6,8,10]),a=rand(1,d-1),b=rand(1,d-1);if(a===b)b=(b%d)+1;return Q('Fractions','Compare Fractions',`Which numerator is larger: ${a}/${d} or ${b}/${d}?`,Math.max(a,b),adaptiveLevel)
+}
+function geometry(){
+ if(active.grade<3)return arithmetic();let l=rand(3,15+adaptiveLevel*2),w=rand(2,l),type=pick(['area','perimeter','missing']);
+ if(type==='area')return Q('Geometry','Area',`Rectangle length ${l}, width ${w}. Area?`,l*w,adaptiveLevel);
+ if(type==='perimeter')return Q('Geometry','Perimeter',`Rectangle length ${l}, width ${w}. Perimeter?`,2*(l+w),adaptiveLevel);
+ return Q('Geometry','Missing Dimension',`A rectangle has perimeter ${2*(l+w)} and length ${l}. What is its width?`,w,adaptiveLevel)
+}
+function pattern(){
+ let s=rand(1,35),d=rand(2,12+adaptiveLevel*2);
+ if(adaptiveLevel>=3){let a=rand(2,6),x=rand(1,6);return Q('Reasoning','Number Pattern',`${x}, ${x+a}, ${x+3*a}, ${x+6*a}, ?`,x+10*a,adaptiveLevel)}
+ return Q('Reasoning','Number Pattern',`${s}, ${s+d}, ${s+2*d}, ${s+3*d}, ?`,s+4*d,adaptiveLevel)
+}
+function theory(){
+ if(active.grade<3)return arithmetic();let a=pick([12,18,24,30,36,42,48]),b=pick([18,24,30,36,48,54,60]);return Q('Reasoning','GCF',`Greatest common factor of ${a} and ${b}?`,gcd(a,b),adaptiveLevel)
+}
+function orderOps(){
+ if(active.grade<4)return arithmetic();let a=rand(2,9),b=rand(2,9),c=rand(2,8),d=rand(2,6);
+ return adaptiveLevel>=3?Q('Reasoning','Order of Operations',`${a} + ${b} × ${c} − ${d} = ?`,a+b*c-d,adaptiveLevel):Q('Reasoning','Order of Operations',`${a} + ${b} × ${c} = ?`,a+b*c,adaptiveLevel)
+}
+function wordProblem(){
+ if(active.grade<=2){let a=rand(10,40),b=rand(2,a-1);return Q('Word Problems','One Step',`Mia has ${a} stars and gives away ${b}. How many remain?`,a-b,adaptiveLevel)}
+ let type=pick(['boxes','rate','groups']);
+ if(type==='boxes'){let boxes=rand(3,9),each=rand(5,16),used=rand(4,18);return Q('Word Problems','Multi-Step',`${boxes} boxes have ${each} pencils each. ${used} pencils are used. How many remain?`,boxes*each-used,adaptiveLevel)}
+ if(type==='rate'){let rate=rand(3,12),mins=rand(2,8);return Q('Word Problems','Rate',`A machine makes ${rate} parts per minute for ${mins} minutes. How many parts?`,rate*mins,adaptiveLevel)}
+ let teams=rand(3,10),kids=rand(4,14);return Q('Word Problems','Equal Groups',`${teams} teams have ${kids} players each. How many players altogether?`,teams*kids,adaptiveLevel)
+}
+function decimal(){
+ if(active.grade<4)return arithmetic();let a=rand(10,999)/10,b=rand(10,999)/10;return Q('Arithmetic','Decimals',`${a.toFixed(1)} + ${b.toFixed(1)} = ?`,Math.round((a+b)*10)/10,adaptiveLevel)
+}
+function questionForTopic(topic){
+ if(topic==='Arithmetic')return pick([arithmetic,decimal])();
+ if(topic==='Fractions')return fraction();
+ if(topic==='Geometry')return geometry();
+ if(topic==='Reasoning')return pick([pattern,theory,orderOps])();
+ if(topic==='Word Problems')return wordProblem();
+ return pick([arithmetic,fraction,geometry,pattern,theory,orderOps,wordProblem,decimal])()
+}
+function newQuestion(){
+ const desired=currentMission?.topic||focusTopic||'Mixed';let q;
+ for(let i=0;i<35;i++){q=questionForTopic(desired);if(!active.recent.includes(q.sig))break}
+ active.recent=[q.sig,...active.recent].slice(0,250);return q
+}
+
+let qi=0,score=0,correct=0,attempts=0,streak=0,earnedMP=0,earnedXP=0,currentQ=null,timerId=null,timeLeft=0,questionStart=0,sessionTimes=[],accepting=false,bossHP=0,bossMode=false,startLevel=0,lastActivity=0;
+function startGame(){
+ qi=score=correct=attempts=streak=earnedMP=earnedXP=0;sessionTimes=[];adaptiveLevel=currentMission.diff==='easy'?1:currentMission.diff==='hard'?3:2;bossMode=!!currentMission.boss;bossHP=bossMode?5:0;startLevel=level(active);clearInterval(timerId);show('game');$('bossBox').classList.toggle('hide',!bossMode);
+ if(bossMode){$('bossEmoji').textContent='🐉';$('bossName').textContent='The Number Dragon';renderBoss()}
+ nextQuestion()
+}
+function renderBoss(){$('bossHearts').textContent='❤️'.repeat(Math.max(0,bossHP))+'🖤'.repeat(Math.max(0,5-bossHP))}
+function nextQuestion(){
+ if(bossMode && bossHP<=0)return finishGame(true);
+ if(qi>=currentMission.count)return finishGame(false);
+ qi++;currentQ=newQuestion();$('category').textContent=`${currentQ.topic} • ${currentQ.sub}`;$('question').textContent=currentQ.prompt;$('answerInput').value='';$('feedback').textContent='';accepting=true;questionStart=Date.now();timeLeft=currentMission.time;clearInterval(timerId);timerId=setInterval(()=>{timeLeft--;hud();if(timeLeft<=0)timeoutQuestion()},1000);hud();$('answerInput').focus()
+}
+function hud(){$('qProgress').textContent=bossMode?`Battle Q${qi}`:`${qi} / ${currentMission.count}`;$('streakText').textContent=`🔥 ${streak} streak`;$('timerVal').textContent=timeLeft;$('scoreVal').textContent=`⭐ ${score}`;$('sessionMP').textContent=`🧠 +${earnedMP} MP`}
+function recordQuestion(ok,elapsed){
+ const k=`${currentQ.topic}|${currentQ.sub}`,s=active.stats[k]||(active.stats[k]={correct:0,total:0,time:0,difficultySum:0});s.total++;if(ok)s.correct++;s.time+=elapsed;s.difficultySum+=(currentQ.difficulty||1);
+ active.activeSeconds[today()]=(active.activeSeconds[today()]||0)+Math.max(1,Math.min(elapsed,currentMission.time));
+ sessionTimes.push(elapsed)
+}
+function adapt(ok,elapsed){
+ if(ok && elapsed<currentMission.time*.35)adaptiveLevel=Math.min(4,adaptiveLevel+1);
+ else if(!ok)adaptiveLevel=Math.max(1,adaptiveLevel-1)
+}
+function submitAnswer(){
+ if(!accepting)return;const v=$('answerInput').value.trim();if(v==='')return;accepting=false;clearInterval(timerId);attempts++;const elapsed=(Date.now()-questionStart)/1000,ok=Math.abs(Number(v)-Number(currentQ.answer))<.001;recordQuestion(ok,elapsed);adapt(ok,elapsed);
+ if(ok){correct++;streak++;active.bestStreak=Math.max(active.bestStreak,streak);const mp=5+(streak>=5?3:0)+(currentMission.diff==='hard'?3:0),xp=10+(currentMission.diff==='hard'?5:0);earnedMP+=mp;earnedXP+=xp;score+=100+streak*5;if(bossMode){bossHP--;renderBoss()}$('feedback').textContent=`✅ Correct! +${mp} Math Points`; $('feedback').style.color='var(--green)';successSound();if(streak===5||streak===10)levelSound()}
+ else{streak=0;$('feedback').textContent=`❌ Answer: ${currentQ.answer}`;$('feedback').style.color='var(--red)';failSound()}
+ hud();setTimeout(nextQuestion,650)
+}
+function timeoutQuestion(){
+ if(!accepting)return;accepting=false;clearInterval(timerId);attempts++;const elapsed=(Date.now()-questionStart)/1000;recordQuestion(false,elapsed);adapt(false,elapsed);streak=0;$('feedback').textContent=`⏰ Time! Answer: ${currentQ.answer}`;$('feedback').style.color='var(--red)';failSound();setTimeout(nextQuestion,650)
+}
+function finishGame(bossDefeated){
+ clearInterval(timerId);accepting=false;const acc=attempts?Math.round(correct/attempts*100):0,bonus=(bossDefeated?75:correct>=10?30:10);earnedMP+=bonus;earnedXP+=Math.max(25,correct*5)+(bossDefeated?100:0);active.mp+=earnedMP;active.xp+=earnedXP;
+ const avg=sessionTimes.length?sessionTimes.reduce((a,b)=>a+b,0)/sessionTimes.length:0;
+ active.history.unshift({date:new Date().toLocaleString(),day:today(),world:selectedWorld,mission:currentMission.name,score,correct,attempts,accuracy:acc,avgTime:+avg.toFixed(1),mp:earnedMP,xp:earnedXP});active.history=active.history.slice(0,100);
+ let reward=null;if((active.history.length%5===0)||bossDefeated){reward=revealMysteryReward();if(reward)active.mysteryRewards.push(reward)}
+ save();$('rScore').textContent=score;$('rXP').textContent='+'+earnedXP;$('rMP').textContent='+'+earnedMP;$('rAccuracy').textContent=acc+'%';
+ $('resultMessage').textContent=bossDefeated?'🐉 Boss Defeated!':acc>=90?'🏆 Excellent Mission!':acc>=75?'⭐ Strong Work!':'💪 Training Makes Heroes Stronger!';
+ $('rewardBox').classList.toggle('hide',!reward);if(reward)$('rewardBox').innerHTML=`<div class="big">${reward.icon}</div>Mystery Achievement Reward!<br><span class="small">${reward.name}</span>`;
+ if(level(active)>startLevel)levelSound();focusTopic=null;show('results')
+}
+function revealMysteryReward(){
+ const pool=[{id:'starTrail',icon:'🌟',name:'Star Trail Effect'},{id:'bookCharm',icon:'📘',name:'Knowledge Charm'},{id:'crownSpark',icon:'👑',name:'Champion Spark'},{id:'gemBadge',icon:'💎',name:'Math Gem'}];
+ const owned=new Set(active.mysteryRewards.map(x=>x.id)),avail=pool.filter(x=>!owned.has(x.id));return avail.length?pick(avail):null
+}
+
+function subskillRows(p){
+ const entries=Object.entries(p.stats||{});if(!entries.length)return '<div class="notice">Complete several missions so BustonIQ can evaluate skills.</div>';
+ return entries.sort((a,b)=>(a[1].correct/a[1].total)-(b[1].correct/b[1].total)).map(([k,s])=>{const [topic,sub]=k.split('|'),pct=Math.round(s.correct/s.total*100),avg=(s.time/s.total).toFixed(1);return `<div class="assessRow"><div class="assessHead"><span>${topic} — ${sub}</span><span>${pct}% • ${avg}s avg</span></div><div class="bar"><div style="width:${pct}%"></div></div></div>`}).join('')
+}
+function weakestTopic(p){
+ const grouped={};Object.entries(p.stats||{}).forEach(([k,s])=>{const t=k.split('|')[0],g=grouped[t]||(grouped[t]={c:0,n:0});g.c+=s.correct;g.n+=s.total});
+ const arr=Object.entries(grouped).filter(([,x])=>x.n>=3);if(!arr.length)return null;arr.sort((a,b)=>a[1].c/a[1].n-b[1].c/b[1].n);return arr[0][0]
+}
+function strongestTopic(p){
+ const grouped={};Object.entries(p.stats||{}).forEach(([k,s])=>{const t=k.split('|')[0],g=grouped[t]||(grouped[t]={c:0,n:0});g.c+=s.correct;g.n+=s.total});
+ const arr=Object.entries(grouped).filter(([,x])=>x.n>=3);if(!arr.length)return null;arr.sort((a,b)=>b[1].c/b[1].n-a[1].c/a[1].n);return arr[0][0]
+}
+function assessmentHTML(p){
+ ensure(p);const acc=totalAccuracy(p),n=totalQuestions(p),weak=weakestTopic(p),strong=strongestTopic(p),trend=trendText(p);
+ const levelText=acc>=90?'Excellent progress':acc>=80?'Strong progress':acc>=65?'Developing well':'Building foundations';
+ return `<div class="title">Overall Evaluation</div><div class="report"><h4>${levelText}</h4><div class="small">${acc}% overall accuracy across ${n} assessed questions. ${trend}</div></div>
+ <div class="title">Performance by Subskill</div>${subskillRows(p)}
+ <div class="title">Strengths</div><div class="rec">${strong?`Current strongest area: <b>${strong}</b>. Continue mixed practice to maintain mastery.`:'Complete more questions to identify a consistent strength.'}</div>
+ <div class="title">BustonIQ Recommendation</div><div class="rec">${weak?`Focus next on <b>${weak}</b>. BustonIQ will give extra ${weak.toLowerCase()} practice with different numbers and examples while continuing other skills.`:'Complete more missions to generate a personalized recommendation.'}</div>`
+}
+function trendText(p){
+ const h=p.history.slice(0,6);if(h.length<4)return 'More sessions will improve the accuracy of this assessment.';
+ const recent=h.slice(0,3).reduce((s,x)=>s+x.accuracy,0)/3,older=h.slice(3,6).reduce((s,x)=>s+x.accuracy,0)/(h.slice(3,6).length||1);
+ if(recent>older+3)return 'Recent performance is improving.';
+ if(recent<older-3)return 'Recent performance suggests additional reinforcement may help.';
+ return 'Performance has been relatively consistent.'
+}
+function showAssessment(){ $('assessmentTitle').textContent=`${active.name}'s Progress Assessment`;$('assessmentContent').innerHTML=assessmentHTML(active);show('assessment')}
+function recommendedPractice(){
+ focusTopic=weakestTopic(active)||'Mixed';selectedWorld='numbers';currentMission={id:'recommend',name:'Recommended Practice',count:15,time:35,diff:'medium',boss:false,topic:focusTopic};startGame()
+}
+function allAssess(){
+ $('allAssessmentContent').innerHTML=D.profiles.map(p=>`<div class="card"><div class="title">${p.name} — Grade ${p.grade}</div>${assessmentHTML(ensure(p))}</div>`).join('');show('parentAssess')
+}
+function weeklyReport(){
+ $('weeklyContent').innerHTML=D.profiles.map(p=>{ensure(p);const recent=p.history.filter(h=>daysAgo(h.day)<=7),questions=recent.reduce((s,h)=>s+h.attempts,0),avg=recent.length?Math.round(recent.reduce((s,h)=>s+h.accuracy,0)/recent.length):0,weak=weakestTopic(p),mins=Math.round(Object.entries(p.activeSeconds).filter(([d])=>daysAgo(d)<=7).reduce((s,[,v])=>s+v,0)/60);return `<div class="card"><div class="title">${p.name} — Weekly Learning Summary</div><div class="stats"><div class="stat"><strong>${recent.length}</strong><span>MISSIONS</span></div><div class="stat"><strong>${questions}</strong><span>QUESTIONS</span></div><div class="stat"><strong>${avg}%</strong><span>AVG ACCURACY</span></div><div class="stat"><strong>${mins}</strong><span>ACTIVE MINUTES</span></div></div><div class="space"></div><div class="rec">${weak?`Recommended focus next week: <b>${weak}</b>.`:'More practice is needed before BustonIQ can identify a focus area.'}</div></div>`}).join('');show('weeklyReport')
+}
+function daysAgo(day){if(!day)return 999;return Math.floor((new Date(today())-new Date(day))/86400000)}
+
+$('parentBtn').onclick=openParent;$('childBtn').onclick=()=>{renderChildLogin();show('childLogin')};$('parentBack').onclick=()=>show('welcome');$('createFamilyBtn').onclick=createFamily;$('parentLoginAction').onclick=parentLogin;
+$('addChildBtn').onclick=addChild;$('saveChild').onclick=saveChild;$('cancelChild').onclick=()=>show('parentDash');$('parentLogout').onclick=()=>show('welcome');$('parentSettingsBtn').onclick=openSettings;$('saveSettingsBtn').onclick=saveSettings;$('settingsBack').onclick=()=>show('parentDash');
+$('parentAssessBtn').onclick=allAssess;$('weeklyBtn').onclick=weeklyReport;$('allAssessBack').onclick=()=>show('parentDash');$('weeklyBack').onclick=()=>show('parentDash');
+$('childLoginBack').onclick=()=>show('welcome');$('pinBack').onclick=()=>{renderChildLogin();show('childLogin')};$('pinGo').onclick=pinLogin;$('confirmAvatar').onclick=confirmAvatar;
+$('worldBtn').onclick=renderWorlds;$('worldBack').onclick=heroHome;$('missionBack').onclick=renderWorlds;$('workshopBtn').onclick=workshop;$('workshopBack').onclick=heroHome;$('badgesBtn').onclick=renderBadges;$('badgesBack').onclick=heroHome;$('assessmentBtn').onclick=showAssessment;$('assessmentBack').onclick=heroHome;$('recommendedBtn').onclick=recommendedPractice;$('childLogout').onclick=()=>{active=null;show('welcome')};
+$('submitBtn').onclick=submitAnswer;$('answerInput').addEventListener('keydown',e=>{if(e.key==='Enter')submitAnswer()});
+$('resultWorkshop').onclick=workshop;$('resultAssess').onclick=showAssessment;$('resultMap').onclick=renderWorlds;
 renderParent();show('welcome');
-</script></body></html>
+})();
+</script>
+</body>
+</html>
