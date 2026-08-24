@@ -6,15 +6,15 @@
 <meta name="theme-color" content="#172454">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="BustonIQ">
-<title>BustonIQ v0.7 Adventure UI Preview — Play. Learn. Level Up.</title>
+<title>BustonIQ v0.7.3 Navigation Fix — Play. Learn. Level Up.</title>
 <style>
 :root{
 --navy:#172454;--navy2:#253d7b;--blue:#416bc1;--gold:#ffd34e;--green:#2aaa6c;--red:#db4d52;
 --purple:#7457c8;--ink:#172033;--muted:#667085;--soft:#f3f5f9;--line:#e2e6ef;--sky:#dbe8ff;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at 12% 8%,#ffe66d 0 6%,transparent 7%),radial-gradient(circle at 88% 12%,#ff91c8 0 7%,transparent 8%),linear-gradient(145deg,#35c6f4 0%,#7657e8 48%,#ff78b6 100%);background-attachment:fixed;color:var(--ink);padding:14px}
-.app{width:min(100%,980px);margin:auto;padding-bottom:45px}
+body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at 12% 8%,#ffe66d 0 6%,transparent 7%),radial-gradient(circle at 88% 12%,#ff91c8 0 7%,transparent 8%),linear-gradient(145deg,#35c6f4 0%,#7657e8 48%,#ff78b6 100%);background-attachment:fixed;color:var(--ink);padding:14px}
+.app{width:100%;max-width:none;margin:0;padding:0 0 28px}
 .hide{display:none!important}
 .brand{text-align:center;color:white;margin:15px 0 18px}.brand h1{font-size:clamp(38px,8vw,60px);margin:0;font-weight:950;letter-spacing:-1.5px}.brand .tag{font-weight:900;font-size:18px}.brand .sub{font-size:13px;opacity:.86;margin-top:3px}
 .card{background:linear-gradient(180deg,#fff,#fffdf4);border:3px solid rgba(255,255,255,.78);border-radius:28px;padding:20px;margin:12px 0;box-shadow:0 16px 38px rgba(32,25,94,.22)}
@@ -199,20 +199,188 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
  .practiceTopicRow{grid-template-columns:repeat(2,1fr)}.gameBottomNav{grid-template-columns:repeat(2,1fr)}
 }
 
+
+/* ===== v0.7.1 Fullscreen + Game Opening Screen ===== */
+body{padding:0!important;overflow-x:hidden}
+#worldMapScreen,#welcome{width:100%}
+#worldMapScreen{padding:0}
+.adventureShell{
+  width:100%;
+  min-height:calc(100vh - 8px);
+  border-radius:0!important;
+  border-left:0!important;border-right:0!important;
+  padding:18px 24px 20px!important;
+  display:flex;align-items:stretch;
+}
+.adventureContent{width:100%;max-width:1680px;margin:auto}
+.levelWorldGrid{grid-template-columns:repeat(5,minmax(150px,1fr))!important}
+.worldLevelCard{min-height:390px!important}
+.practiceTopicRow{grid-template-columns:repeat(9,minmax(90px,1fr))!important}
+.gameTopHUD{grid-template-columns:minmax(250px,1.3fr) repeat(3,minmax(150px,.65fr))!important}
+.adventureBody{grid-template-columns:minmax(270px,320px) 1fr!important}
+.brandLogo{width:min(250px,36vw)!important}
+
+/* Opening / login game scene */
+#welcome{
+  min-height:100vh;
+  padding:0;
+  background:
+    linear-gradient(rgba(6,24,72,.18),rgba(15,17,69,.28)),
+    url('adventure-world.png') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+#welcome.hide{display:none!important}
+.openingScene{
+  width:100%;
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:minmax(320px,0.95fr) minmax(420px,1.05fr);
+  gap:28px;
+  align-items:center;
+  padding:34px clamp(20px,5vw,76px);
+  position:relative;
+  overflow:hidden;
+}
+.openingScene::before{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(1,22,67,.12),rgba(26,25,103,.12));
+  pointer-events:none;
+}
+.openingHero,.openingLogin{position:relative;z-index:1}
+.openingHero{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  color:#fff;
+}
+.openingHero .openingLogo{
+  width:min(480px,82%);
+  filter:drop-shadow(0 14px 24px rgba(0,18,70,.45));
+}
+.openingHero h2{
+  margin:8px 0 0;
+  font-size:clamp(28px,4vw,56px);
+  font-weight:1000;
+  text-shadow:0 4px 0 #194c96,0 9px 22px #001749;
+}
+.openingHero p{
+  margin:10px auto 0;
+  max-width:560px;
+  font-size:clamp(14px,1.5vw,20px);
+  font-weight:800;
+  color:#eef7ff;
+  text-shadow:0 2px 8px #00184b;
+}
+.openingBadges{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px
+}
+.openingBadge{
+  padding:9px 13px;border-radius:999px;
+  background:rgba(8,48,119,.88);border:2px solid #ffffff88;
+  color:#fff;font-size:12px;font-weight:950;
+  box-shadow:0 6px 14px #001c5540
+}
+.openingLogin{
+  max-width:620px;margin:auto;width:100%;
+  background:linear-gradient(180deg,rgba(8,49,121,.97),rgba(12,30,88,.97));
+  border:4px solid rgba(255,255,255,.72);
+  border-radius:30px;padding:28px;
+  box-shadow:0 24px 56px rgba(0,12,55,.46);
+}
+.openingLogin h3{
+  margin:0 0 6px;color:#fff;font-size:30px;font-weight:1000;text-align:center
+}
+.openingLogin .openingSub{
+  text-align:center;color:#cfe4ff;font-size:13px;margin-bottom:20px
+}
+.openingAccess{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.openingAccess .btn{
+  min-height:82px;font-size:18px;border:3px solid rgba(255,255,255,.5)
+}
+.openingAccess .btn .accessIcon{display:block;font-size:30px;margin-bottom:5px}
+.openingFooter{
+  margin-top:18px;padding-top:14px;border-top:1px solid #ffffff26;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;color:#d9ebff
+}
+.openingFooter b{display:block;color:#fff;font-size:16px}.openingFooter span{font-size:10px}
+
+/* Make non-game forms less tiny and more game-like */
+#parentLogin,#childLogin,#pinScreen,#parentDash,#parentSettings,#childEditor,#avatarSelect,#heroHome,#dailyMissions,#workshop,#badgesScreen,#results,#assessment,#parentAssess,#weeklyReport{
+  min-height:100vh;
+  padding:24px clamp(16px,4vw,56px);
+}
+#parentLogin .card,#childLogin .card,#pinScreen .card,#parentSettings .card,#childEditor .card,#avatarSelect .card,#workshop .card,#badgesScreen .card,#assessment .card{
+  max-width:900px;margin:18px auto;
+}
+#heroHome>.grid,#parentDash>.card,#results>.card{max-width:1280px;margin-left:auto;margin-right:auto}
+#dailyMissions .gamePanel{max-width:1400px;margin:auto}
+
+/* Responsive */
+@media(max-width:1100px){
+  .openingScene{grid-template-columns:1fr;min-height:auto;padding-top:26px;padding-bottom:34px}
+  .openingHero .openingLogo{width:min(350px,70vw)}
+  .openingLogin{max-width:720px}
+  .adventureBody{grid-template-columns:1fr!important}
+  .levelWorldGrid{grid-template-columns:repeat(3,minmax(150px,1fr))!important}
+  .practiceTopicRow{grid-template-columns:repeat(5,1fr)!important}
+  .worldLevelCard{min-height:280px!important}
+}
+@media(max-width:760px){
+  .openingScene{padding:22px 14px}
+  .openingAccess{grid-template-columns:1fr}
+  .openingFooter{grid-template-columns:1fr 1fr 1fr}
+  .gameTopHUD{grid-template-columns:1fr 1fr!important}
+  .levelWorldGrid{grid-template-columns:repeat(2,1fr)!important}
+  .practiceTopicRow{grid-template-columns:repeat(3,1fr)!important}
+  .worldLevelCard{min-height:220px!important}
+  .adventureShell{padding:12px!important}
+}
+@media(max-width:480px){
+  .openingHero h2{font-size:30px}
+  .openingHero p{font-size:14px}
+  .openingLogin{padding:18px;border-radius:22px}
+  .openingFooter{grid-template-columns:1fr}
+  .gameTopHUD{grid-template-columns:1fr!important}
+  .levelWorldGrid{grid-template-columns:1fr!important}
+  .practiceTopicRow{grid-template-columns:repeat(2,1fr)!important}
+}
+
+
+#submitBtn:disabled{opacity:.62;cursor:not-allowed;transform:none!important}
+#answerInput:disabled{opacity:.75}
+.answerStatus{font-size:11px;color:var(--muted);text-align:center;margin-top:5px}
 </style>
 </head>
 <body>
 <div class="app">
 
 <section id="welcome">
-<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Play. Learn. Level Up.</div><div class="sub">Think Fast. Solve Smart.</div></div>
-<div class="card">
-<div class="grid g2">
-<button class="btn navy" id="parentBtn">👨‍👩‍👧 Parent Login</button>
-<button class="btn gold" id="childBtn">🎮 Child Login</button>
-</div>
-<div class="space"></div>
-<div class="small">BustonIQ turns screen time into active math practice through missions, hero progression and personalized learning.</div>
+<div class="openingScene">
+  <div class="openingHero">
+    <img class="openingLogo" src="bustoniq-logo.png" alt="BustonIQ">
+    <h2>YOUR MATH ADVENTURE STARTS HERE!</h2>
+    <p>Choose your hero. Complete missions. Earn Math Points. Level up your skills.</p>
+    <div class="openingBadges">
+      <span class="openingBadge">🗺️ Adventure Worlds</span>
+      <span class="openingBadge">🛡️ Build Your Hero</span>
+      <span class="openingBadge">🏆 Achievements</span>
+      <span class="openingBadge">🧠 Smart Practice</span>
+    </div>
+  </div>
+  <div class="openingLogin">
+    <h3>ENTER BUSTONIQ</h3>
+    <div class="openingSub">Who is playing today?</div>
+    <div class="openingAccess">
+      <button class="btn navy" id="parentBtn"><span class="accessIcon">👨‍👩‍👧</span>PARENT PORTAL</button>
+      <button class="btn gold" id="childBtn"><span class="accessIcon">🎮</span>CHILD ADVENTURE</button>
+    </div>
+    <div class="openingFooter">
+      <div><b>⭐ Math Points</b><span>Earned through learning</span></div>
+      <div><b>📊 Smart Assessment</b><span>Personal recommendations</span></div>
+      <div><b>🦸 Hero Progress</b><span>Level up as you learn</span></div>
+    </div>
+  </div>
 </div>
 </section>
 
@@ -312,7 +480,8 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 <button class="btn purple" id="workshopBtn">🛡️ Hero Workshop</button>
 <button class="btn green" id="assessmentBtn">📊 Progress Assessment</button>
 <button class="btn navy" id="badgesBtn">🏅 My Achievements</button>
-<button class="btn ghost" id="childLogout">Logout</button>
+<button type="button" class="btn ghost" id="heroBackBtn">← Back to Child Profiles</button>
+<button type="button" class="btn ghost" id="childLogout">Logout</button>
 </div>
 </div>
 </section>
@@ -356,6 +525,7 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
  </main>
 </div>
 
+<div style="margin-top:12px"><button type="button" class="btn ghost" id="adventureBackBtn">← BACK TO MY HERO</button></div>
 <div class="gameBottomNav">
  <button type="button" id="navHome"><span>🏠</span>HOME</button>
  <button type="button" id="navAdventure"><span>🗺️</span>ADVENTURE MAP</button>
@@ -397,7 +567,7 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 <section id="game" class="hide">
 <div class="gameHUD"><div class="hudHero" id="hudHero">🧠</div><div class="hudMain"><b id="hudMission">Math Mission</b><span id="hudTopic">Build your math power!</span></div><div class="hudMP" id="hudMP">0 MP</div></div>
 <div class="topbar"><div><b id="qProgress"></b><br><span id="streakText"></span></div><div class="timer" id="timerVal"></div><div class="right"><b id="scoreVal"></b><br><span id="sessionMP"></span></div></div>
-<div class="gamecard"><div id="bossBox" class="hide"><div class="boss" id="bossEmoji"></div><div class="bossName" id="bossName"></div><div class="hearts" id="bossHearts"></div><div class="space"></div></div><div class="cat" id="category"></div><div class="question" id="question"></div><div class="answer"><input id="answerInput" inputmode="decimal" autocomplete="off" placeholder="Your answer"><button class="btn green" id="submitBtn">Submit</button></div><div class="feedback" id="feedback" aria-live="polite"></div></div>
+<div class="gamecard"><div id="bossBox" class="hide"><div class="boss" id="bossEmoji"></div><div class="bossName" id="bossName"></div><div class="hearts" id="bossHearts"></div><div class="space"></div></div><div class="cat" id="category"></div><div class="question" id="question"></div><div class="answer"><input id="answerInput" inputmode="decimal" autocomplete="off" enterkeyhint="done" aria-label="Your answer" placeholder="Your answer"><button type="button" class="btn green" id="submitBtn">SUBMIT ANSWER</button></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="answerStatus" id="answerStatus">Type your answer, then tap Submit.</div></div>
 </section>
 
 <section id="results" class="hide">
@@ -783,7 +953,23 @@ function renderBoss(){$('bossHearts').textContent='❤️'.repeat(Math.max(0,bos
 function nextQuestion(){
  if(bossMode && bossHP<=0)return finishGame(true);
  if(qi>=currentMission.count)return finishGame(false);
- qi++;currentQ=newQuestion();$('category').textContent=`${currentQ.topic} • ${currentQ.sub}`;$('question').textContent=currentQ.prompt;$('answerInput').value='';$('feedback').textContent='';accepting=true;questionStart=Date.now();timeLeft=currentMission.time;clearInterval(timerId);timerId=setInterval(()=>{timeLeft--;hud();if(timeLeft<=0)timeoutQuestion()},1000);hud();$('answerInput').focus()
+ qi++;
+ currentQ=newQuestion();
+ $('category').textContent=`${currentQ.topic} • ${currentQ.sub}`;
+ $('question').textContent=currentQ.prompt;
+ $('answerInput').value='';
+ $('answerInput').disabled=false;
+ $('submitBtn').disabled=false;
+ $('submitBtn').textContent='SUBMIT ANSWER';
+ $('feedback').textContent='';
+ $('answerStatus').textContent='Type your answer, then tap Submit.';
+ accepting=true;
+ questionStart=Date.now();
+ timeLeft=currentMission.time;
+ clearInterval(timerId);
+ timerId=setInterval(()=>{timeLeft--;hud();if(timeLeft<=0)timeoutQuestion()},1000);
+ hud();
+ setTimeout(()=>{$('answerInput').focus()},50)
 }
 function hud(){$('qProgress').textContent=bossMode?`Battle Q${qi}`:`${qi} / ${currentMission.count}`;$('streakText').textContent=`🔥 ${streak} streak`;$('timerVal').textContent=timeLeft;$('scoreVal').textContent=`⭐ ${score}`;$('sessionMP').textContent=`🧠 +${earnedMP} MP`;$('hudMP').textContent=`${active.mp+earnedMP} MP`}
 function recordQuestion(ok,elapsed){
@@ -795,14 +981,99 @@ function adapt(ok,elapsed){
  if(ok && elapsed<currentMission.time*.35)adaptiveLevel=Math.min(4,adaptiveLevel+1);
  else if(!ok)adaptiveLevel=Math.max(1,adaptiveLevel-1)
 }
+function parseAnswerValue(raw){
+ const t=String(raw).trim().replace(/,/g,'');
+ if(!t)return NaN;
+ if(/^[-+]?\d+\s*\/\s*\d+$/.test(t)){
+   const parts=t.split('/').map(Number);
+   if(parts[1]===0)return NaN;
+   return parts[0]/parts[1]
+ }
+ return Number(t)
+}
+function unlockAnswerControls(){
+ if($('answerInput'))$('answerInput').disabled=false;
+ if($('submitBtn')){$('submitBtn').disabled=false;$('submitBtn').textContent='SUBMIT ANSWER'}
+ accepting=true
+}
 function submitAnswer(){
- if(!accepting)return;const v=$('answerInput').value.trim();if(v==='')return;accepting=false;clearInterval(timerId);attempts++;const elapsed=(Date.now()-questionStart)/1000,ok=Math.abs(Number(v)-Number(currentQ.answer))<.001;recordQuestion(ok,elapsed);adapt(ok,elapsed);
- if(ok){correct++;streak++;active.bestStreak=Math.max(active.bestStreak,streak);const mp=5+(streak>=5?3:0)+(currentMission.diff==='hard'?3:0),xp=10+(currentMission.diff==='hard'?5:0);earnedMP+=mp;earnedXP+=xp;score+=100+streak*5;if(bossMode){bossHP--;renderBoss()}$('feedback').textContent=`🌟 Awesome! +${mp} Math Points`; $('feedback').style.color='var(--green)';$('feedback').classList.remove('correctPop');void $('feedback').offsetWidth;$('feedback').classList.add('correctPop');successSound();celebrate();if(streak===5||streak===10)levelSound()}
- else{streak=0;$('feedback').textContent=`❌ Answer: ${currentQ.answer}`;$('feedback').style.color='var(--red)';failSound()}
- hud();setTimeout(nextQuestion,650)
+ if(!accepting)return;
+ const raw=$('answerInput').value;
+ if(String(raw).trim()===''){
+   $('feedback').textContent='✏️ Enter an answer first.';
+   $('feedback').style.color='var(--red)';
+   $('answerInput').focus();
+   return
+ }
+ const numeric=parseAnswerValue(raw);
+ if(!Number.isFinite(numeric)){
+   $('feedback').textContent='✏️ Please enter a number (or a fraction like 1/2).';
+   $('feedback').style.color='var(--red)';
+   $('answerInput').focus();
+   return
+ }
+
+ accepting=false;
+ $('submitBtn').disabled=true;
+ $('submitBtn').textContent='CHECKING...';
+ $('answerInput').disabled=true;
+ $('answerStatus').textContent='Checking your answer…';
+ clearInterval(timerId);
+
+ try{
+   attempts++;
+   const elapsed=(Date.now()-questionStart)/1000;
+   const expected=Number(currentQ.answer);
+   const ok=Math.abs(numeric-expected)<.001;
+   recordQuestion(ok,elapsed);
+   adapt(ok,elapsed);
+
+   if(ok){
+     correct++;streak++;active.bestStreak=Math.max(active.bestStreak,streak);
+     const mp=5+(streak>=5?3:0)+(currentMission.diff==='hard'?3:0),xp=10+(currentMission.diff==='hard'?5:0);
+     earnedMP+=mp;earnedXP+=xp;score+=100+streak*5;
+     if(bossMode){bossHP--;renderBoss()}
+     $('feedback').textContent=`🌟 Awesome! +${mp} Math Points`;
+     $('feedback').style.color='var(--green)';
+     $('feedback').classList.remove('correctPop');void $('feedback').offsetWidth;$('feedback').classList.add('correctPop');
+     successSound();celebrate();if(streak===5||streak===10)levelSound()
+   }else{
+     streak=0;
+     $('feedback').textContent=`❌ Answer: ${currentQ.answer}`;
+     $('feedback').style.color='var(--red)';
+     failSound()
+   }
+   $('answerStatus').textContent='Next question coming up…';
+   hud();
+   setTimeout(nextQuestion,850)
+ }catch(err){
+   console.error('BustonIQ submit error:',err);
+   $('feedback').textContent='⚠️ Something interrupted the answer check. Tap Submit again.';
+   $('feedback').style.color='var(--red)';
+   $('answerStatus').textContent='Your answer was not lost.';
+   unlockAnswerControls();
+   $('answerInput').focus()
+ }
 }
 function timeoutQuestion(){
- if(!accepting)return;accepting=false;clearInterval(timerId);attempts++;const elapsed=(Date.now()-questionStart)/1000;recordQuestion(false,elapsed);adapt(false,elapsed);streak=0;$('feedback').textContent=`⏰ Time! Answer: ${currentQ.answer}`;$('feedback').style.color='var(--red)';failSound();setTimeout(nextQuestion,650)
+ if(!accepting)return;
+ accepting=false;
+ $('submitBtn').disabled=true;
+ $('answerInput').disabled=true;
+ clearInterval(timerId);
+ try{
+   attempts++;
+   const elapsed=(Date.now()-questionStart)/1000;
+   recordQuestion(false,elapsed);adapt(false,elapsed);streak=0;
+   $('feedback').textContent=`⏰ Time! Answer: ${currentQ.answer}`;
+   $('feedback').style.color='var(--red)';
+   $('answerStatus').textContent='Next question coming up…';
+   failSound();
+   setTimeout(nextQuestion,850)
+ }catch(err){
+   console.error('BustonIQ timeout error:',err);
+   unlockAnswerControls()
+ }
 }
 function finishGame(bossDefeated){
  clearInterval(timerId);accepting=false;const acc=attempts?Math.round(correct/attempts*100):0,bonus=(bossDefeated?75:correct>=10?30:10);earnedMP+=bonus;earnedXP+=Math.max(25,correct*5)+(bossDefeated?100:0);active.mp+=earnedMP;active.xp+=earnedXP;
@@ -860,20 +1131,75 @@ function weeklyReport(){
 }
 function daysAgo(day){if(!day)return 999;return Math.floor((new Date(today())-new Date(day))/86400000)}
 
-$('parentBtn').onclick=openParent;$('childBtn').onclick=()=>{renderChildLogin();show('childLogin')};$('parentBack').onclick=()=>show('welcome');$('createFamilyBtn').onclick=createFamily;$('parentLoginAction').onclick=parentLogin;
-$('addChildBtn').onclick=addChild;$('saveChild').onclick=saveChild;$('cancelChild').onclick=()=>show('parentDash');$('parentLogout').onclick=()=>show('welcome');$('parentSettingsBtn').onclick=openSettings;$('saveSettingsBtn').onclick=saveSettings;$('settingsBack').onclick=()=>show('parentDash');
-$('parentAssessBtn').onclick=allAssess;$('weeklyBtn').onclick=weeklyReport;$('allAssessBack').onclick=()=>show('parentDash');$('weeklyBack').onclick=()=>show('parentDash');
-$('childLoginBack').onclick=()=>show('welcome');$('pinBack').onclick=()=>{renderChildLogin();show('childLogin')};$('pinGo').onclick=pinLogin;$('confirmAvatar').onclick=confirmAvatar;
-$('worldBtn').onclick=renderWorlds;$('worldBack').onclick=heroHome;$('missionBack').onclick=renderWorlds;$('changeTopicBtn').onclick=renderTopicChoices;$('workshopBtn').onclick=workshop;$('workshopBack').onclick=heroHome;$('badgesBtn').onclick=renderBadges;$('badgesBack').onclick=heroHome;$('assessmentBtn').onclick=showAssessment;$('assessmentBack').onclick=heroHome;$('recommendedBtn').onclick=recommendedPractice;$('childLogout').onclick=()=>{active=null;show('welcome')};
-$('submitBtn').onclick=submitAnswer;$('answerInput').addEventListener('keydown',e=>{if(e.key==='Enter')submitAnswer()});
-$('resultWorkshop').onclick=workshop;$('resultAssess').onclick=showAssessment;$('resultMap').onclick=renderWorlds;
-$('navHome').onclick=heroHome;
-$('navAdventure').onclick=renderWorlds;
-$('navHero').onclick=heroHome;
-$('navMissions').onclick=()=>{selectedChallengeLevel=recommendedLevel(active);renderTopicChoices();show('dailyMissions')};
-$('navAchievements').onclick=renderBadges;
+function bindClick(id,fn){
+ const el=$(id);
+ if(el)el.addEventListener('click',e=>{e.preventDefault();fn(e)})
+}
+function bindKey(id,fn){
+ const el=$(id);
+ if(el)el.addEventListener('keydown',fn)
+}
+function bindInput(id,fn){
+ const el=$(id);
+ if(el)el.addEventListener('input',fn)
+}
 
-renderParent();show('welcome');
+bindClick('parentBtn',openParent);
+bindClick('childBtn',()=>{renderChildLogin();show('childLogin')});
+bindClick('parentBack',()=>show('welcome'));
+bindClick('createFamilyBtn',createFamily);
+bindClick('parentLoginAction',parentLogin);
+
+bindClick('addChildBtn',addChild);
+bindClick('saveChild',saveChild);
+bindClick('cancelChild',()=>show('parentDash'));
+bindClick('parentLogout',()=>show('welcome'));
+bindClick('parentSettingsBtn',openSettings);
+bindClick('saveSettingsBtn',saveSettings);
+bindClick('settingsBack',()=>show('parentDash'));
+bindClick('parentAssessBtn',allAssess);
+bindClick('weeklyBtn',weeklyReport);
+bindClick('allAssessBack',()=>show('parentDash'));
+bindClick('weeklyBack',()=>show('parentDash'));
+
+bindClick('childLoginBack',()=>show('welcome'));
+bindClick('pinBack',()=>{renderChildLogin();show('childLogin')});
+bindClick('pinGo',pinLogin);
+bindClick('confirmAvatar',confirmAvatar);
+
+bindClick('heroBackBtn',()=>{active=null;renderChildLogin();show('childLogin')});
+bindClick('childLogout',()=>{active=null;show('welcome')});
+
+bindClick('worldBtn',renderWorlds);
+bindClick('worldBack',heroHome);
+bindClick('adventureBackBtn',heroHome);
+bindClick('missionBack',renderWorlds);
+bindClick('changeTopicBtn',renderTopicChoices);
+
+bindClick('workshopBtn',workshop);
+bindClick('workshopBack',heroHome);
+bindClick('badgesBtn',renderBadges);
+bindClick('badgesBack',heroHome);
+bindClick('assessmentBtn',showAssessment);
+bindClick('assessmentBack',heroHome);
+bindClick('recommendedBtn',recommendedPractice);
+
+bindClick('submitBtn',submitAnswer);
+bindKey('answerInput',e=>{if(e.key==='Enter'){e.preventDefault();submitAnswer()}});
+bindInput('answerInput',()=>{if($('feedback') && $('feedback').textContent.startsWith('✏️'))$('feedback').textContent=''});
+
+bindClick('resultWorkshop',workshop);
+bindClick('resultAssess',showAssessment);
+bindClick('resultMap',renderWorlds);
+
+bindClick('navHome',heroHome);
+bindClick('navAdventure',renderWorlds);
+bindClick('navHero',heroHome);
+bindClick('navMissions',()=>{selectedChallengeLevel=recommendedLevel(active);renderTopicChoices();show('dailyMissions')});
+bindClick('navAchievements',renderBadges);
+
+renderParent();
+show('welcome');
 })();
 </script>
 </body>
