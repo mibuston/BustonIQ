@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#172454">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="BustonIQ">
-<title>BustonIQ v0.5.1 Kids Beta — Play. Learn. Level Up.</title>
+<title>BustonIQ v0.7 Adventure UI Preview — Play. Learn. Level Up.</title>
 <style>
 :root{
 --navy:#172454;--navy2:#253d7b;--blue:#416bc1;--gold:#ffd34e;--green:#2aaa6c;--red:#db4d52;
@@ -59,13 +59,153 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .correctPop{animation:pop .35s ease}.avatarEmoji,.micon,.world .emoji{animation:floaty 2.8s ease-in-out infinite}
 .sparkles{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}.spark{position:absolute;font-size:28px;animation:pop .65s ease forwards}
+
+/* v0.6 Game World visual overhaul */
+:root{--game-yellow:#ffe45e;--game-pink:#ff74bd;--game-cyan:#38d4ff;--game-lime:#91ee68;--game-orange:#ff9a4d}
+.brand h1{text-shadow:0 4px 0 rgba(34,35,89,.18),0 8px 18px rgba(30,25,88,.2)}
+.gamePanel{background:linear-gradient(150deg,#fff 0%,#fff8cf 44%,#f4e6ff 100%);border:4px solid #fff;border-radius:30px;box-shadow:0 18px 42px #26205a35;padding:18px}
+.levelGrid,.topicGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.levelCard,.topicCard{position:relative;border:4px solid #fff;border-radius:25px;min-height:170px;padding:17px;text-align:left;cursor:pointer;overflow:hidden;box-shadow:0 10px 18px rgba(43,35,102,.18);transition:transform .12s ease,filter .12s ease}
+.levelCard:active,.topicCard:active{transform:translateY(4px)}
+.levelCard .bigEmoji,.topicCard .bigEmoji{display:block;font-size:48px;margin-bottom:8px;filter:drop-shadow(0 4px 2px #0002)}
+.levelCard b,.topicCard b{display:block;font-size:17px;line-height:1.1}.levelCard small,.topicCard small{display:block;margin-top:6px;font-size:11px;line-height:1.35;opacity:.9}
+.levelCard::after,.topicCard::after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-28px;top:-28px;background:#fff4;box-shadow:-55px 78px 0 15px #fff2}
+.lv1{background:linear-gradient(145deg,#6de5ff,#4388ff);color:#fff}.lv2{background:linear-gradient(145deg,#87ef7c,#25b877);color:#fff}.lv3{background:linear-gradient(145deg,#ffcf58,#ff8b50);color:#4e2600}.lv4{background:linear-gradient(145deg,#ff8bd1,#a955db);color:#fff}.lv5{background:linear-gradient(145deg,#5a69aa,#242b54);color:#fff}
+.topicAdd{background:linear-gradient(145deg,#65e1ff,#4f83ff);color:#fff}.topicMult{background:linear-gradient(145deg,#91ef79,#30bd76);color:#fff}.topicFrac{background:linear-gradient(145deg,#ffd762,#f49a49);color:#563200}.topicDec{background:linear-gradient(145deg,#ff8fcf,#d765d2);color:#fff}.topicGeo{background:linear-gradient(145deg,#a991ff,#6954d6);color:#fff}.topicLogic{background:linear-gradient(145deg,#62e5d0,#239eae);color:#fff}.topicWord{background:linear-gradient(145deg,#ffae6e,#df6f60);color:#fff}.topicAlg{background:linear-gradient(145deg,#8392b6,#39476e);color:#fff}.topicMix{background:linear-gradient(145deg,#ffe45e,#f0b62b);color:#4a3500}
+.gameHUD{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;background:linear-gradient(90deg,#18295d,#493b9f);border:3px solid #ffffffbb;border-radius:21px;padding:10px 13px;color:#fff;box-shadow:0 8px 20px #20194a38;margin-bottom:10px}
+.gameHUD .hudHero{font-size:34px}.gameHUD .hudMain{min-width:0}.gameHUD .hudMain b{display:block;font-size:14px}.gameHUD .hudMain span{font-size:11px;opacity:.85}.gameHUD .hudMP{text-align:right;font-weight:950}
+.gamecard{border:4px solid #fff;background:linear-gradient(180deg,#fff,#fff8d6);box-shadow:0 15px 34px #271f6333}
+.question{color:#20234b;text-shadow:0 2px 0 #fff}
+.correctBurst{animation:correctBurst .45s ease}
+@keyframes correctBurst{0%{transform:scale(.85)}55%{transform:scale(1.1)}100%{transform:scale(1)}}
+.mapPath{display:flex;align-items:center;gap:8px;overflow-x:auto;padding:8px 2px 12px}.pathNode{flex:0 0 auto;width:70px;height:70px;border-radius:50%;display:grid;place-items:center;border:4px solid #fff;background:linear-gradient(#ffe66c,#ffad44);box-shadow:0 7px 14px #0002;font-size:29px}.pathLine{width:36px;height:7px;border-radius:10px;background:#fff9;flex:0 0 auto}
+.recommendedCard{background:linear-gradient(125deg,#fff3a2,#ffd46d,#ffb8dc);border:4px solid #fff;border-radius:23px;padding:15px;box-shadow:0 10px 20px #4d3b8b28}.recommendedCard b{font-size:17px}
+.topicHeader{display:flex;gap:12px;align-items:center;margin-bottom:12px}.topicHeader .icon{font-size:45px}.topicHeader b{font-size:22px}.topicHeader span{display:block;font-size:12px;color:var(--muted)}
+@media(max-width:760px){.levelGrid,.topicGrid{grid-template-columns:repeat(2,1fr)}.levelCard,.topicCard{min-height:145px}.gameHUD{grid-template-columns:auto 1fr auto}}
+@media(max-width:420px){.levelGrid,.topicGrid{grid-template-columns:1fr}.levelCard,.topicCard{min-height:120px}}
+
+
+.brandLogo{
+  display:block;
+  width:min(210px,48vw);
+  height:auto;
+  margin:0 auto 8px;
+  filter:drop-shadow(0 10px 14px rgba(25,30,85,.24));
+}
+@media(max-width:520px){
+  .brandLogo{width:min(170px,58vw)}
+}
+
+
+/* ===== BustonIQ v0.7 Adventure UI Preview ===== */
+.adventureShell{
+  position:relative;
+  overflow:hidden;
+  border-radius:32px;
+  padding:18px;
+  background:
+    linear-gradient(rgba(7,35,89,.18),rgba(18,21,73,.20)),
+    url('adventure-world.png') center/cover no-repeat;
+  border:4px solid rgba(255,255,255,.72);
+  box-shadow:0 22px 55px rgba(17,20,70,.35);
+}
+.adventureShell::before{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(24,112,220,.08),rgba(5,23,69,.16));
+  pointer-events:none;
+}
+.adventureContent{position:relative;z-index:1}
+.gameTopHUD{
+  display:grid;grid-template-columns:minmax(210px,1.3fr) repeat(3,minmax(125px,.7fr));
+  gap:12px;align-items:center;
+  padding:12px;border-radius:24px;
+  background:linear-gradient(90deg,rgba(10,50,118,.96),rgba(19,54,124,.94));
+  border:3px solid rgba(255,255,255,.6);
+  box-shadow:0 10px 24px rgba(4,13,55,.35);
+}
+.heroIdentity{display:flex;align-items:center;gap:12px;min-width:0}
+.heroFace{
+  width:62px;height:62px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(#bff2ff,#69bfff);border:4px solid #fff;
+  font-size:34px;box-shadow:0 5px 12px #0003;
+}
+.heroIdentity b{font-size:18px;color:#fff}.heroIdentity span{display:block;color:#dfeaff;font-size:12px}
+.hudBox{
+  min-height:72px;border-radius:17px;padding:11px 13px;
+  background:linear-gradient(180deg,#0a418f,#073371);
+  border:2px solid rgba(255,255,255,.24);color:#fff;
+}
+.hudBox .label{font-size:11px;font-weight:900;color:#ffd94f;text-transform:uppercase}
+.hudBox .value{font-size:24px;font-weight:950;margin-top:4px}
+.adventureTitle{text-align:center;color:#fff;margin:20px 0 14px;text-shadow:0 3px 0 #17417b,0 6px 14px #001b54}
+.adventureTitle h2{font-size:32px;margin:0;font-weight:1000;letter-spacing:.5px}
+.adventureTitle span{font-size:13px}
+.adventureBody{display:grid;grid-template-columns:260px 1fr;gap:16px}
+.sideQuest{
+  background:linear-gradient(180deg,rgba(18,35,113,.97),rgba(14,29,92,.97));
+  color:#fff;border:3px solid rgba(255,255,255,.55);border-radius:24px;padding:16px;
+  box-shadow:0 10px 28px #05164655;
+}
+.sideQuest h3{margin:0 0 8px;color:#ffd84d}.sideQuest .recommendedTopic{font-size:20px;font-weight:950;margin:10px 0}
+.progressMini{margin-top:14px;background:#071f5b;border-radius:14px;padding:10px}
+.progressMini .bar{background:#00133e}.progressMini .bar div{background:linear-gradient(90deg,#44df73,#9ef065)}
+.levelWorldGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.worldLevelCard{
+  position:relative;min-height:305px;border:4px solid rgba(255,255,255,.72);border-radius:24px;
+  overflow:hidden;cursor:pointer;box-shadow:0 14px 24px rgba(4,16,56,.4);
+  transition:transform .14s ease,filter .14s ease;
+  color:#fff;text-align:center;padding:18px 10px 14px;
+}
+.worldLevelCard:active{transform:translateY(4px)}
+.worldLevelCard .lvl{font-size:14px;font-weight:950;text-transform:uppercase;text-shadow:0 2px 5px #000}
+.worldLevelCard .num{font-size:68px;line-height:1;font-weight:1000;text-shadow:0 4px 0 #0005,0 8px 18px #0005}
+.worldLevelCard .name{
+  display:inline-block;margin-top:10px;padding:7px 12px;border-radius:999px;
+  font-size:13px;font-weight:1000;border:2px solid #fff9;box-shadow:0 4px 12px #0003;
+}
+.worldLevelCard .stars{position:absolute;left:10px;right:10px;bottom:12px;background:#071c4dcc;border-radius:999px;padding:7px;font-weight:900}
+.worldLevelCard.current{outline:5px solid #ffe657;box-shadow:0 0 0 4px #fff,0 0 28px #ffe657,0 14px 24px rgba(4,16,56,.4)}
+.worldLevelCard.current::before{content:"CURRENT";position:absolute;top:8px;left:50%;transform:translateX(-50%);background:#44b62e;padding:5px 12px;border-radius:999px;font-size:10px;font-weight:1000;border:2px solid #fff}
+.levelOne{background:linear-gradient(rgba(31,127,226,.14),rgba(5,68,154,.40)),linear-gradient(180deg,#65d8ff,#4ba6eb 40%,#4bb44a)}
+.levelTwo{background:linear-gradient(rgba(16,140,126,.14),rgba(1,69,96,.30)),linear-gradient(180deg,#86def1,#2fbfc2 45%,#16945d)}
+.levelThree{background:linear-gradient(rgba(227,118,23,.08),rgba(105,51,14,.28)),linear-gradient(180deg,#ffc985,#e79049 45%,#9f5a28)}
+.levelFour{background:linear-gradient(rgba(62,88,181,.10),rgba(22,38,97,.34)),linear-gradient(180deg,#9fd5ff,#81a8ed 45%,#5071a7)}
+.levelFive{background:linear-gradient(rgba(110,26,34,.12),rgba(39,11,24,.38)),linear-gradient(180deg,#a54952,#5f2638 45%,#24162b)}
+.practiceZone{
+  margin-top:16px;padding:13px;border-radius:23px;
+  background:linear-gradient(180deg,rgba(11,54,127,.96),rgba(5,39,99,.96));
+  border:3px solid rgba(255,255,255,.5)
+}
+.practiceZoneTitle{color:#fff;font-weight:950;margin-bottom:10px;font-size:16px}
+.practiceTopicRow{display:grid;grid-template-columns:repeat(9,1fr);gap:9px}
+.practiceTopic{
+  border:0;border-radius:15px;padding:11px 6px;min-height:92px;color:#fff;font-weight:900;
+  box-shadow:0 7px 15px #001b5238;cursor:pointer;border:2px solid #ffffff66
+}
+.practiceTopic .pe{font-size:30px;display:block}.practiceTopic small{font-size:9px;display:block;line-height:1.15;margin-top:5px}
+.gameBottomNav{
+  margin-top:14px;display:grid;grid-template-columns:repeat(5,1fr);
+  background:linear-gradient(180deg,#102b6b,#071c4b);border-radius:22px;overflow:hidden;border:3px solid #ffffff55
+}
+.gameBottomNav button{border:0;background:transparent;color:#fff;padding:13px 6px;font-weight:900;cursor:pointer;border-right:1px solid #ffffff22}
+.gameBottomNav button:last-child{border-right:0}.gameBottomNav button span{font-size:22px;display:block;margin-bottom:3px}
+@media(max-width:980px){
+ .gameTopHUD{grid-template-columns:1fr 1fr}.adventureBody{grid-template-columns:1fr}.levelWorldGrid{grid-template-columns:repeat(2,1fr)}
+ .worldLevelCard{min-height:210px}.practiceTopicRow{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:540px){
+ .gameTopHUD{grid-template-columns:1fr}.levelWorldGrid{grid-template-columns:1fr}.worldLevelCard{min-height:180px}
+ .practiceTopicRow{grid-template-columns:repeat(2,1fr)}.gameBottomNav{grid-template-columns:repeat(2,1fr)}
+}
+
 </style>
 </head>
 <body>
 <div class="app">
 
 <section id="welcome">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">Play. Learn. Level Up.</div><div class="sub">Think Fast. Solve Smart.</div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Play. Learn. Level Up.</div><div class="sub">Think Fast. Solve Smart.</div></div>
 <div class="card">
 <div class="grid g2">
 <button class="btn navy" id="parentBtn">👨‍👩‍👧 Parent Login</button>
@@ -77,7 +217,7 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 </section>
 
 <section id="parentLogin" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag" id="parentLoginTitle">Parent Portal</div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag" id="parentLoginTitle">Parent Portal</div></div>
 <div class="card">
 <div id="parentSetupBox" class="hide">
 <div class="title">First-Time Family Setup</div>
@@ -97,7 +237,7 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 </section>
 
 <section id="parentDash" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag" id="familyWelcome"></div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag" id="familyWelcome"></div></div>
 <div class="card">
 <div class="grid g4">
 <button class="btn gold" id="addChildBtn">+ Add Child</button>
@@ -111,7 +251,7 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 </section>
 
 <section id="parentSettings" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">Parent Settings</div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Parent Settings</div></div>
 <div class="card">
 <div class="title">Family Settings</div>
 <label>Family Name</label><input id="settingsFamily">
@@ -127,7 +267,7 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 </section>
 
 <section id="childEditor" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">Create Child Profile</div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Create Child Profile</div></div>
 <div class="card">
 <div class="grid g2">
 <div><label>Name</label><input id="childName"></div>
@@ -139,22 +279,22 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 </section>
 
 <section id="childLogin" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">Choose Your Hero</div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Choose Your Hero</div></div>
 <div class="card"><div id="childProfiles"></div><button class="btn ghost" id="childLoginBack">Back</button></div>
 </section>
 
 <section id="pinScreen" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag" id="pinTitle"></div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag" id="pinTitle"></div></div>
 <div class="card"><label>Hero PIN</label><input id="pinInput" type="password" maxlength="4" inputmode="numeric"><button class="btn gold" id="pinGo">Enter BustonIQ World</button><button class="btn ghost" id="pinBack">Back</button><div id="pinMsg" class="small"></div></div>
 </section>
 
 <section id="avatarSelect" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">Create Your Hero</div><div class="sub">Choose your starting hero style. You can improve it by learning.</div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Create Your Hero</div><div class="sub">Choose your starting hero style. You can improve it by learning.</div></div>
 <div class="card"><div class="grid g3" id="avatarChoices"></div><div class="space"></div><button class="btn gold" id="confirmAvatar">Start My Adventure</button></div>
 </section>
 
 <section id="heroHome" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag" id="heroTitle"></div><div class="sub" id="heroSub"></div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag" id="heroTitle"></div><div class="sub" id="heroSub"></div></div>
 <div class="grid g2">
 <div class="card"><div class="heroStage"><div class="heroWrap" id="heroVisual"><div class="hair"></div><div class="head"></div><div class="body"></div><div class="leg1"></div><div class="leg2"></div><div class="weapon" id="heroWeapon"></div><div class="pet" id="heroPet"></div></div><div class="heroName" id="heroNameLabel"></div></div></div>
 <div class="card">
@@ -178,47 +318,104 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 </section>
 
 <section id="worldMapScreen" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">BustonIQ Adventure World</div><div class="sub">Every world strengthens a different kind of math power.</div></div>
-<div class="card"><div class="worldMap" id="worlds"></div><div class="space"></div><button class="btn ghost" id="worldBack">Back to Hero</button></div>
+<div class="adventureShell">
+<div class="adventureContent">
+<div class="gameTopHUD">
+  <div class="heroIdentity"><div class="heroFace" id="dashHeroFace">🧠</div><div><b id="dashHeroName">Hi, Hero!</b><span id="dashHeroLevel">Math Explorer</span><div class="bar" style="margin-top:7px"><div id="dashXPBar" style="width:0%"></div></div></div></div>
+  <div class="hudBox"><div class="label">⭐ Math Points</div><div class="value" id="dashMP">0</div></div>
+  <div class="hudBox"><div class="label">🎯 Accuracy</div><div class="value" id="dashAccuracy">0%</div></div>
+  <div class="hudBox"><div class="label">🔥 Missions</div><div class="value" id="dashMissions">0</div></div>
+</div>
+
+<div class="adventureTitle"><h2>⭐ CHOOSE YOUR ADVENTURE ⭐</h2><span>Pick a Challenge Level to begin your journey!</span></div>
+
+<div class="adventureBody">
+ <aside class="sideQuest">
+   <h3>⭐ RECOMMENDED FOR YOU</h3>
+   <div class="recommendedTopic" id="dashRecommended">Mixed Challenge</div>
+   <div class="small" id="dashRecommendationText" style="color:#dfe7ff">BustonIQ will recommend your next practice from your assessment.</div>
+   <button class="btn gold" id="dashStartRecommended" style="margin-top:12px">START RECOMMENDED ›</button>
+   <div class="progressMini">
+     <b>📈 YOUR PROGRESS</b>
+     <div class="small" style="color:#dfe7ff;margin-top:8px">Overall Progress</div>
+     <div class="bar"><div id="dashProgressBar" style="width:0%"></div></div>
+     <div id="dashProgressText" style="text-align:right;font-weight:950;margin-top:4px">0%</div>
+   </div>
+   <div class="stats" style="grid-template-columns:1fr 1fr;margin-top:10px">
+     <div class="stat"><strong id="dashQuestions">0</strong><span>QUESTIONS</span></div>
+     <div class="stat"><strong id="dashBest">0</strong><span>BEST STREAK</span></div>
+   </div>
+ </aside>
+
+ <main>
+   <div class="levelWorldGrid" id="levelChoices"></div>
+   <div class="practiceZone">
+     <div class="practiceZoneTitle">📖 PRACTICE BY TOPIC <span style="color:#64e9ff">(ANY LEVEL)</span></div>
+     <div class="practiceTopicRow" id="dashTopicRow"></div>
+   </div>
+ </main>
+</div>
+
+<div class="gameBottomNav">
+ <button type="button" id="navHome"><span>🏠</span>HOME</button>
+ <button type="button" id="navAdventure"><span>🗺️</span>ADVENTURE MAP</button>
+ <button type="button" id="navHero"><span>🛡️</span>MY HERO</button>
+ <button type="button" id="navMissions"><span>📜</span>MISSIONS</button>
+ <button type="button" id="navAchievements"><span>🏆</span>ACHIEVEMENTS</button>
+</div>
+</div>
 </section>
 
 <section id="dailyMissions" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag" id="worldTitle"></div></div>
-<div class="card"><div class="title">Today's Missions</div><div id="missionList"></div><button class="btn ghost" id="missionBack">Back to Map</button></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag" id="worldTitle">Choose a Math Adventure</div><div class="sub" id="selectedLevelLabel"></div></div>
+<div class="gamePanel">
+<div id="topicSelectPane">
+<div class="topicHeader"><div class="icon">🎮</div><div><b>Choose Your Math Power</b><span>Pick the skill you want to train.</span></div></div>
+<div class="topicGrid" id="topicChoices"></div>
+</div>
+<div id="missionPane" class="hide">
+<div class="topicHeader"><div class="icon" id="chosenTopicIcon">🧠</div><div><b id="chosenTopicTitle"></b><span id="chosenTopicDesc"></span></div></div>
+<div class="recommendedCard" id="topicRecommendation"></div>
+<div class="space"></div><div class="title">Choose a Mission</div><div id="missionList"></div>
+<button class="btn ghost" id="changeTopicBtn">Choose Another Math Topic</button>
+</div>
+<div class="space"></div><button class="btn ghost" id="missionBack">Back to Levels</button>
+</div>
 </section>
 
 <section id="workshop" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">Hero Workshop</div><div class="sub" id="workshopMP"></div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Hero Workshop</div><div class="sub" id="workshopMP"></div></div>
 <div class="card"><div class="title">Hero Improvements</div><div class="small">Math Points are earned from learning. Unlock, equip or remove improvements anytime.</div><div class="space"></div><div class="grid g2" id="upgradeList"></div>
 <div class="space"></div><div class="title">Companions</div><div class="grid g2" id="petList"></div><button class="btn ghost" id="workshopBack">Back to Hero</button></div>
 </section>
 
 <section id="badgesScreen" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">My Achievements</div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">My Achievements</div></div>
 <div class="card"><div id="badgeGrid" class="badges"></div><div class="space"></div><div class="title">Personal Bests</div><div id="bestList"></div><button class="btn ghost" id="badgesBack">Back</button></div>
 </section>
 
 <section id="game" class="hide">
+<div class="gameHUD"><div class="hudHero" id="hudHero">🧠</div><div class="hudMain"><b id="hudMission">Math Mission</b><span id="hudTopic">Build your math power!</span></div><div class="hudMP" id="hudMP">0 MP</div></div>
 <div class="topbar"><div><b id="qProgress"></b><br><span id="streakText"></span></div><div class="timer" id="timerVal"></div><div class="right"><b id="scoreVal"></b><br><span id="sessionMP"></span></div></div>
 <div class="gamecard"><div id="bossBox" class="hide"><div class="boss" id="bossEmoji"></div><div class="bossName" id="bossName"></div><div class="hearts" id="bossHearts"></div><div class="space"></div></div><div class="cat" id="category"></div><div class="question" id="question"></div><div class="answer"><input id="answerInput" inputmode="decimal" autocomplete="off" placeholder="Your answer"><button class="btn green" id="submitBtn">Submit</button></div><div class="feedback" id="feedback" aria-live="polite"></div></div>
 </section>
 
 <section id="results" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">Mission Complete!</div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Mission Complete!</div></div>
 <div class="card" style="text-align:center"><div class="title" id="resultMessage"></div><div class="stats"><div class="stat"><strong id="rScore"></strong><span>SCORE</span></div><div class="stat"><strong id="rXP"></strong><span>XP EARNED</span></div><div class="stat"><strong id="rMP"></strong><span>MATH POINTS</span></div><div class="stat"><strong id="rAccuracy"></strong><span>ACCURACY</span></div></div><div class="space"></div><div id="rewardBox" class="rewardReveal hide"></div><button class="btn purple" id="resultWorkshop">Upgrade My Hero</button><button class="btn green" id="resultAssess">View Assessment</button><button class="btn gold" id="resultMap">Adventure Map</button></div>
 </section>
 
 <section id="assessment" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag" id="assessmentTitle"></div></div>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag" id="assessmentTitle"></div></div>
 <div class="card"><div id="assessmentContent"></div><button class="btn gold" id="recommendedBtn">🎯 Start Recommended Practice</button><button class="btn ghost" id="assessmentBack">Back</button></div>
 </section>
 
 <section id="parentAssess" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">Learning Assessments</div></div><div id="allAssessmentContent"></div><button class="btn ghost" id="allAssessBack">Back</button>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Learning Assessments</div></div><div id="allAssessmentContent"></div><button class="btn ghost" id="allAssessBack">Back</button>
 </section>
 
 <section id="weeklyReport" class="hide">
-<div class="brand"><h1>BustonIQ</h1><div class="tag">Weekly Learning Report</div></div><div id="weeklyContent"></div><button class="btn ghost" id="weeklyBack">Back</button>
+<div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Weekly Learning Report</div></div><div id="weeklyContent"></div><button class="btn ghost" id="weeklyBack">Back</button>
 </section>
 
 </div>
@@ -232,7 +429,7 @@ const KEY='bustoniq_v05';
 let D; try{D=JSON.parse(localStorage.getItem(KEY))}catch(e){}
 if(!D)D={familyName:null,parentPassword:null,dailyGoal:20,sound:true,profiles:[]};
 const save=()=>localStorage.setItem(KEY,JSON.stringify(D));
-let selectedId=null,active=null,selectedAvatar='knight',selectedWorld='numbers',currentMission=null,focusTopic=null;
+let selectedId=null,active=null,selectedAvatar='knight',selectedChallengeLevel=1,selectedTopic='mixed',currentMission=null,focusTopic=null;
 let adaptiveLevel=1;
 
 const avatars={
@@ -243,13 +440,23 @@ const avatars={
  tech:{name:'Tech Hero',emoji:'🤖',weapon:'⚡',desc:'Powered by logic'},
  adventurer:{name:'Adventurer',emoji:'🧭',weapon:'🪃',desc:'Ready for every challenge'}
 };
-const worlds=[
- {id:'numbers',name:'Number Kingdom',emoji:'🏰',topic:'Arithmetic',cls:'w1',level:1,desc:'Addition, subtraction, multiplication and division'},
- {id:'fractions',name:'Fraction Island',emoji:'🏝️',topic:'Fractions',cls:'w2',level:2,desc:'Fractions, equivalents and parts of a whole'},
- {id:'geometry',name:'Geometry City',emoji:'🏙️',topic:'Geometry',cls:'w3',level:3,desc:'Area, perimeter and shape reasoning'},
- {id:'patterns',name:'Logic Temple',emoji:'🧩',topic:'Reasoning',cls:'w4',level:3,desc:'Patterns, order of operations and number logic'},
- {id:'problems',name:'Word Problem Valley',emoji:'📚',topic:'Word Problems',cls:'w5',level:4,desc:'Real-world and multi-step reasoning'},
- {id:'arena',name:'Champion Arena',emoji:'🏆',topic:'Mixed',cls:'w6',level:5,desc:'Boss battles and contest-style mixed challenges'}
+const challengeLevels=[
+ {id:1,name:'Starter',emoji:'🌱',cls:'lv1',desc:'Quick confidence-building mental math',adaptive:1,timeBonus:10},
+ {id:2,name:'Explorer',emoji:'🧭',cls:'lv2',desc:'A little more thinking and variety',adaptive:2,timeBonus:5},
+ {id:3,name:'Challenger',emoji:'⚡',cls:'lv3',desc:'Contest-style practice at a steady pace',adaptive:2,timeBonus:0},
+ {id:4,name:'Master',emoji:'👑',cls:'lv4',desc:'Harder reasoning and multi-step thinking',adaptive:3,timeBonus:0},
+ {id:5,name:'Champion',emoji:'🏆',cls:'lv5',desc:'The toughest BustonIQ challenge',adaptive:4,timeBonus:-3}
+];
+const mathTopics=[
+ {id:'addsub',name:'Addition & Subtraction',emoji:'➕',cls:'topicAdd',topic:'Arithmetic',desc:'Mental addition, subtraction and number sense'},
+ {id:'multdiv',name:'Multiplication & Division',emoji:'✖️',cls:'topicMult',topic:'Arithmetic',desc:'Facts, groups, quotients and fast recall'},
+ {id:'fractions',name:'Fractions',emoji:'🍕',cls:'topicFrac',topic:'Fractions',desc:'Parts of a whole, equivalence and comparison'},
+ {id:'decimals',name:'Decimals',emoji:'🔢',cls:'topicDec',topic:'Decimals',desc:'Decimal place value and operations'},
+ {id:'geometry',name:'Geometry',emoji:'📐',cls:'topicGeo',topic:'Geometry',desc:'Shapes, area, perimeter and spatial thinking'},
+ {id:'logic',name:'Patterns & Logic',emoji:'🧩',cls:'topicLogic',topic:'Reasoning',desc:'Patterns, number logic and order of operations'},
+ {id:'word',name:'Word Problems',emoji:'📚',cls:'topicWord',topic:'Word Problems',desc:'Real-world and multi-step reasoning'},
+ {id:'algebra',name:'Pre-Algebra',emoji:'🧪',cls:'topicAlg',topic:'Algebra',desc:'Unknowns, simple equations and number relationships'},
+ {id:'mixed',name:'Mixed Challenge',emoji:'🎯',cls:'topicMix',topic:'Mixed',desc:'A little bit of everything'}
 ];
 const upgrades=[
  {id:'shield',icon:'🛡️',name:'Bronze Math Shield',cost:300,level:1},
@@ -375,19 +582,73 @@ function renderHero(){
  const h=$('heroVisual');h.querySelectorAll('.armor,.helmet,.shield,.cape,.aura').forEach(e=>e.remove());active.equipped.forEach(id=>{const e=document.createElement('div');e.className=id;h.appendChild(e)})
 }
 function renderWorlds(){
- $('worlds').innerHTML='';worlds.forEach(w=>{const locked=level(active)<w.level;const b=document.createElement('button');b.className=`world ${w.cls} ${locked?'locked':''}`;b.innerHTML=`<span class="emoji">${w.emoji}</span>${w.name}<small>${w.desc}<br>Requires Level ${w.level}</small>`;b.onclick=()=>{if(locked)return;selectedWorld=w.id;renderMissions();show('dailyMissions')};$('worlds').appendChild(b)});show('worldMapScreen')
+ const recLevel=recommendedLevel(active),weak=weakestTopic(active),recTopic=mathTopics.find(t=>t.topic===weak)||mathTopics.find(t=>t.id==='mixed');
+ $('dashHeroFace').textContent=avatars[active.avatar]?.emoji||'🧠';
+ $('dashHeroName').textContent=`Hi, ${active.name}!`;
+ $('dashHeroLevel').textContent=`Level ${level(active)} ${avatars[active.avatar]?.name||'Math Explorer'}`;
+ $('dashXPBar').style.width=((active.xp%500)/5)+'%';
+ $('dashMP').textContent=active.mp;
+ $('dashAccuracy').textContent=totalAccuracy(active)+'%';
+ $('dashMissions').textContent=active.history.length;
+ $('dashQuestions').textContent=totalQuestions(active);
+ $('dashBest').textContent=active.bestStreak||0;
+ $('dashRecommended').textContent=weak?recTopic.name:'Mixed Challenge';
+ $('dashRecommendationText').textContent=weak?`Let's strengthen ${recTopic.name.toLowerCase()} next! Recommended at Level ${recLevel}.`:`Complete more missions and BustonIQ will personalize your recommendation.`;
+ const overall=Math.min(100,Math.round((active.xp/3000)*100));$('dashProgressBar').style.width=overall+'%';$('dashProgressText').textContent=overall+'%';
+ $('dashStartRecommended').onclick=()=>{selectedChallengeLevel=recLevel;selectedTopic=recTopic.id;currentMission={id:'recommend',name:'Recommended Practice',count:15,time:40,diff:'medium',boss:false,topic:recTopic.topic};startGame()};
+
+ $('levelChoices').innerHTML='';
+ challengeLevels.forEach(l=>{
+   const b=document.createElement('button');
+   const cls=['levelOne','levelTwo','levelThree','levelFour','levelFive'][l.id-1];
+   b.className=`worldLevelCard ${cls} ${l.id===recLevel?'current':''}`;
+   const starCount=Math.min(30,Math.max(0,Math.round((active.history.filter(h=>String(h.world||'').includes('Level '+l.id)).length*3))));
+   b.innerHTML=`<div class="lvl">LEVEL</div><div class="num">${l.id}</div><div class="name">${l.name.toUpperCase()}</div><div class="stars">⭐ ${starCount} / 30</div>`;
+   b.onclick=()=>{selectedChallengeLevel=l.id;renderTopicChoices();show('dailyMissions')};
+   $('levelChoices').appendChild(b)
+ });
+
+ $('dashTopicRow').innerHTML='';
+ mathTopics.forEach(t=>{
+   const b=document.createElement('button');b.className=`practiceTopic ${t.cls}`;
+   b.innerHTML=`<span class="pe">${t.emoji}</span><small>${t.name}</small>`;
+   b.onclick=()=>{selectedChallengeLevel=recLevel;selectedTopic=t.id;renderMissions();show('dailyMissions')};
+   $('dashTopicRow').appendChild(b)
+ });
+ show('worldMapScreen')
+}
+function recommendedLevel(p){
+ const acc=totalAccuracy(p),n=totalQuestions(p);
+ if(n<15)return Math.min(2,Math.max(1,Math.ceil(p.grade/3)));
+ if(acc>=92)return 4;if(acc>=82)return 3;if(acc>=68)return 2;return 1
+}
+function renderTopicChoices(){
+ const lev=challengeLevels[selectedChallengeLevel-1];
+ $('selectedLevelLabel').textContent=`Level ${lev.id} — ${lev.name}: ${lev.desc}`;
+ $('topicSelectPane').classList.remove('hide');$('missionPane').classList.add('hide');$('topicChoices').innerHTML='';
+ const weak=weakestTopic(active);
+ mathTopics.forEach(t=>{
+   const b=document.createElement('button');b.className=`topicCard ${t.cls}`;
+   const recommended=(weak && t.topic===weak);
+   b.innerHTML=`<span class="bigEmoji">${t.emoji}</span><b>${t.name}${recommended?' ⭐':''}</b><small>${t.desc}${recommended?'<br>Recommended from your assessment':''}</small>`;
+   b.onclick=()=>{selectedTopic=t.id;renderMissions()};
+   $('topicChoices').appendChild(b)
+ })
 }
 function renderMissions(){
- const w=worlds.find(x=>x.id===selectedWorld);$('worldTitle').textContent=w.name;$('missionList').innerHTML='';
- const rec=weakestTopic(active);
+ const t=mathTopics.find(x=>x.id===selectedTopic)||mathTopics[8],lev=challengeLevels[selectedChallengeLevel-1],weak=weakestTopic(active);
+ $('topicSelectPane').classList.add('hide');$('missionPane').classList.remove('hide');
+ $('chosenTopicIcon').textContent=t.emoji;$('chosenTopicTitle').textContent=t.name;$('chosenTopicDesc').textContent=`Level ${lev.id} ${lev.name} • ${t.desc}`;
+ $('topicRecommendation').innerHTML=weak&&t.topic===weak?`<b>🧠 Smart Choice!</b><div class="small">Your assessment says ${weak} needs extra practice, so this mission will help strengthen it.</div>`:`<b>⭐ Build Your Power</b><div class="small">Complete missions to earn XP and Math Points for your hero.</div>`;
+ $('missionList').innerHTML='';
+ const baseTime=Math.max(20,45+lev.timeBonus);
  const missions=[
-  {id:'warm',icon:'🌈',name:'Warm-Up Mission',desc:'10 quick mental-math questions • relaxed pace',count:10,time:50,diff:'easy',boss:false,topic:w.topic},
-  {id:'skill',icon:'🎯',name:'Skill Builder',desc:`15 colorful challenges • ${w.topic==='Mixed'?'mixed skills':w.topic}`,count:15,time:40,diff:'medium',boss:false,topic:w.topic},
-  {id:'challenge',icon:'⚡',name:'Challenge Mission',desc:'20 questions • contest pace',count:20,time:25,diff:'hard',boss:false,topic:w.topic},
-  {id:'recommend',icon:'🧠',name:'Recommended Practice',desc:rec?`Extra practice: ${rec}`:'Adaptive mixed practice',count:15,time:35,diff:'medium',boss:false,topic:rec||w.topic},
-  {id:'boss',icon:'🐉',name:'Boss Battle',desc:'Defeat the boss with 5 correct answers',count:12,time:25,diff:'hard',boss:true,topic:w.topic}
+  {id:'warm',icon:'🌈',name:'Warm-Up Quest',desc:'10 quick questions to build momentum',count:10,time:baseTime+10,diff:'easy',boss:false,topic:t.topic},
+  {id:'skill',icon:'🎯',name:'Skill Adventure',desc:'15 questions with balanced challenge',count:15,time:baseTime,diff:'medium',boss:false,topic:t.topic},
+  {id:'challenge',icon:'⚡',name:'Power Challenge',desc:'20 questions with faster contest pacing',count:20,time:Math.max(20,baseTime-8),diff:'hard',boss:false,topic:t.topic},
+  {id:'boss',icon:'🐉',name:'Boss Battle',desc:'Defeat the Number Dragon with 5 correct answers',count:12,time:Math.max(20,baseTime-5),diff:'hard',boss:true,topic:t.topic}
  ];
- missions.forEach(m=>{const d=document.createElement('div');d.className='mission';d.innerHTML=`<div class="micon">${m.icon}</div><div class="minfo"><b>${m.name}</b><span>${m.desc}</span></div>`;const b=document.createElement('button');b.className='btn gold';b.style.width='auto';b.textContent='Start';b.onclick=()=>{currentMission=m;startGame()};d.appendChild(b);$('missionList').appendChild(d)})
+ missions.forEach(m=>{const d=document.createElement('div');d.className='mission';d.innerHTML=`<div class="micon">${m.icon}</div><div class="minfo"><b>${m.name}</b><span>${m.desc}</span></div>`;const b=document.createElement('button');b.className='btn gold';b.style.width='auto';b.textContent='PLAY';b.onclick=()=>{currentMission=m;startGame()};d.appendChild(b);$('missionList').appendChild(d)})
 }
 
 function workshop(){
@@ -422,7 +683,7 @@ const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
 const Q=(topic,sub,prompt,answer,difficulty)=>({topic,sub,prompt,answer:String(answer),difficulty,sig:`${topic}|${sub}|${prompt}`});
 function arithmetic(){
  const g=active.grade,scale=Math.max(1,adaptiveLevel);
- const advanced=(currentMission && (currentMission.id==='boss'||currentMission.id==='challenge') && scale>=4);
+ const advanced=(selectedChallengeLevel>=5 && currentMission && (currentMission.id==='boss'||currentMission.id==='challenge'));
  const ops=g<=2?['+','-']:['+','-','×','÷'],op=pick(ops);
  // Normal missions emphasize mental math. Three-digit values appear only in advanced challenge moments.
  if(op==='+'){
@@ -440,6 +701,16 @@ function arithmetic(){
  }
  let d=rand(2,12),ans=rand(2,g<=3?10:12);
  return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,scale)
+}
+function addSubOnly(){
+ const g=active.grade,advanced=selectedChallengeLevel>=5,op=pick(['+','-']);
+ if(op==='+'){let max=advanced?180:(g<=2?40:99),a=rand(2,max),b=rand(2,max);if(!advanced&&a+b>150)b=rand(2,Math.max(2,99-a));return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,adaptiveLevel)}
+ let max=advanced?180:(g<=2?40:99),a=rand(5,max),b=rand(1,a);return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,adaptiveLevel)
+}
+function multDivOnly(){
+ const lim=active.grade<=3?10:12;
+ if(Math.random()<.5){let a=rand(2,lim),b=rand(2,lim);return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,adaptiveLevel)}
+ let d=rand(2,lim),ans=rand(2,lim);return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,adaptiveLevel)
 }
 function fraction(){
  if(active.grade<3)return arithmetic();
@@ -473,16 +744,28 @@ function wordProblem(){
  if(type==='rate'){let rate=rand(3,12),mins=rand(2,8);return Q('Word Problems','Rate',`A machine makes ${rate} parts per minute for ${mins} minutes. How many parts?`,rate*mins,adaptiveLevel)}
  let teams=rand(3,10),kids=rand(4,14);return Q('Word Problems','Equal Groups',`${teams} teams have ${kids} players each. How many players altogether?`,teams*kids,adaptiveLevel)
 }
+function algebra(){
+ if(active.grade<3)return arithmetic();
+ let x=rand(2,15),a=rand(2,12),type=pick(['add','mult','twostep']);
+ if(selectedChallengeLevel<=2)type=pick(['add','mult']);
+ if(type==='add')return Q('Algebra','Missing Number',`? + ${a} = ${x+a}. What is the missing number?`,x,adaptiveLevel);
+ if(type==='mult')return Q('Algebra','Unknown Factor',`${a} × ? = ${a*x}. What is the missing number?`,x,adaptiveLevel);
+ let b=rand(2,8);return Q('Algebra','Two-Step Equation',`${a} × ? + ${b} = ${a*x+b}. What is the missing number?`,x,adaptiveLevel)
+}
 function decimal(){
  if(active.grade<4)return arithmetic();let a=rand(10,99)/10,b=rand(10,99)/10;return Q('Arithmetic','Decimals',`${a.toFixed(1)} + ${b.toFixed(1)} = ?`,Math.round((a+b)*10)/10,adaptiveLevel)
 }
 function questionForTopic(topic){
- if(topic==='Arithmetic')return pick([arithmetic,decimal])();
+ if(selectedTopic==='addsub')return addSubOnly();
+ if(selectedTopic==='multdiv')return multDivOnly();
+ if(topic==='Arithmetic')return arithmetic();
+ if(topic==='Decimals')return decimal();
  if(topic==='Fractions')return fraction();
  if(topic==='Geometry')return geometry();
  if(topic==='Reasoning')return pick([pattern,theory,orderOps])();
  if(topic==='Word Problems')return wordProblem();
- return pick([arithmetic,fraction,geometry,pattern,theory,orderOps,wordProblem,decimal])()
+ if(topic==='Algebra')return algebra();
+ return pick([arithmetic,fraction,geometry,pattern,theory,orderOps,wordProblem,decimal,algebra])()
 }
 function newQuestion(){
  const desired=currentMission?.topic||focusTopic||'Mixed';let q;
@@ -492,8 +775,8 @@ function newQuestion(){
 
 let qi=0,score=0,correct=0,attempts=0,streak=0,earnedMP=0,earnedXP=0,currentQ=null,timerId=null,timeLeft=0,questionStart=0,sessionTimes=[],accepting=false,bossHP=0,bossMode=false,startLevel=0,lastActivity=0;
 function startGame(){
- qi=score=correct=attempts=streak=earnedMP=earnedXP=0;sessionTimes=[];adaptiveLevel=currentMission.diff==='easy'?1:currentMission.diff==='hard'?3:2;bossMode=!!currentMission.boss;bossHP=bossMode?5:0;startLevel=level(active);clearInterval(timerId);show('game');$('bossBox').classList.toggle('hide',!bossMode);
- if(bossMode){$('bossEmoji').textContent='🐉';$('bossName').textContent='The Number Dragon';renderBoss()}
+ qi=score=correct=attempts=streak=earnedMP=earnedXP=0;sessionTimes=[];adaptiveLevel=Math.max(1,Math.min(4,challengeLevels[selectedChallengeLevel-1].adaptive+(currentMission.diff==='hard'?1:currentMission.diff==='easy'?-1:0)));bossMode=!!currentMission.boss;bossHP=bossMode?5:0;startLevel=level(active);clearInterval(timerId);show('game');$('bossBox').classList.toggle('hide',!bossMode);
+ const tt=mathTopics.find(x=>x.id===selectedTopic)||mathTopics[8];$('hudHero').textContent=avatars[active.avatar]?.emoji||'🧠';$('hudMission').textContent=`Level ${selectedChallengeLevel} • ${currentMission.name}`;$('hudTopic').textContent=tt.name;$('hudMP').textContent=`${active.mp} MP`;if(bossMode){$('bossEmoji').textContent='🐉';$('bossName').textContent='The Number Dragon';renderBoss()}
  nextQuestion()
 }
 function renderBoss(){$('bossHearts').textContent='❤️'.repeat(Math.max(0,bossHP))+'🖤'.repeat(Math.max(0,5-bossHP))}
@@ -502,7 +785,7 @@ function nextQuestion(){
  if(qi>=currentMission.count)return finishGame(false);
  qi++;currentQ=newQuestion();$('category').textContent=`${currentQ.topic} • ${currentQ.sub}`;$('question').textContent=currentQ.prompt;$('answerInput').value='';$('feedback').textContent='';accepting=true;questionStart=Date.now();timeLeft=currentMission.time;clearInterval(timerId);timerId=setInterval(()=>{timeLeft--;hud();if(timeLeft<=0)timeoutQuestion()},1000);hud();$('answerInput').focus()
 }
-function hud(){$('qProgress').textContent=bossMode?`Battle Q${qi}`:`${qi} / ${currentMission.count}`;$('streakText').textContent=`🔥 ${streak} streak`;$('timerVal').textContent=timeLeft;$('scoreVal').textContent=`⭐ ${score}`;$('sessionMP').textContent=`🧠 +${earnedMP} MP`}
+function hud(){$('qProgress').textContent=bossMode?`Battle Q${qi}`:`${qi} / ${currentMission.count}`;$('streakText').textContent=`🔥 ${streak} streak`;$('timerVal').textContent=timeLeft;$('scoreVal').textContent=`⭐ ${score}`;$('sessionMP').textContent=`🧠 +${earnedMP} MP`;$('hudMP').textContent=`${active.mp+earnedMP} MP`}
 function recordQuestion(ok,elapsed){
  const k=`${currentQ.topic}|${currentQ.sub}`,s=active.stats[k]||(active.stats[k]={correct:0,total:0,time:0,difficultySum:0});s.total++;if(ok)s.correct++;s.time+=elapsed;s.difficultySum+=(currentQ.difficulty||1);
  active.activeSeconds[today()]=(active.activeSeconds[today()]||0)+Math.max(1,Math.min(elapsed,currentMission.time));
@@ -524,7 +807,7 @@ function timeoutQuestion(){
 function finishGame(bossDefeated){
  clearInterval(timerId);accepting=false;const acc=attempts?Math.round(correct/attempts*100):0,bonus=(bossDefeated?75:correct>=10?30:10);earnedMP+=bonus;earnedXP+=Math.max(25,correct*5)+(bossDefeated?100:0);active.mp+=earnedMP;active.xp+=earnedXP;
  const avg=sessionTimes.length?sessionTimes.reduce((a,b)=>a+b,0)/sessionTimes.length:0;
- active.history.unshift({date:new Date().toLocaleString(),day:today(),world:selectedWorld,mission:currentMission.name,score,correct,attempts,accuracy:acc,avgTime:+avg.toFixed(1),mp:earnedMP,xp:earnedXP});active.history=active.history.slice(0,100);
+ active.history.unshift({date:new Date().toLocaleString(),day:today(),world:`Level ${selectedChallengeLevel}`,topic:selectedTopic,mission:currentMission.name,score,correct,attempts,accuracy:acc,avgTime:+avg.toFixed(1),mp:earnedMP,xp:earnedXP});active.history=active.history.slice(0,100);
  let reward=null;if((active.history.length%5===0)||bossDefeated){reward=revealMysteryReward();if(reward)active.mysteryRewards.push(reward)}
  save();$('rScore').textContent=score;$('rXP').textContent='+'+earnedXP;$('rMP').textContent='+'+earnedMP;$('rAccuracy').textContent=acc+'%';
  $('resultMessage').textContent=bossDefeated?'🐉 Boss Defeated!':acc>=90?'🏆 Excellent Mission!':acc>=75?'⭐ Strong Work!':'💪 Training Makes Heroes Stronger!';
@@ -565,7 +848,9 @@ function trendText(p){
 }
 function showAssessment(){ $('assessmentTitle').textContent=`${active.name}'s Progress Assessment`;$('assessmentContent').innerHTML=assessmentHTML(active);show('assessment')}
 function recommendedPractice(){
- focusTopic=weakestTopic(active)||'Mixed';selectedWorld='numbers';currentMission={id:'recommend',name:'Recommended Practice',count:15,time:35,diff:'medium',boss:false,topic:focusTopic};startGame()
+ focusTopic=weakestTopic(active)||'Mixed';selectedChallengeLevel=recommendedLevel(active);
+ const match=mathTopics.find(t=>t.topic===focusTopic);selectedTopic=match?match.id:'mixed';
+ currentMission={id:'recommend',name:'Recommended Practice',count:15,time:40,diff:'medium',boss:false,topic:focusTopic};startGame()
 }
 function allAssess(){
  $('allAssessmentContent').innerHTML=D.profiles.map(p=>`<div class="card"><div class="title">${p.name} — Grade ${p.grade}</div>${assessmentHTML(ensure(p))}</div>`).join('');show('parentAssess')
@@ -579,9 +864,15 @@ $('parentBtn').onclick=openParent;$('childBtn').onclick=()=>{renderChildLogin();
 $('addChildBtn').onclick=addChild;$('saveChild').onclick=saveChild;$('cancelChild').onclick=()=>show('parentDash');$('parentLogout').onclick=()=>show('welcome');$('parentSettingsBtn').onclick=openSettings;$('saveSettingsBtn').onclick=saveSettings;$('settingsBack').onclick=()=>show('parentDash');
 $('parentAssessBtn').onclick=allAssess;$('weeklyBtn').onclick=weeklyReport;$('allAssessBack').onclick=()=>show('parentDash');$('weeklyBack').onclick=()=>show('parentDash');
 $('childLoginBack').onclick=()=>show('welcome');$('pinBack').onclick=()=>{renderChildLogin();show('childLogin')};$('pinGo').onclick=pinLogin;$('confirmAvatar').onclick=confirmAvatar;
-$('worldBtn').onclick=renderWorlds;$('worldBack').onclick=heroHome;$('missionBack').onclick=renderWorlds;$('workshopBtn').onclick=workshop;$('workshopBack').onclick=heroHome;$('badgesBtn').onclick=renderBadges;$('badgesBack').onclick=heroHome;$('assessmentBtn').onclick=showAssessment;$('assessmentBack').onclick=heroHome;$('recommendedBtn').onclick=recommendedPractice;$('childLogout').onclick=()=>{active=null;show('welcome')};
+$('worldBtn').onclick=renderWorlds;$('worldBack').onclick=heroHome;$('missionBack').onclick=renderWorlds;$('changeTopicBtn').onclick=renderTopicChoices;$('workshopBtn').onclick=workshop;$('workshopBack').onclick=heroHome;$('badgesBtn').onclick=renderBadges;$('badgesBack').onclick=heroHome;$('assessmentBtn').onclick=showAssessment;$('assessmentBack').onclick=heroHome;$('recommendedBtn').onclick=recommendedPractice;$('childLogout').onclick=()=>{active=null;show('welcome')};
 $('submitBtn').onclick=submitAnswer;$('answerInput').addEventListener('keydown',e=>{if(e.key==='Enter')submitAnswer()});
 $('resultWorkshop').onclick=workshop;$('resultAssess').onclick=showAssessment;$('resultMap').onclick=renderWorlds;
+$('navHome').onclick=heroHome;
+$('navAdventure').onclick=renderWorlds;
+$('navHero').onclick=heroHome;
+$('navMissions').onclick=()=>{selectedChallengeLevel=recommendedLevel(active);renderTopicChoices();show('dailyMissions')};
+$('navAchievements').onclick=renderBadges;
+
 renderParent();show('welcome');
 })();
 </script>

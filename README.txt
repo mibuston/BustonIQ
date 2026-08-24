@@ -1,25 +1,36 @@
-BUSTONIQ v0.4
-Play. Learn. Level Up.
+BUSTONIQ v0.7 — ADVENTURE UI PREVIEW
 
-New:
+This build is the first functional attempt to move the real BustonIQ web UI toward the illustrated game concept.
+
+NEW VISUAL DIRECTION
+- Adventure-world illustrated background
+- Game-style top HUD
+- Live hero, Math Points, accuracy and mission counts
+- Five large illustrated-style challenge cards
+- Recommended practice panel
+- Progress panel
+- Practice-by-topic row
+- Bottom game navigation
+- Responsive layout for smaller screens
+
+FUNCTIONAL SYSTEMS RETAINED
+- Parent/family login
+- Child profiles/PIN
+- Hero avatars
 - XP + Math Points
-- Hero progression
-- Hero Workshop upgrades
-- Unlock/equip armor, shield, cape, helmet and aura
-- Personal topic assessment
-- Parent assessment view
-- Recommended practice based on weakest topic
-- Recent-question memory to reduce exact repeats
-- Same skills can repeat with new numbers/examples
-- Timed contest missions
+- Level 1–5
+- Topic selection
+- Missions and Boss Battle
+- Easier mental-math rules
+- Adaptive difficulty
+- Assessments and recommendations
+- Hero Workshop, pets and achievements
+- Weekly parent report
 
-Parent password: bustoniq
+GITHUB UPLOAD
+Upload all three files:
+1. index.html
+2. bustoniq-logo.png
+3. adventure-world.png
 
-Unzip, then double-click index.html.
-
-Note: v0.4 uses a new local browser data store, so create the child profiles again for this test build.
-This is still a local prototype; public accounts will require secure server-side authentication/database.
-
-
-v0.4.1 FIX
-- Fixed Child Login button navigation issue caused by a browser naming conflict.
+This remains a browser-local beta using localStorage.
