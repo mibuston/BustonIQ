@@ -6,26 +6,26 @@
 <meta name="theme-color" content="#172454">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="BustonIQ">
-<title>BustonIQ v0.5 — Play. Learn. Level Up.</title>
+<title>BustonIQ v0.5.1 Kids Beta — Play. Learn. Level Up.</title>
 <style>
 :root{
 --navy:#172454;--navy2:#253d7b;--blue:#416bc1;--gold:#ffd34e;--green:#2aaa6c;--red:#db4d52;
 --purple:#7457c8;--ink:#172033;--muted:#667085;--soft:#f3f5f9;--line:#e2e6ef;--sky:#dbe8ff;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(140deg,#10204b,#654aa4);color:var(--ink);padding:14px}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at 12% 8%,#ffe66d 0 6%,transparent 7%),radial-gradient(circle at 88% 12%,#ff91c8 0 7%,transparent 8%),linear-gradient(145deg,#35c6f4 0%,#7657e8 48%,#ff78b6 100%);background-attachment:fixed;color:var(--ink);padding:14px}
 .app{width:min(100%,980px);margin:auto;padding-bottom:45px}
 .hide{display:none!important}
 .brand{text-align:center;color:white;margin:15px 0 18px}.brand h1{font-size:clamp(38px,8vw,60px);margin:0;font-weight:950;letter-spacing:-1.5px}.brand .tag{font-weight:900;font-size:18px}.brand .sub{font-size:13px;opacity:.86;margin-top:3px}
-.card{background:#fff;border-radius:24px;padding:20px;margin:12px 0;box-shadow:0 14px 36px rgba(0,0,0,.18)}
+.card{background:linear-gradient(180deg,#fff,#fffdf4);border:3px solid rgba(255,255,255,.78);border-radius:28px;padding:20px;margin:12px 0;box-shadow:0 16px 38px rgba(32,25,94,.22)}
 .title{font-size:19px;font-weight:950;margin-bottom:11px}.small{font-size:13px;color:var(--muted);line-height:1.45}.space{height:12px}
 .grid{display:grid;gap:10px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
-.btn{width:100%;border:0;border-radius:15px;padding:14px 16px;font-size:16px;font-weight:900;cursor:pointer}.gold{background:var(--gold);color:#191919}.navy{background:var(--navy);color:#fff}.green{background:var(--green);color:#fff}.purple{background:var(--purple);color:#fff}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.danger{background:#fff0f0;border:1px solid #f0caca;color:#a22}
+.btn{width:100%;border:0;border-radius:18px;padding:15px 16px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 rgba(28,33,66,.16);transition:transform .08s ease}.btn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(28,33,66,.16)}.gold{background:var(--gold);color:#191919}.navy{background:var(--navy);color:#fff}.green{background:var(--green);color:#fff}.purple{background:var(--purple);color:#fff}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.danger{background:#fff0f0;border:1px solid #f0caca;color:#a22}
 input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:13px;font-size:17px;background:#fbfcfe;outline:none}input:focus,select:focus{border-color:#7b96d7}label{font-size:13px;font-weight:850;color:var(--muted)}
 .notice{padding:11px 13px;background:#fff8d8;border-radius:12px;color:#705800;font-size:13px}
 .row{display:flex;gap:10px;align-items:center}.grow{flex:1;min-width:0}
 .profile{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:16px;margin-top:9px}.avatarMini{width:52px;height:52px;border-radius:50%;background:#edf1ff;display:grid;place-items:center;font-size:26px}.profile .main{flex:1}.profile b{display:block}.profile span{font-size:12px;color:var(--muted)}
-.heroStage{min-height:330px;background:linear-gradient(#dce9ff,#f9fcff);border-radius:22px;display:grid;place-items:center;position:relative;overflow:hidden;padding:18px}
+.heroStage{min-height:330px;background:radial-gradient(circle at 20% 20%,#fff2a0 0 7%,transparent 8%),radial-gradient(circle at 82% 25%,#c0f3ff 0 10%,transparent 11%),linear-gradient(#8fe4ff 0 52%,#9ce77d 53% 100%);border:4px solid #fff;border-radius:25px;display:grid;place-items:center;position:relative;overflow:hidden;padding:18px}
 .heroWrap{position:relative;width:210px;height:270px}
 .head{position:absolute;left:74px;top:30px;width:64px;height:64px;border-radius:50%;background:#d9a47c;border:4px solid #283149;z-index:3}
 .hair{position:absolute;left:70px;top:21px;width:72px;height:35px;border-radius:50% 50% 35% 35%;background:#2c2530;z-index:4}
@@ -37,12 +37,12 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 .shield{position:absolute;left:4px;top:118px;width:65px;height:78px;background:#bd8034;border:5px solid #6b471f;border-radius:48%;z-index:6}
 .cape{position:absolute;right:36px;top:96px;width:62px;height:126px;background:#793b9b;transform:skew(-8deg);z-index:1}.aura{position:absolute;inset:8px;border-radius:50%;box-shadow:0 0 40px 18px #ffd34e;opacity:.7}
 .heroName{position:absolute;bottom:9px;background:#fff;padding:7px 12px;border-radius:999px;font-weight:900;box-shadow:0 4px 14px #0002}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{text-align:center;background:var(--soft);padding:11px 7px;border-radius:13px}.stat strong{display:block;font-size:22px}.stat span{font-size:10px;color:var(--muted);font-weight:850}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{text-align:center;background:linear-gradient(145deg,#fff4a8,#ffe2f2);padding:11px 7px;border:2px solid #fff;border-radius:16px;box-shadow:0 5px 12px #614f9b20}.stat strong{display:block;font-size:22px}.stat span{font-size:10px;color:var(--muted);font-weight:850}
 .bar{height:10px;background:#e6e9ef;border-radius:999px;overflow:hidden}.bar div{height:100%;background:var(--gold)}
 .choice{border:2px solid transparent;background:var(--soft);border-radius:14px;padding:12px 9px;font-weight:900;cursor:pointer}.choice.on{border-color:var(--blue);background:#e9efff}.choice small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
-.avatarChoice{border:2px solid transparent;border-radius:18px;background:#f4f6fb;padding:12px;text-align:center;cursor:pointer}.avatarChoice.on{border-color:var(--purple);background:#f0ebff}.avatarEmoji{font-size:48px}.avatarChoice b{display:block;margin-top:6px}.avatarChoice small{font-size:11px;color:var(--muted)}
+.avatarChoice{border:3px solid #fff;border-radius:22px;background:linear-gradient(145deg,#dff8ff,#fff0b8,#f8ddff);padding:14px;text-align:center;cursor:pointer;box-shadow:0 8px 16px #342b6d25}.avatarChoice.on{border-color:var(--purple);background:#f0ebff}.avatarEmoji{font-size:48px}.avatarChoice b{display:block;margin-top:6px}.avatarChoice small{font-size:11px;color:var(--muted)}
 .worldMap{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.world{position:relative;border:0;border-radius:22px;padding:18px;text-align:left;min-height:155px;color:#fff;font-weight:900;cursor:pointer;overflow:hidden}.world small{display:block;font-weight:700;opacity:.9;margin-top:6px}.world .emoji{font-size:42px;display:block;margin-bottom:10px}.world.locked{opacity:.55;filter:grayscale(.3);cursor:not-allowed}.w1{background:linear-gradient(135deg,#3d7fd4,#56a8e8)}.w2{background:linear-gradient(135deg,#3d9b68,#6ac97e)}.w3{background:linear-gradient(135deg,#aa6dcb,#7b4ec2)}.w4{background:linear-gradient(135deg,#e47b42,#f2aa54)}.w5{background:linear-gradient(135deg,#46506f,#252d46)}.w6{background:linear-gradient(135deg,#b48b22,#f0ca55);color:#352800}
-.mission{border:1px solid var(--line);border-radius:16px;padding:14px;margin:8px 0;display:flex;gap:12px;align-items:center}.mission .micon{font-size:30px}.mission .minfo{flex:1}.mission .minfo b{display:block}.mission .minfo span{font-size:12px;color:var(--muted)}
+.mission{border:3px solid #fff;border-radius:20px;padding:14px;margin:10px 0;display:flex;gap:12px;align-items:center;background:linear-gradient(120deg,#e9f7ff,#fff4c9,#f9e8ff);box-shadow:0 7px 16px #3d3c8120}.mission .micon{font-size:30px}.mission .minfo{flex:1}.mission .minfo b{display:block}.mission .minfo span{font-size:12px;color:var(--muted)}
 .upgrade{border:1px solid var(--line);border-radius:16px;padding:13px;display:flex;gap:11px;align-items:center}.uicon{width:56px;height:56px;border-radius:14px;background:#f0f3fa;display:grid;place-items:center;font-size:30px}.uinfo{flex:1}.uinfo b{display:block}.uinfo span{font-size:12px;color:var(--muted)}
 .badges{display:flex;gap:8px;flex-wrap:wrap}.badge{padding:8px 10px;border-radius:999px;background:#eef2ff;color:#334f94;font-size:12px;font-weight:850}.badge.locked{background:#f0f1f4;color:#979ca8}
 .topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;color:#fff;gap:8px;margin-bottom:10px}.topbar .right{text-align:right}.timer{width:68px;height:68px;border-radius:50%;background:var(--navy2);display:grid;place-items:center;font-size:22px;font-weight:950}
@@ -54,6 +54,11 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 .rewardReveal{text-align:center;padding:18px;background:linear-gradient(#fff8d8,#fff);border-radius:18px;font-size:20px;font-weight:900}.rewardReveal .big{font-size:70px}
 .toggle{display:flex;justify-content:space-between;align-items:center;padding:10px;border:1px solid var(--line);border-radius:13px}.toggle input{width:auto}
 @media(max-width:760px){.g2,.g3,.g4,.worldMap{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.answer{grid-template-columns:1fr}.answer button{width:100%;min-height:48px}.heroStage{min-height:300px}}
+
+@keyframes pop{0%{transform:scale(.7);opacity:0}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.correctPop{animation:pop .35s ease}.avatarEmoji,.micon,.world .emoji{animation:floaty 2.8s ease-in-out infinite}
+.sparkles{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}.spark{position:absolute;font-size:28px;animation:pop .65s ease forwards}
 </style>
 </head>
 <body>
@@ -289,6 +294,12 @@ function beep(freq=660,dur=.08){
  try{const A=window.AudioContext||window.webkitAudioContext;const c=new A(),o=c.createOscillator(),g=c.createGain();o.frequency.value=freq;o.connect(g);g.connect(c.destination);g.gain.value=.07;o.start();o.stop(c.currentTime+dur)}catch(e){}
 }
 function successSound(){beep(720,.07);setTimeout(()=>beep(900,.09),80)}
+function celebrate(){
+ const box=document.createElement('div');box.className='sparkles';
+ const icons=['⭐','✨','🌟','🎉','💫'];
+ for(let i=0;i<10;i++){const s=document.createElement('span');s.className='spark';s.textContent=pick(icons);s.style.left=rand(8,92)+'%';s.style.top=rand(12,75)+'%';s.style.animationDelay=(i*.025)+'s';box.appendChild(s)}
+ document.body.appendChild(box);setTimeout(()=>box.remove(),700)
+}
 function failSound(){beep(240,.08)}
 function levelSound(){beep(600,.08);setTimeout(()=>beep(800,.08),90);setTimeout(()=>beep(1050,.12),180)}
 
@@ -370,8 +381,8 @@ function renderMissions(){
  const w=worlds.find(x=>x.id===selectedWorld);$('worldTitle').textContent=w.name;$('missionList').innerHTML='';
  const rec=weakestTopic(active);
  const missions=[
-  {id:'warm',icon:'☀️',name:'Warm-Up Mission',desc:'10 questions • relaxed pace',count:10,time:45,diff:'easy',boss:false,topic:w.topic},
-  {id:'skill',icon:'🎯',name:'Skill Builder',desc:`15 questions • ${w.topic==='Mixed'?'mixed skills':w.topic}`,count:15,time:35,diff:'medium',boss:false,topic:w.topic},
+  {id:'warm',icon:'🌈',name:'Warm-Up Mission',desc:'10 quick mental-math questions • relaxed pace',count:10,time:50,diff:'easy',boss:false,topic:w.topic},
+  {id:'skill',icon:'🎯',name:'Skill Builder',desc:`15 colorful challenges • ${w.topic==='Mixed'?'mixed skills':w.topic}`,count:15,time:40,diff:'medium',boss:false,topic:w.topic},
   {id:'challenge',icon:'⚡',name:'Challenge Mission',desc:'20 questions • contest pace',count:20,time:25,diff:'hard',boss:false,topic:w.topic},
   {id:'recommend',icon:'🧠',name:'Recommended Practice',desc:rec?`Extra practice: ${rec}`:'Adaptive mixed practice',count:15,time:35,diff:'medium',boss:false,topic:rec||w.topic},
   {id:'boss',icon:'🐉',name:'Boss Battle',desc:'Defeat the boss with 5 correct answers',count:12,time:25,diff:'hard',boss:true,topic:w.topic}
@@ -410,12 +421,25 @@ const pick=a=>a[rand(0,a.length-1)];
 const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
 const Q=(topic,sub,prompt,answer,difficulty)=>({topic,sub,prompt,answer:String(answer),difficulty,sig:`${topic}|${sub}|${prompt}`});
 function arithmetic(){
- const g=active.grade,scale=Math.max(1,adaptiveLevel),max=Math.round([0,12,40,120,600,1400][g]*(1+(.18*(scale-1))));
+ const g=active.grade,scale=Math.max(1,adaptiveLevel);
+ const advanced=(currentMission && (currentMission.id==='boss'||currentMission.id==='challenge') && scale>=4);
  const ops=g<=2?['+','-']:['+','-','×','÷'],op=pick(ops);
- if(op==='+'){let a=rand(2,max),b=rand(2,max);return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,scale)}
- if(op==='-'){let a=rand(5,max),b=rand(1,a);return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,scale)}
- if(op==='×'){let lim=(g<=3?10:15)+(scale-1)*2,a=rand(2,lim),b=rand(2,lim);return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,scale)}
- let d=rand(2,12+(scale-1)*2),ans=rand(2,15+(scale-1)*2);return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,scale)
+ // Normal missions emphasize mental math. Three-digit values appear only in advanced challenge moments.
+ if(op==='+'){
+  let max=advanced?250:(g<=2?50:99),a=rand(2,max),b=rand(2,max);
+  if(!advanced && a+b>150)b=rand(2,Math.max(2,99-a));
+  return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,scale)
+ }
+ if(op==='-'){
+  let max=advanced?250:(g<=2?50:99),a=rand(5,max),b=rand(1,a);
+  return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,scale)
+ }
+ if(op==='×'){
+  let lim=g<=3?10:12,a=rand(2,lim),b=rand(2,lim);
+  return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,scale)
+ }
+ let d=rand(2,12),ans=rand(2,g<=3?10:12);
+ return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,scale)
 }
 function fraction(){
  if(active.grade<3)return arithmetic();
@@ -450,7 +474,7 @@ function wordProblem(){
  let teams=rand(3,10),kids=rand(4,14);return Q('Word Problems','Equal Groups',`${teams} teams have ${kids} players each. How many players altogether?`,teams*kids,adaptiveLevel)
 }
 function decimal(){
- if(active.grade<4)return arithmetic();let a=rand(10,999)/10,b=rand(10,999)/10;return Q('Arithmetic','Decimals',`${a.toFixed(1)} + ${b.toFixed(1)} = ?`,Math.round((a+b)*10)/10,adaptiveLevel)
+ if(active.grade<4)return arithmetic();let a=rand(10,99)/10,b=rand(10,99)/10;return Q('Arithmetic','Decimals',`${a.toFixed(1)} + ${b.toFixed(1)} = ?`,Math.round((a+b)*10)/10,adaptiveLevel)
 }
 function questionForTopic(topic){
  if(topic==='Arithmetic')return pick([arithmetic,decimal])();
@@ -490,7 +514,7 @@ function adapt(ok,elapsed){
 }
 function submitAnswer(){
  if(!accepting)return;const v=$('answerInput').value.trim();if(v==='')return;accepting=false;clearInterval(timerId);attempts++;const elapsed=(Date.now()-questionStart)/1000,ok=Math.abs(Number(v)-Number(currentQ.answer))<.001;recordQuestion(ok,elapsed);adapt(ok,elapsed);
- if(ok){correct++;streak++;active.bestStreak=Math.max(active.bestStreak,streak);const mp=5+(streak>=5?3:0)+(currentMission.diff==='hard'?3:0),xp=10+(currentMission.diff==='hard'?5:0);earnedMP+=mp;earnedXP+=xp;score+=100+streak*5;if(bossMode){bossHP--;renderBoss()}$('feedback').textContent=`✅ Correct! +${mp} Math Points`; $('feedback').style.color='var(--green)';successSound();if(streak===5||streak===10)levelSound()}
+ if(ok){correct++;streak++;active.bestStreak=Math.max(active.bestStreak,streak);const mp=5+(streak>=5?3:0)+(currentMission.diff==='hard'?3:0),xp=10+(currentMission.diff==='hard'?5:0);earnedMP+=mp;earnedXP+=xp;score+=100+streak*5;if(bossMode){bossHP--;renderBoss()}$('feedback').textContent=`🌟 Awesome! +${mp} Math Points`; $('feedback').style.color='var(--green)';$('feedback').classList.remove('correctPop');void $('feedback').offsetWidth;$('feedback').classList.add('correctPop');successSound();celebrate();if(streak===5||streak===10)levelSound()}
  else{streak=0;$('feedback').textContent=`❌ Answer: ${currentQ.answer}`;$('feedback').style.color='var(--red)';failSound()}
  hud();setTimeout(nextQuestion,650)
 }
