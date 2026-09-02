@@ -44,8 +44,10 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:4px solid 
 .premiumHeroSprite.knight,.avatarSprite.knight,.miniHeroSprite.knight{background-position:0% 0%}.premiumHeroSprite.mage,.avatarSprite.mage,.miniHeroSprite.mage{background-position:50% 0%}.premiumHeroSprite.ninja,.avatarSprite.ninja,.miniHeroSprite.ninja{background-position:100% 0%}.premiumHeroSprite.space,.avatarSprite.space,.miniHeroSprite.space{background-position:0% 100%}.premiumHeroSprite.tech,.avatarSprite.tech,.miniHeroSprite.tech{background-position:50% 100%}.premiumHeroSprite.adventurer,.avatarSprite.adventurer,.miniHeroSprite.adventurer{background-position:100% 100%}
 .itemSprite{display:block;width:100%;height:100%;background-image:url('bustoniq-equipment-v1.png');background-repeat:no-repeat;background-size:300% 300%;filter:drop-shadow(0 5px 7px #07143566)}
 .item-shield{background-position:0 0}.item-cape{background-position:50% 0}.item-armor{background-position:100% 0}.item-helmet{background-position:0 50%}.item-aura{background-position:50% 50%}.item-owl{background-position:100% 50%}.item-robot{background-position:0 100%}.item-dragon{background-position:50% 100%}.item-fox{background-position:100% 100%}
+.itemSprite.v2{background-image:url('bustoniq-equipment-v2.png')}.item-sword{background-position:0 0}.item-staff{background-position:50% 0}.item-bow{background-position:100% 0}.item-backpack{background-position:0 50%}.item-jetpack{background-position:50% 50%}.item-wings{background-position:100% 50%}.item-glasses{background-position:0 100%}.item-gloves{background-position:50% 100%}.item-boots{background-position:100% 100%}
 .equippedVisual{position:absolute;z-index:7;display:block;pointer-events:none;filter:drop-shadow(0 8px 8px #0007)}.equippedVisual .itemSprite{position:absolute;inset:0}
 .visual-cape{z-index:1;width:44%;height:44%;left:28%;top:24%;opacity:.96}.visual-armor{width:35%;height:35%;left:32.5%;top:34%}.visual-helmet{width:28%;height:28%;left:36%;top:16%}.visual-shield{width:31%;height:31%;left:14%;top:48%}.visual-aura{z-index:1;width:72%;height:72%;left:14%;top:12%;animation:auraPulse 2.2s ease-in-out infinite}.visual-pet{width:31%;height:31%;right:-3%;bottom:13%;animation:petBounce 2.6s ease-in-out infinite}
+.visual-sword,.visual-staff,.visual-bow{width:34%;height:34%;right:7%;top:42%;transform:rotate(7deg)}.visual-backpack,.visual-jetpack{z-index:1;width:40%;height:40%;left:29%;top:32%;opacity:.94}.visual-wings{z-index:1;width:62%;height:62%;left:19%;top:22%}.visual-glasses{width:22%;height:22%;left:39%;top:25%}.visual-gloves{width:34%;height:34%;left:33%;top:48%}.visual-boots{width:32%;height:32%;left:34%;bottom:12%}
 @keyframes auraPulse{0%,100%{opacity:.62;transform:scale(.96) rotate(-2deg)}50%{opacity:1;transform:scale(1.04) rotate(2deg)}}@keyframes petBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .heroIdentityPlate{position:absolute;z-index:4;left:18px;right:18px;bottom:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid #ffffff4d;border-radius:17px;background:#061b50d9;backdrop-filter:blur(12px);color:#fff;box-shadow:0 8px 24px #0005}.heroIdentityPlate b{font-size:17px}.heroIdentityPlate span{display:block;color:#bcd5ff;font-size:12px;margin-top:2px}.heroGearRow{display:flex;justify-content:flex-end;gap:6px;flex-wrap:wrap}.gearChip{min-width:35px;height:35px;padding:0 8px;border-radius:11px;display:grid;place-items:center;background:#ffffff18;border:1px solid #ffffff42;font-size:19px}.gearChip.empty{font-size:11px;color:#bcd5ff;white-space:nowrap}
 .gearChip .itemSprite{width:29px;height:29px}.gearChip:has(.itemSprite){padding:2px}
@@ -70,7 +72,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:4px solid 
 .avatarChoice{border:3px solid #fff;border-radius:22px;background:linear-gradient(145deg,#dff8ff,#fff0b8,#f8ddff);padding:14px;text-align:center;cursor:pointer;box-shadow:0 8px 16px #342b6d25}.avatarChoice.on{border-color:var(--purple);background:#f0ebff}.avatarEmoji{font-size:48px}.avatarChoice b{display:block;margin-top:6px}.avatarChoice small{font-size:11px;color:var(--muted)}
 .worldMap{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.world{position:relative;border:0;border-radius:22px;padding:18px;text-align:left;min-height:155px;color:#fff;font-weight:900;cursor:pointer;overflow:hidden}.world small{display:block;font-weight:700;opacity:.9;margin-top:6px}.world .emoji{font-size:42px;display:block;margin-bottom:10px}.world.locked{opacity:.55;filter:grayscale(.3);cursor:not-allowed}.w1{background:linear-gradient(135deg,#3d7fd4,#56a8e8)}.w2{background:linear-gradient(135deg,#3d9b68,#6ac97e)}.w3{background:linear-gradient(135deg,#aa6dcb,#7b4ec2)}.w4{background:linear-gradient(135deg,#e47b42,#f2aa54)}.w5{background:linear-gradient(135deg,#46506f,#252d46)}.w6{background:linear-gradient(135deg,#b48b22,#f0ca55);color:#352800}
 .mission{border:3px solid #fff;border-radius:20px;padding:14px;margin:10px 0;display:flex;gap:12px;align-items:center;background:linear-gradient(120deg,#e9f7ff,#fff4c9,#f9e8ff);box-shadow:0 7px 16px #3d3c8120}.mission .micon{font-size:30px}.mission .minfo{flex:1}.mission .minfo b{display:block}.mission .minfo span{font-size:12px;color:var(--muted)}
-.upgrade{border:1px solid var(--line);border-radius:16px;padding:13px;display:flex;gap:11px;align-items:center;background:linear-gradient(145deg,#fff,#f5f8ff);box-shadow:0 5px 14px #1e2e6420}.uicon{width:66px;height:66px;flex:0 0 66px;border-radius:17px;background:radial-gradient(circle at 50% 38%,#fff,#e8efff);display:grid;place-items:center;overflow:hidden;border:1px solid #dce5f8}.uicon .itemSprite{width:64px;height:64px}.uinfo{flex:1}.uinfo b{display:block}.uinfo span{font-size:12px;color:var(--muted)}
+.upgrade{border:1px solid var(--line);border-radius:16px;padding:13px;display:flex;gap:11px;align-items:center;background:linear-gradient(145deg,#fff,#f5f8ff);box-shadow:0 5px 14px #1e2e6420}.upgrade.owned{border-color:#80d1a3;background:linear-gradient(145deg,#f4fff8,#fff)}.uicon{width:66px;height:66px;flex:0 0 66px;border-radius:17px;background:radial-gradient(circle at 50% 38%,#fff,#e8efff);display:grid;place-items:center;overflow:hidden;border:1px solid #dce5f8}.uicon .itemSprite{width:64px;height:64px}.uinfo{flex:1}.uinfo b{display:block}.uinfo span{font-size:12px;color:var(--muted)}.rarity{display:inline-block!important;margin-top:4px;padding:3px 7px;border-radius:999px;background:#edf2ff;color:#405a9e!important;font-size:9px!important;font-weight:950;text-transform:uppercase;letter-spacing:.06em}
 .badges{display:flex;gap:8px;flex-wrap:wrap}.badge{padding:8px 10px;border-radius:999px;background:#eef2ff;color:#334f94;font-size:12px;font-weight:850}.badge.locked{background:#f0f1f4;color:#979ca8}
 .topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;color:#fff;gap:8px;margin-bottom:10px}.topbar .right{text-align:right}.timer{width:68px;height:68px;border-radius:50%;background:var(--navy2);display:grid;place-items:center;font-size:22px;font-weight:950}
 .gamecard{background:#fff;border-radius:24px;padding:22px;text-align:center}.cat{font-size:12px;color:var(--blue);font-weight:950;text-transform:uppercase;letter-spacing:.5px}.question{font-size:clamp(27px,6vw,46px);font-weight:950;min-height:95px;display:grid;place-items:center;line-height:1.2}
@@ -667,20 +669,39 @@ const challengeLevels=[
 const mathTopics=[
  {id:'addsub',name:'Addition & Subtraction',emoji:'➕',cls:'topicAdd',topic:'Arithmetic',desc:'Mental addition, subtraction and number sense'},
  {id:'multdiv',name:'Multiplication & Division',emoji:'✖️',cls:'topicMult',topic:'Arithmetic',desc:'Facts, groups, quotients and fast recall'},
+ {id:'place',name:'Place Value',emoji:'🔟',cls:'topicLogic',topic:'Place Value',desc:'Understand digits, compare, round and use powers of ten'},
  {id:'fractions',name:'Fractions',emoji:'🍕',cls:'topicFrac',topic:'Fractions',desc:'Parts of a whole, equivalence and comparison'},
  {id:'decimals',name:'Decimals',emoji:'🔢',cls:'topicDec',topic:'Decimals',desc:'Decimal place value and operations'},
  {id:'geometry',name:'Geometry',emoji:'📐',cls:'topicGeo',topic:'Geometry',desc:'Shapes, area, perimeter and spatial thinking'},
+ {id:'measure',name:'Measurement & Money',emoji:'📏',cls:'topicAdd',topic:'Measurement',desc:'Length, time, money, conversions and volume'},
+ {id:'data',name:'Data & Graphs',emoji:'📊',cls:'topicDec',topic:'Data',desc:'Read tables, picture graphs and line plots'},
  {id:'logic',name:'Patterns & Logic',emoji:'🧩',cls:'topicLogic',topic:'Reasoning',desc:'Patterns, number logic and order of operations'},
  {id:'word',name:'Word Problems',emoji:'📚',cls:'topicWord',topic:'Word Problems',desc:'Real-world and multi-step reasoning'},
  {id:'algebra',name:'Pre-Algebra',emoji:'🧪',cls:'topicAlg',topic:'Algebra',desc:'Unknowns, simple equations and number relationships'},
  {id:'mixed',name:'Mixed Challenge',emoji:'🎯',cls:'topicMix',topic:'Mixed',desc:'A little bit of everything'}
 ];
+const curriculumByGrade={
+ 1:{label:'Grade 1 Foundations',topics:['addsub','place','geometry','measure','data','word','logic','mixed'],focus:'Numbers to 120 • addition and subtraction within 20 • shapes • time and measurement'},
+ 2:{label:'Grade 2 Builders',topics:['addsub','place','geometry','measure','data','word','logic','mixed'],focus:'Place value to 1,000 • addition and subtraction within 100 • money • time • graphs'},
+ 3:{label:'Grade 3 Multipliers',topics:['addsub','multdiv','place','fractions','geometry','measure','data','word','logic','algebra','mixed'],focus:'Multiplication and division • fractions • area and perimeter • measurement and data'},
+ 4:{label:'Grade 4 Problem Solvers',topics:['addsub','multdiv','place','fractions','decimals','geometry','measure','data','word','logic','algebra','mixed'],focus:'Multi-digit operations • fraction equivalence • decimals • factors • angles'},
+ 5:{label:'Grade 5 Math Masters',topics:['addsub','multdiv','place','fractions','decimals','geometry','measure','data','word','logic','algebra','mixed'],focus:'Fraction and decimal operations • volume • coordinate plane • numerical patterns'}
+};
 const upgrades=[
- {id:'shield',icon:'🛡️',name:'Bronze Math Shield',cost:300,level:1},
- {id:'cape',icon:'🦸',name:'Explorer Cape',cost:600,level:2},
- {id:'armor',icon:'🥋',name:'Silver Solver Armor',cost:1000,level:3},
- {id:'helmet',icon:'⛑️',name:'Champion Helmet',cost:1500,level:4},
- {id:'aura',icon:'✨',name:'Legendary Math Aura',cost:2500,level:6}
+ {id:'shield',name:'Bronze Math Shield',cost:300,level:1,slot:'shield',rarity:'Common'},
+ {id:'cape',name:'Explorer Cape',cost:600,level:2,slot:'cape',rarity:'Rare'},
+ {id:'armor',name:'Silver Solver Armor',cost:1000,level:3,slot:'armor',rarity:'Rare'},
+ {id:'helmet',name:'Champion Helmet',cost:1500,level:4,slot:'helmet',rarity:'Epic'},
+ {id:'aura',name:'Legendary Math Aura',cost:2500,level:6,slot:'aura',rarity:'Legendary'},
+ {id:'sword',name:'Solver Sword',cost:700,level:2,slot:'weapon',rarity:'Rare',sheet:2},
+ {id:'staff',name:'Fraction Staff',cost:1100,level:3,slot:'weapon',rarity:'Epic',sheet:2},
+ {id:'bow',name:'Number Bow',cost:1500,level:4,slot:'weapon',rarity:'Epic',sheet:2},
+ {id:'backpack',name:'Adventure Backpack',cost:450,level:1,slot:'back',rarity:'Common',sheet:2},
+ {id:'jetpack',name:'Rocket Pack',cost:1800,level:5,slot:'back',rarity:'Epic',sheet:2},
+ {id:'wings',name:'Star Wings',cost:2800,level:6,slot:'back',rarity:'Legendary',sheet:2},
+ {id:'glasses',name:'Math Glasses',cost:400,level:1,slot:'accessory',rarity:'Common',sheet:2},
+ {id:'gloves',name:'Power Gloves',cost:900,level:3,slot:'accessory',rarity:'Rare',sheet:2},
+ {id:'boots',name:'Hero Boots',cost:1300,level:4,slot:'accessory',rarity:'Epic',sheet:2}
 ];
 const pets=[
  {id:'owl',icon:'🦉',name:'Wisdom Owl',cost:500,level:2},
@@ -798,10 +819,11 @@ function renderHero(){
  $('heroNameLabel').textContent=`${active.name} • Level ${l}`;$('heroClassLabel').textContent=`${avatar.name} — ${avatar.desc}`;$('heroLevelPill').textContent=`Level ${l}`;
  const h=$('heroVisual');h.className=`premiumHeroSprite ${avatarId}`;h.setAttribute('aria-label',`${active.name}'s ${avatar.name} hero`);h.innerHTML='';
  const equipped=active.equipped.map(id=>upgrades.find(x=>x.id===id)).filter(Boolean),pet=active.petEquipped?pets.find(x=>x.id===active.petEquipped):null;
- equipped.forEach(item=>{const layer=document.createElement('span');layer.className=`equippedVisual visual-${item.id}`;layer.title=item.name;layer.innerHTML=`<span class="itemSprite item-${item.id}"></span>`;h.appendChild(layer)});
- if(pet){const layer=document.createElement('span');layer.className='equippedVisual visual-pet';layer.title=pet.name;layer.innerHTML=`<span class="itemSprite item-${pet.id}"></span>`;h.appendChild(layer)}
- $('heroGearRow').innerHTML=equipped.length||pet?[...equipped.map(x=>`<span class="gearChip" title="${x.name}"><span class="itemSprite item-${x.id}"></span></span>`),...(pet?[`<span class="gearChip" title="${pet.name}"><span class="itemSprite item-${pet.id}"></span></span>`]:[])].join(''):'<span class="gearChip empty">Earn gear in the Workshop</span>'
+ equipped.forEach(item=>{const layer=document.createElement('span');layer.className=`equippedVisual visual-${item.id}`;layer.title=item.name;layer.innerHTML=itemArt(item);h.appendChild(layer)});
+ if(pet){const layer=document.createElement('span');layer.className='equippedVisual visual-pet';layer.title=pet.name;layer.innerHTML=itemArt(pet);h.appendChild(layer)}
+ $('heroGearRow').innerHTML=equipped.length||pet?[...equipped.map(x=>`<span class="gearChip" title="${x.name}">${itemArt(x)}</span>`),...(pet?[`<span class="gearChip" title="${pet.name}">${itemArt(pet)}</span>`]:[])].join(''):'<span class="gearChip empty">Earn gear in the Workshop</span>'
 }
+function itemArt(item){return `<span class="itemSprite${item.sheet===2?' v2':''} item-${item.id}"></span>`}
 function renderWorlds(){
  const recLevel=recommendedLevel(active),weak=weakestTopic(active),recTopic=mathTopics.find(t=>t.topic===weak)||mathTopics.find(t=>t.id==='mixed');
  $('dashHeroFace').textContent='';$('dashHeroFace').className=`heroFace miniHeroSprite ${avatars[active.avatar]?active.avatar:'knight'}`;
@@ -830,7 +852,8 @@ function renderWorlds(){
  });
 
  $('dashTopicRow').innerHTML='';
- mathTopics.forEach(t=>{
+ const allowedTopics=curriculumByGrade[active.grade]?.topics||curriculumByGrade[5].topics;
+ mathTopics.filter(t=>allowedTopics.includes(t.id)).forEach(t=>{
    const b=document.createElement('button');b.className=`practiceTopic ${t.cls}`;
    b.innerHTML=`<span class="pe">${t.emoji}</span><small>${t.name}</small>`;
    b.onclick=()=>{selectedChallengeLevel=recLevel;selectedTopic=t.id;renderMissions();show('dailyMissions')};
@@ -845,10 +868,12 @@ function recommendedLevel(p){
 }
 function renderTopicChoices(){
  const lev=challengeLevels[selectedChallengeLevel-1];
- $('selectedLevelLabel').textContent=`Level ${lev.id} — ${lev.name}: ${lev.desc}`;
+ const curriculum=curriculumByGrade[active.grade]||curriculumByGrade[5];
+ $('selectedLevelLabel').textContent=`${curriculum.label} • Level ${lev.id} ${lev.name} — ${curriculum.focus}`;
  $('topicSelectPane').classList.remove('hide');$('missionPane').classList.add('hide');$('topicChoices').innerHTML='';
  const weak=weakestTopic(active);
- mathTopics.forEach(t=>{
+ const allowed=curriculumByGrade[active.grade]?.topics||curriculumByGrade[5].topics;
+ mathTopics.filter(t=>allowed.includes(t.id)).forEach(t=>{
    const b=document.createElement('button');b.className=`topicCard ${t.cls}`;
    const recommended=(weak && t.topic===weak);
    b.innerHTML=`<span class="bigEmoji">${t.emoji}</span><b>${t.name}${recommended?' ⭐':''}</b><small>${t.desc}${recommended?'<br>Recommended from your assessment':''}</small>`;
@@ -857,7 +882,7 @@ function renderTopicChoices(){
  })
 }
 function renderMissions(){
- const t=mathTopics.find(x=>x.id===selectedTopic)||mathTopics[8],lev=challengeLevels[selectedChallengeLevel-1],weak=weakestTopic(active);
+ const t=mathTopics.find(x=>x.id===selectedTopic)||mathTopics.find(x=>x.id==='mixed'),lev=challengeLevels[selectedChallengeLevel-1],weak=weakestTopic(active);
  $('topicSelectPane').classList.add('hide');$('missionPane').classList.remove('hide');
  $('chosenTopicIcon').textContent=t.emoji;$('chosenTopicTitle').textContent=t.name;$('chosenTopicDesc').textContent=`Level ${lev.id} ${lev.name} • ${t.desc}`;
  $('topicRecommendation').innerHTML=weak&&t.topic===weak?`<b>🧠 Smart Choice!</b><div class="small">Your assessment says ${weak} needs extra practice, so this mission will help strengthen it.</div>`:`<b>⭐ Build Your Power</b><div class="small">Complete missions to earn XP and Math Points for your hero.</div>`;
@@ -878,16 +903,16 @@ function workshop(){
 }
 function renderUnlockItem(u,target,type){
  const owned=(type==='gear'?active.unlocked:active.petUnlocked).includes(u.id),equipped=type==='gear'?active.equipped.includes(u.id):active.petEquipped===u.id,eligible=level(active)>=u.level;
- const d=document.createElement('div');d.className='upgrade';d.innerHTML=`<div class="uicon"><span class="itemSprite item-${u.id}"></span></div><div class="uinfo"><b>${u.name}</b><span>${u.cost} MP • Level ${u.level}</span></div>`;
+ const d=document.createElement('div');d.className='upgrade'+(owned?' owned':'');d.innerHTML=`<div class="uicon">${itemArt(u)}</div><div class="uinfo"><b>${u.name}</b><span>${u.cost} MP • Hero Level ${u.level}</span><span class="rarity">${u.rarity||'Companion'}</span></div>`;
  const b=document.createElement('button');b.className='btn '+(owned?'ghost':'gold');b.style.width='auto';if(!eligible){b.textContent='🔒';b.disabled=true}else if(!owned){b.textContent='Unlock';b.onclick=()=>unlockItem(u,type)}else{b.textContent=equipped?'Remove':'Equip';b.onclick=()=>toggleItem(u.id,type)};d.appendChild(b);$(target).appendChild(d)
 }
 function unlockItem(u,type){
  if(active.mp<u.cost)return alert('Keep learning! You need more Math Points.');
- active.mp-=u.cost;if(type==='gear'){active.unlocked.push(u.id);active.equipped.push(u.id)}else{active.petUnlocked.push(u.id);active.petEquipped=u.id}
- save();successSound();workshop()
+ active.mp-=u.cost;if(type==='gear')active.unlocked.push(u.id);else active.petUnlocked.push(u.id);
+ save();successSound();alert(`${u.name} unlocked! Choose Equip when you are ready to use it.`);workshop()
 }
 function toggleItem(id,type){
- if(type==='gear')active.equipped=active.equipped.includes(id)?active.equipped.filter(x=>x!==id):[...active.equipped,id];
+ if(type==='gear'){const item=upgrades.find(x=>x.id===id);if(active.equipped.includes(id))active.equipped=active.equipped.filter(x=>x!==id);else active.equipped=[...active.equipped.filter(x=>upgrades.find(u=>u.id===x)?.slot!==item.slot),id]}
  else active.petEquipped=active.petEquipped===id?null:id;save();workshop()
 }
 
@@ -903,45 +928,40 @@ const pick=a=>a[rand(0,a.length-1)];
 const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
 const Q=(topic,sub,prompt,answer,difficulty,solution)=>({topic,sub,prompt,answer:String(answer),difficulty,solution:solution||`Work through the question carefully. The correct answer is ${answer}.`,sig:`${topic}|${sub}|${prompt}`});
 function arithmetic(){
- const g=active.grade,scale=Math.max(1,adaptiveLevel);
- const advanced=(selectedChallengeLevel>=5 && currentMission && (currentMission.id==='boss'||currentMission.id==='challenge'));
- const ops=g<=2?['+','-']:['+','-','×','÷'],op=pick(ops);
- // Normal missions emphasize mental math. Three-digit values appear only in advanced challenge moments.
- if(op==='+'){
-  let max=advanced?250:(g<=2?50:99),a=rand(2,max),b=rand(2,max);
-  if(!advanced && a+b>150)b=rand(2,Math.max(2,99-a));
-  return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,scale,`Add the two numbers: ${a} + ${b} = ${a+b}.`)
+ const g=active.grade,hard=adaptiveLevel>=3,op=pick(g<3?['+','-']:['+','-','×','÷']);
+ if(op==='+'||op==='-'){
+  const max=g===1?(hard?20:10):g===2?(hard?100:50):g===3?1000:g===4?10000:100000;
+  let a=rand(g===1?1:10,max),b=rand(1,op==='-'?a:Math.max(2,Math.floor(max/2)));if(op==='-'&&b>a)[a,b]=[b,a];
+  const ans=op==='+'?a+b:a-b;return Q('Arithmetic',op==='+'?'Addition':'Subtraction',`${a} ${op==='+'?'+':'−'} ${b} = ?`,ans,adaptiveLevel,`${op==='+'?'Combine':'Subtract'} the values: the answer is ${ans}.`)
  }
- if(op==='-'){
-  let max=advanced?250:(g<=2?50:99),a=rand(5,max),b=rand(1,a);
-  return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,scale,`Start with ${a} and take away ${b}: ${a} − ${b} = ${a-b}.`)
- }
- if(op==='×'){
-  let lim=g<=3?10:12,a=rand(2,lim),b=rand(2,lim);
-  return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,scale,`${a} groups of ${b} make ${a*b}, so ${a} × ${b} = ${a*b}.`)
- }
- let d=rand(2,12),ans=rand(2,g<=3?10:12);
- return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,scale,`Ask how many groups of ${d} fit into ${d*ans}. Since ${d} × ${ans} = ${d*ans}, the answer is ${ans}.`)
+ if(op==='×'){let a=rand(2,g===3?10:12),b=g>=4&&hard?pick([rand(10,99),rand(2,12)]):rand(2,g===3?10:12);return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,adaptiveLevel,`Multiply ${a} by ${b}: ${a*b}.`)}
+ let d=rand(2,g===3?10:12),ans=rand(2,g>=4&&hard?25:12);return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,adaptiveLevel,`Because ${d} × ${ans} = ${d*ans}, the quotient is ${ans}.`)
 }
 function addSubOnly(){
- const g=active.grade,advanced=selectedChallengeLevel>=5,op=pick(['+','-']);
- if(op==='+'){let max=advanced?180:(g<=2?40:99),a=rand(2,max),b=rand(2,max);if(!advanced&&a+b>150)b=rand(2,Math.max(2,99-a));return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,adaptiveLevel,`Add the two numbers: ${a} + ${b} = ${a+b}.`)}
- let max=advanced?180:(g<=2?40:99),a=rand(5,max),b=rand(1,a);return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,adaptiveLevel,`Start with ${a} and take away ${b}: ${a} − ${b} = ${a-b}.`)
+ const old=selectedTopic;selectedTopic='mixed';let q;do{q=arithmetic()}while(!['Addition','Subtraction'].includes(q.sub));selectedTopic=old;return q
 }
 function multDivOnly(){
+ if(active.grade<3)return placeValue();
  const lim=active.grade<=3?10:12;
  if(Math.random()<.5){let a=rand(2,lim),b=rand(2,lim);return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,adaptiveLevel,`${a} groups of ${b} make ${a*b}, so the answer is ${a*b}.`)}
  let d=rand(2,lim),ans=rand(2,lim);return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,adaptiveLevel,`Because ${d} × ${ans} = ${d*ans}, ${d*ans} ÷ ${d} = ${ans}.`)
 }
 function fraction(){
  if(active.grade<3)return arithmetic();
- const type=pick(['whole','equiv','compare']);
+ const g=active.grade,type=pick(g===3?['whole','equiv','compare']:g===4?['equiv','compare','addsame']:['addsame','addunlike','multiply']);
  if(type==='whole'){let d=pick([2,3,4,5,6,8]),n=rand(1,d-1),u=rand(2,12+adaptiveLevel);return Q('Fractions','Fraction of Whole',`What is ${n}/${d} of ${d*u}?`,n*u,adaptiveLevel,`First divide ${d*u} by ${d} to get ${u}. Then multiply ${u} × ${n} = ${n*u}.`)}
  if(type==='equiv'){let d=pick([2,3,4,5,6]),n=rand(1,d-1),k=rand(2,5);return Q('Fractions','Equivalent Fractions',`${n}/${d} = ?/${d*k}. Enter the missing numerator.`,n*k,adaptiveLevel,`The denominator was multiplied by ${k}, so multiply the numerator by ${k} too: ${n} × ${k} = ${n*k}.`)}
- let d=pick([4,5,6,8,10]),a=rand(1,d-1),b=rand(1,d-1);if(a===b)b=(b%d)+1;return Q('Fractions','Compare Fractions',`Which numerator is larger: ${a}/${d} or ${b}/${d}?`,Math.max(a,b),adaptiveLevel,`The denominators are equal, so compare the numerators ${a} and ${b}. The larger numerator is ${Math.max(a,b)}.`)
+ if(type==='compare'){let d=pick([4,5,6,8,10]),a=rand(1,d-1),b=rand(1,d-1);if(a===b)b=(b%d)+1;return Q('Fractions','Compare Fractions',`Which numerator is larger: ${a}/${d} or ${b}/${d}?`,Math.max(a,b),adaptiveLevel,`The denominators are equal, so compare ${a} and ${b}.`)}
+ if(type==='addsame'){let d=pick([4,5,6,8,10]),a=rand(1,d-2),b=rand(1,d-a);return Q('Fractions','Add Like Fractions',`${a}/${d} + ${b}/${d} = ?/${d}. Enter the numerator.`,a+b,adaptiveLevel,`Keep denominator ${d} and add numerators: ${a}+${b}=${a+b}.`)}
+ if(type==='addunlike'){let a=rand(1,4),b=rand(1,4);return Q('Fractions','Add Unlike Fractions',`${a}/5 + ${b}/10 = ?/10. Enter the numerator.`,a*2+b,adaptiveLevel,`Rename ${a}/5 as ${a*2}/10, then add ${b}/10 to get ${a*2+b}/10.`)}
+ let n=rand(1,5),whole=rand(2,8);return Q('Fractions','Multiply Fraction by Whole',`${whole} × ${n}/6 = ?/6. Enter the numerator.`,whole*n,adaptiveLevel,`Multiply the whole number and numerator: ${whole}×${n}=${whole*n}.`)
 }
 function geometry(){
- if(active.grade<3)return arithmetic();let l=rand(3,15+adaptiveLevel*2),w=rand(2,l-1),type=pick(['area','perimeter','missing']);
+ const g=active.grade;if(g===1){let sides=pick([3,4,5,6]);return Q('Geometry','Shape Properties',`A shape has ${sides} straight sides. How many vertices does it have?`,sides,adaptiveLevel,`A polygon has the same number of sides and vertices: ${sides}.`)}
+ if(g===2){let rows=rand(2,5),cols=rand(2,5);return Q('Geometry','Arrays',`${rows} rows of squares with ${cols} squares in each row. How many squares?`,rows*cols,adaptiveLevel,`${rows} equal rows of ${cols} make ${rows*cols}.`)}
+ if(g===4){let angle=pick([30,45,60,90,120,135]);return Q('Geometry','Angles',`An angle measures ${angle}°. How many degrees are needed to make a straight angle of 180°?`,180-angle,adaptiveLevel,`Subtract: 180° − ${angle}° = ${180-angle}°.`)}
+ if(g===5){let l=rand(2,9),w=rand(2,8),h=rand(2,7);return Q('Geometry','Volume',`A rectangular prism is ${l} × ${w} × ${h}. What is its volume?`,l*w*h,adaptiveLevel,`Volume = length × width × height = ${l*w*h} cubic units.`)}
+ let l=rand(3,15+adaptiveLevel*2),w=rand(2,l-1),type=pick(['area','perimeter','missing']);
  if(type==='area')return Q('Geometry','Area',`Rectangle length ${l}, width ${w}. Area?`,l*w,adaptiveLevel,`Area = length × width. Multiply ${l} × ${w} = ${l*w} square units.`);
  if(type==='perimeter')return Q('Geometry','Perimeter',`Rectangle length ${l}, width ${w}. Perimeter?`,2*(l+w),adaptiveLevel,`Perimeter = 2 × (length + width). Add ${l} + ${w} = ${l+w}, then double it: 2 × ${l+w} = ${2*(l+w)} units.`);
  return Q('Geometry','Missing Dimension',`A rectangle has perimeter ${2*(l+w)} and length ${l}. What is its width?`,w,adaptiveLevel,`Use P = 2 × (L + W). Half of ${2*(l+w)} is ${l+w}. Subtract the length: ${l+w} − ${l} = ${w}.`)
@@ -952,10 +972,10 @@ function pattern(){
  return Q('Reasoning','Number Pattern',`${s}, ${s+d}, ${s+2*d}, ${s+3*d}, ?`,s+4*d,adaptiveLevel,`Each number increases by ${d}. Add ${d} to ${s+3*d}: ${s+3*d} + ${d} = ${s+4*d}.`)
 }
 function theory(){
- if(active.grade<3)return arithmetic();let a=pick([12,18,24,30,36,42,48]),b=pick([18,24,30,36,48,54,60]),g=gcd(a,b);return Q('Reasoning','GCF',`Greatest common factor of ${a} and ${b}?`,g,adaptiveLevel,`List or compare the factors of ${a} and ${b}. The greatest number that divides both evenly is ${g}.`)
+ if(active.grade<4)return pattern();let a=pick([12,18,24,30,36,42,48]),b=pick([18,24,30,36,48,54,60]),g=gcd(a,b);return Q('Reasoning','Factors',`Greatest common factor of ${a} and ${b}?`,g,adaptiveLevel,`Compare the factors. The greatest factor shared by both is ${g}.`)
 }
 function orderOps(){
- if(active.grade<4)return arithmetic();let a=rand(2,9),b=rand(2,9),c=rand(2,8),d=rand(2,6);
+ if(active.grade<5)return pattern();let a=rand(2,9),b=rand(2,9),c=rand(2,8),d=rand(2,6);
  return adaptiveLevel>=3?Q('Reasoning','Order of Operations',`${a} + ${b} × ${c} − ${d} = ?`,a+b*c-d,adaptiveLevel,`Multiply first: ${b} × ${c} = ${b*c}. Then calculate ${a} + ${b*c} − ${d} = ${a+b*c-d}.`):Q('Reasoning','Order of Operations',`${a} + ${b} × ${c} = ?`,a+b*c,adaptiveLevel,`Multiply first: ${b} × ${c} = ${b*c}. Then add ${a}: ${a} + ${b*c} = ${a+b*c}.`)
 }
 function wordProblem(){
@@ -966,19 +986,42 @@ function wordProblem(){
  let teams=rand(3,10),kids=rand(4,14);return Q('Word Problems','Equal Groups',`${teams} teams have ${kids} players each. How many players altogether?`,teams*kids,adaptiveLevel,`There are ${teams} equal groups of ${kids}. Multiply: ${teams} × ${kids} = ${teams*kids} players.`)
 }
 function algebra(){
- if(active.grade<3)return arithmetic();
+ if(active.grade<3)return pattern();
  let x=rand(2,15),a=rand(2,12),type=pick(['add','mult','twostep']);
  if(selectedChallengeLevel<=2)type=pick(['add','mult']);
  if(type==='add')return Q('Algebra','Missing Number',`? + ${a} = ${x+a}. What is the missing number?`,x,adaptiveLevel,`Undo the addition by subtracting ${a}: ${x+a} − ${a} = ${x}.`);
  if(type==='mult')return Q('Algebra','Unknown Factor',`${a} × ? = ${a*x}. What is the missing number?`,x,adaptiveLevel,`Undo the multiplication by dividing: ${a*x} ÷ ${a} = ${x}.`);
- let b=rand(2,8);return Q('Algebra','Two-Step Equation',`${a} × ? + ${b} = ${a*x+b}. What is the missing number?`,x,adaptiveLevel,`First subtract ${b}: ${a*x+b} − ${b} = ${a*x}. Then divide by ${a}: ${a*x} ÷ ${a} = ${x}.`)
+ if(active.grade<5)return Q('Algebra','Unknown Factor',`${a} × ? = ${a*x}. What is the missing number?`,x,adaptiveLevel,`Divide ${a*x} by ${a} to find ${x}.`);
+ let b=rand(2,8);return Q('Algebra','Two-Step Equation',`${a} × ? + ${b} = ${a*x+b}. What is the missing number?`,x,adaptiveLevel,`First subtract ${b}, then divide by ${a}. The missing number is ${x}.`)
 }
 function decimal(){
- if(active.grade<4)return arithmetic();let a=rand(10,99)/10,b=rand(10,99)/10,ans=Math.round((a+b)*10)/10;return Q('Arithmetic','Decimals',`${a.toFixed(1)} + ${b.toFixed(1)} = ?`,ans,adaptiveLevel,`Line up the decimal points and add: ${a.toFixed(1)} + ${b.toFixed(1)} = ${ans.toFixed(1)}.`)
+ if(active.grade<4)return placeValue();let a=rand(10,99)/10,b=rand(10,99)/10;
+ if(active.grade===4){return Q('Decimals','Compare Decimals',`Which is greater: ${a.toFixed(1)} or ${b.toFixed(1)}? Enter the greater number.`,Math.max(a,b).toFixed(1),adaptiveLevel,`Compare the ones first, then the tenths. The greater value is ${Math.max(a,b).toFixed(1)}.`)}
+ let op=pick(['+','-']);if(op==='-'&&b>a)[a,b]=[b,a];let ans=Math.round((op==='+'?a+b:a-b)*10)/10;return Q('Decimals',op==='+'?'Decimal Addition':'Decimal Subtraction',`${a.toFixed(1)} ${op} ${b.toFixed(1)} = ?`,ans.toFixed(1),adaptiveLevel,`Line up decimal points and calculate: ${ans.toFixed(1)}.`)
 }
+function placeValue(){
+ const g=active.grade;
+ if(g===1){let tens=rand(1,9),ones=rand(0,9);return Q('Place Value','Tens and Ones',`${tens} tens and ${ones} ones make what number?`,tens*10+ones,adaptiveLevel,`${tens} tens is ${tens*10}; add ${ones} ones.`)}
+ if(g===2){let n=rand(100,999),digit=Math.floor(n/100);return Q('Place Value','Hundreds',`In ${n}, what value does the digit ${digit} have?`,digit*100,adaptiveLevel,`${digit} is in the hundreds place, so its value is ${digit*100}.`)}
+ if(g===3){let n=rand(101,999),r=Math.round(n/10)*10;return Q('Place Value','Rounding',`Round ${n} to the nearest 10.`,r,adaptiveLevel,`Look at the ones digit and round to ${r}.`)}
+ if(g===4){let n=rand(1000,99999),r=Math.round(n/100)*100;return Q('Place Value','Multi-Digit Rounding',`Round ${n} to the nearest 100.`,r,adaptiveLevel,`Use the tens digit to round to ${r}.`)}
+ let n=rand(12,999);return Q('Place Value','Powers of Ten',`${n} × 100 = ?`,n*100,adaptiveLevel,`Multiplying by 100 shifts every digit two places left: ${n*100}.`)
+}
+function measurement(){
+ const g=active.grade;
+ if(g===1){let hour=rand(1,11);return Q('Measurement','Time',`A clock shows ${hour}:00. What hour is it?`,hour,adaptiveLevel,`The minute hand is at 12, so read the hour hand: ${hour}.`)}
+ if(g===2){let q=rand(1,8),d=rand(1,9),p=rand(1,9),total=q*25+d*10+p;return Q('Measurement','Money',`${q} quarters, ${d} dimes and ${p} pennies equal how many cents?`,total,adaptiveLevel,`Quarters: ${q*25}¢, dimes: ${d*10}¢, pennies: ${p}¢. Total ${total}¢.`)}
+ if(g===3){let start=rand(1,8),elapsed=pick([15,30,45,60,90]);return Q('Measurement','Elapsed Time',`An activity starts at ${start}:00 and lasts ${elapsed} minutes. How many minutes does it last?`,elapsed,adaptiveLevel,`The elapsed time is stated directly: ${elapsed} minutes.`)}
+ if(g===4){let ft=rand(2,12);return Q('Measurement','Unit Conversion',`${ft} feet equals how many inches?`,ft*12,adaptiveLevel,`Each foot has 12 inches: ${ft} × 12 = ${ft*12}.`)}
+ let l=rand(2,8),w=rand(2,7),h=rand(2,6);return Q('Measurement','Volume',`A box is ${l} cm long, ${w} cm wide and ${h} cm high. Volume?`,l*w*h,adaptiveLevel,`Multiply all three dimensions: ${l*w*h} cubic centimeters.`)
+}
+function dataQuestion(){let g=active.grade,a=rand(2,9),b=rand(2,9),scale=g>=3?pick([2,5,10]):1;return Q('Data','Read a Graph',`A graph shows ${a} symbols for Team A and ${b} for Team B. Each symbol represents ${scale}. How many are shown altogether?`,(a+b)*scale,adaptiveLevel,`Add ${a}+${b} symbols, then multiply by ${scale}: ${(a+b)*scale}.`)}
 function questionForTopic(topic){
  if(selectedTopic==='addsub')return addSubOnly();
  if(selectedTopic==='multdiv')return multDivOnly();
+ if(topic==='Place Value')return placeValue();
+ if(topic==='Measurement')return measurement();
+ if(topic==='Data')return dataQuestion();
  if(topic==='Arithmetic')return arithmetic();
  if(topic==='Decimals')return decimal();
  if(topic==='Fractions')return fraction();
@@ -986,7 +1029,7 @@ function questionForTopic(topic){
  if(topic==='Reasoning')return pick([pattern,theory,orderOps])();
  if(topic==='Word Problems')return wordProblem();
  if(topic==='Algebra')return algebra();
- return pick([arithmetic,fraction,geometry,pattern,theory,orderOps,wordProblem,decimal,algebra])()
+ const g=active.grade,pool=g===1?[arithmetic,placeValue,geometry,measurement,dataQuestion,wordProblem,pattern]:g===2?[arithmetic,placeValue,geometry,measurement,dataQuestion,wordProblem,pattern]:g===3?[arithmetic,fraction,geometry,measurement,dataQuestion,wordProblem,pattern,algebra]:g===4?[arithmetic,fraction,geometry,measurement,dataQuestion,wordProblem,decimal,theory,algebra]:[arithmetic,fraction,geometry,measurement,dataQuestion,wordProblem,decimal,theory,orderOps,algebra];return pick(pool)()
 }
 function newQuestion(){
  const desired=currentMission?.topic||focusTopic||'Mixed';let q;
@@ -996,8 +1039,10 @@ function newQuestion(){
 
 let qi=0,score=0,correct=0,attempts=0,streak=0,earnedMP=0,earnedXP=0,currentQ=null,timerId=null,timeLeft=0,questionStart=0,sessionTimes=[],sessionMistakes=[],accepting=false,bossHP=0,bossMode=false,startLevel=0,lastActivity=0;
 function startGame(){
- qi=score=correct=attempts=streak=earnedMP=earnedXP=0;sessionTimes=[];sessionMistakes=[];adaptiveLevel=Math.max(1,Math.min(4,challengeLevels[selectedChallengeLevel-1].adaptive+(currentMission.diff==='hard'?1:currentMission.diff==='easy'?-1:0)));bossMode=!!currentMission.boss;bossHP=bossMode?5:0;startLevel=level(active);clearInterval(timerId);show('game');$('bossBox').classList.toggle('hide',!bossMode);
- const tt=mathTopics.find(x=>x.id===selectedTopic)||mathTopics[8];$('hudHero').textContent='';$('hudHero').className=`hudHero miniHeroSprite ${avatars[active.avatar]?active.avatar:'knight'}`;$('hudMission').textContent=`Level ${selectedChallengeLevel} • ${currentMission.name}`;$('hudTopic').textContent=tt.name;$('hudMP').textContent=`${active.mp} MP`;if(bossMode){$('bossEmoji').textContent='🐉';$('bossName').textContent='The Number Dragon';renderBoss()}
+ qi=score=correct=attempts=streak=earnedMP=earnedXP=0;sessionTimes=[];sessionMistakes=[];
+ const skillTotal=topicCount(active,currentMission.topic),skillAcc=topicAccuracy(active,currentMission.topic),performanceAdjust=skillTotal>=10?(skillAcc>=90?1:skillAcc<65?-1:0):0;
+ adaptiveLevel=Math.max(1,Math.min(4,challengeLevels[selectedChallengeLevel-1].adaptive+(currentMission.diff==='hard'?1:currentMission.diff==='easy'?-1:0)+performanceAdjust));bossMode=!!currentMission.boss;bossHP=bossMode?5:0;startLevel=level(active);clearInterval(timerId);show('game');$('bossBox').classList.toggle('hide',!bossMode);
+ const tt=mathTopics.find(x=>x.id===selectedTopic)||mathTopics.find(x=>x.id==='mixed');$('hudHero').textContent='';$('hudHero').className=`hudHero miniHeroSprite ${avatars[active.avatar]?active.avatar:'knight'}`;$('hudMission').textContent=`Grade ${active.grade} • Level ${selectedChallengeLevel} • ${currentMission.name}`;$('hudTopic').textContent=tt.name;$('hudMP').textContent=`${active.mp} MP`;if(bossMode){$('bossEmoji').textContent='🐉';$('bossName').textContent='The Number Dragon';renderBoss()}
  nextQuestion()
 }
 function renderBoss(){$('bossHearts').textContent='❤️'.repeat(Math.max(0,bossHP))+'🖤'.repeat(Math.max(0,5-bossHP))}

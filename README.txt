@@ -1,6 +1,20 @@
-BUSTONIQ v0.11.0 — VISUAL EQUIPMENT EDITION
+BUSTONIQ v0.12.0 — U.S. GRADE-ALIGNED CURRICULUM & EXPANDED WORKSHOP
 
-NEW IN v0.11.0
+NEW IN v0.12.0
+- Grade-specific U.S. elementary math pathways for Grades 1 through 5
+- Each grade now receives an appropriate set of available math topics
+- Question ranges and concepts are calibrated separately by grade
+- New Place Value, Measurement & Money, and Data & Graphs practice
+- In-session difficulty adapts within the child's grade based on performance
+- Harder modes deepen grade-level thinking without jumping to the next grade
+- New heroes begin with no equipment or companion
+- Unlocking an item never equips it automatically; the child chooses Equip
+- Added Solver Sword, Fraction Staff, Number Bow, Adventure Backpack,
+  Rocket Pack, Star Wings, Math Glasses, Power Gloves and Hero Boots
+- Equipment slots prevent overlapping items of the same category
+- Existing child profiles, earned points, history and unlocked items are preserved
+
+PREVIOUSLY IN v0.11.0
 - Premium illustrated art for every Workshop upgrade and companion
 - Equipped shield, cape, armor, helmet and animated aura appear on the active hero
 - Selected companion appears beside the hero
