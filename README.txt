@@ -1,4 +1,11 @@
-BUSTONIQ v0.10.0 — COMMERCIAL HERO EDITION
+BUSTONIQ v0.11.0 — VISUAL EQUIPMENT EDITION
+
+NEW IN v0.11.0
+- Premium illustrated art for every Workshop upgrade and companion
+- Equipped shield, cape, armor, helmet and animated aura appear on the active hero
+- Selected companion appears beside the hero
+- Compact visual loadout icons replace emoji placeholders
+- Unlock, equip, remove and saved-progress behavior remains unchanged
 
 NEW HERO EXPERIENCE
 - Replaced the basic CSS character with six premium illustrated BustonIQ heroes.
