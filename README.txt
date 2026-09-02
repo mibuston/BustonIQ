@@ -1,4 +1,13 @@
-BUSTONIQ v0.12.0 — U.S. GRADE-ALIGNED CURRICULUM & EXPANDED WORKSHOP
+BUSTONIQ v0.12.1 — PREMIUM ENTRANCE & PARENT COMMAND CENTER
+
+NEW IN v0.12.1
+- Replaced the flat Parent Dashboard and Child Adventure entrance buttons
+  with large commercial game-style portal cards
+- Added premium hero artwork, dashboard iconography, depth, lighting and motion
+- Redesigned the Parent Dashboard actions as a responsive command center
+- Preserved all login, profile, assessment, reporting and settings behavior
+
+PREVIOUSLY IN v0.12.0
 
 NEW IN v0.12.0
 - Grade-specific U.S. elementary math pathways for Grades 1 through 5
