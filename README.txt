@@ -1,4 +1,14 @@
-BUSTONIQ v0.7.3 — NAVIGATION FIX
+BUSTONIQ v0.8.0 — LEARN FROM MY MISTAKES
+
+NEW
+- Added a Learn From My Mistakes review at the end of every mission.
+- Records each missed or timed-out question during the current mission.
+- Shows the child's answer, correct answer, and a clear step-by-step solution.
+- Added a perfect-mission review message when there are no mistakes.
+- Added explanations for arithmetic, fractions, geometry, reasoning, word problems, algebra, and decimals.
+- Prevented elementary rectangle questions from generating equal length and width; equal sides are reserved for square questions.
+
+PRESERVED FROM v0.7.3
 
 FIXED
 - Added Back to Child Profiles button on My Hero.

@@ -48,12 +48,13 @@ input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:
 .topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;color:#fff;gap:8px;margin-bottom:10px}.topbar .right{text-align:right}.timer{width:68px;height:68px;border-radius:50%;background:var(--navy2);display:grid;place-items:center;font-size:22px;font-weight:950}
 .gamecard{background:#fff;border-radius:24px;padding:22px;text-align:center}.cat{font-size:12px;color:var(--blue);font-weight:950;text-transform:uppercase;letter-spacing:.5px}.question{font-size:clamp(27px,6vw,46px);font-weight:950;min-height:95px;display:grid;place-items:center;line-height:1.2}
 .answer{display:grid;grid-template-columns:1fr auto;gap:9px}.answer button{width:auto}.feedback{min-height:30px;margin-top:10px;font-weight:900}
+.mistakePanel{margin-top:18px;text-align:left}.mistakeIntro{background:#eef7ff;border:2px solid #b9dcff;border-radius:16px;padding:14px;margin-bottom:12px}.mistakeCard{background:#fff8e8;border:2px solid #ffd77b;border-radius:18px;padding:16px;margin:12px 0}.mistakeCard h4{margin:0 0 8px;color:#713d00}.mistakeAnswer{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}.mistakeAnswer div{background:#fff;border-radius:12px;padding:10px}.solutionSteps{background:#f2fff4;border-left:5px solid var(--green);border-radius:10px;padding:12px;line-height:1.55}.perfectReview{background:#effff4;border:2px solid #8fe0a7;border-radius:18px;padding:18px;text-align:center}
 .boss{font-size:72px;text-align:center}.hearts{font-size:28px;text-align:center;letter-spacing:3px}.bossName{text-align:center;font-size:22px;font-weight:950}
 .assessRow{margin:12px 0}.assessHead{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:850}.rec{background:#fff8d9;border-left:4px solid var(--gold);padding:12px;border-radius:8px;margin-top:10px}
 .report{border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.report h4{margin:0 0 6px}
 .rewardReveal{text-align:center;padding:18px;background:linear-gradient(#fff8d8,#fff);border-radius:18px;font-size:20px;font-weight:900}.rewardReveal .big{font-size:70px}
 .toggle{display:flex;justify-content:space-between;align-items:center;padding:10px;border:1px solid var(--line);border-radius:13px}.toggle input{width:auto}
-@media(max-width:760px){.g2,.g3,.g4,.worldMap{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.answer{grid-template-columns:1fr}.answer button{width:100%;min-height:48px}.heroStage{min-height:300px}}
+@media(max-width:760px){.g2,.g3,.g4,.worldMap{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.answer,.mistakeAnswer{grid-template-columns:1fr}.answer button{width:100%;min-height:48px}.heroStage{min-height:300px}}
 
 @keyframes pop{0%{transform:scale(.7);opacity:0}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
@@ -572,7 +573,7 @@ body{padding:0!important;overflow-x:hidden}
 
 <section id="results" class="hide">
 <div class="brand"><img class="brandLogo" src="bustoniq-logo.png" alt="BustonIQ logo"><h1>BustonIQ</h1><div class="tag">Mission Complete!</div></div>
-<div class="card" style="text-align:center"><div class="title" id="resultMessage"></div><div class="stats"><div class="stat"><strong id="rScore"></strong><span>SCORE</span></div><div class="stat"><strong id="rXP"></strong><span>XP EARNED</span></div><div class="stat"><strong id="rMP"></strong><span>MATH POINTS</span></div><div class="stat"><strong id="rAccuracy"></strong><span>ACCURACY</span></div></div><div class="space"></div><div id="rewardBox" class="rewardReveal hide"></div><button class="btn purple" id="resultWorkshop">Upgrade My Hero</button><button class="btn green" id="resultAssess">View Assessment</button><button class="btn gold" id="resultMap">Adventure Map</button></div>
+<div class="card" style="text-align:center"><div class="title" id="resultMessage"></div><div class="stats"><div class="stat"><strong id="rScore"></strong><span>SCORE</span></div><div class="stat"><strong id="rXP"></strong><span>XP EARNED</span></div><div class="stat"><strong id="rMP"></strong><span>MATH POINTS</span></div><div class="stat"><strong id="rAccuracy"></strong><span>ACCURACY</span></div></div><div class="space"></div><div id="rewardBox" class="rewardReveal hide"></div><button class="btn red" id="reviewMistakesBtn">📘 Learn From My Mistakes</button><div id="mistakeReview" class="mistakePanel hide"></div><button class="btn purple" id="resultWorkshop">Upgrade My Hero</button><button class="btn green" id="resultAssess">View Assessment</button><button class="btn gold" id="resultMap">Adventure Map</button></div>
 </section>
 
 <section id="assessment" class="hide">
@@ -594,6 +595,7 @@ body{padding:0!important;overflow-x:hidden}
 (() => {
 const ids=['welcome','parentLogin','parentDash','parentSettings','childEditor','childLogin','pinScreen','avatarSelect','heroHome','worldMapScreen','dailyMissions','workshop','badgesScreen','game','results','assessment','parentAssess','weeklyReport'];
 const $=id=>document.getElementById(id);
+const esc=value=>String(value).replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
 const show=id=>ids.forEach(x=>$(x).classList.toggle('hide',x!==id));
 const KEY='bustoniq_v05';
 let D; try{D=JSON.parse(localStorage.getItem(KEY))}catch(e){}
@@ -850,7 +852,7 @@ function renderBadges(){
 const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
 const pick=a=>a[rand(0,a.length-1)];
 const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
-const Q=(topic,sub,prompt,answer,difficulty)=>({topic,sub,prompt,answer:String(answer),difficulty,sig:`${topic}|${sub}|${prompt}`});
+const Q=(topic,sub,prompt,answer,difficulty,solution)=>({topic,sub,prompt,answer:String(answer),difficulty,solution:solution||`Work through the question carefully. The correct answer is ${answer}.`,sig:`${topic}|${sub}|${prompt}`});
 function arithmetic(){
  const g=active.grade,scale=Math.max(1,adaptiveLevel);
  const advanced=(selectedChallengeLevel>=5 && currentMission && (currentMission.id==='boss'||currentMission.id==='challenge'));
@@ -859,71 +861,71 @@ function arithmetic(){
  if(op==='+'){
   let max=advanced?250:(g<=2?50:99),a=rand(2,max),b=rand(2,max);
   if(!advanced && a+b>150)b=rand(2,Math.max(2,99-a));
-  return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,scale)
+  return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,scale,`Add the two numbers: ${a} + ${b} = ${a+b}.`)
  }
  if(op==='-'){
   let max=advanced?250:(g<=2?50:99),a=rand(5,max),b=rand(1,a);
-  return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,scale)
+  return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,scale,`Start with ${a} and take away ${b}: ${a} − ${b} = ${a-b}.`)
  }
  if(op==='×'){
   let lim=g<=3?10:12,a=rand(2,lim),b=rand(2,lim);
-  return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,scale)
+  return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,scale,`${a} groups of ${b} make ${a*b}, so ${a} × ${b} = ${a*b}.`)
  }
  let d=rand(2,12),ans=rand(2,g<=3?10:12);
- return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,scale)
+ return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,scale,`Ask how many groups of ${d} fit into ${d*ans}. Since ${d} × ${ans} = ${d*ans}, the answer is ${ans}.`)
 }
 function addSubOnly(){
  const g=active.grade,advanced=selectedChallengeLevel>=5,op=pick(['+','-']);
- if(op==='+'){let max=advanced?180:(g<=2?40:99),a=rand(2,max),b=rand(2,max);if(!advanced&&a+b>150)b=rand(2,Math.max(2,99-a));return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,adaptiveLevel)}
- let max=advanced?180:(g<=2?40:99),a=rand(5,max),b=rand(1,a);return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,adaptiveLevel)
+ if(op==='+'){let max=advanced?180:(g<=2?40:99),a=rand(2,max),b=rand(2,max);if(!advanced&&a+b>150)b=rand(2,Math.max(2,99-a));return Q('Arithmetic','Addition',`${a} + ${b} = ?`,a+b,adaptiveLevel,`Add the two numbers: ${a} + ${b} = ${a+b}.`)}
+ let max=advanced?180:(g<=2?40:99),a=rand(5,max),b=rand(1,a);return Q('Arithmetic','Subtraction',`${a} − ${b} = ?`,a-b,adaptiveLevel,`Start with ${a} and take away ${b}: ${a} − ${b} = ${a-b}.`)
 }
 function multDivOnly(){
  const lim=active.grade<=3?10:12;
- if(Math.random()<.5){let a=rand(2,lim),b=rand(2,lim);return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,adaptiveLevel)}
- let d=rand(2,lim),ans=rand(2,lim);return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,adaptiveLevel)
+ if(Math.random()<.5){let a=rand(2,lim),b=rand(2,lim);return Q('Arithmetic','Multiplication',`${a} × ${b} = ?`,a*b,adaptiveLevel,`${a} groups of ${b} make ${a*b}, so the answer is ${a*b}.`)}
+ let d=rand(2,lim),ans=rand(2,lim);return Q('Arithmetic','Division',`${d*ans} ÷ ${d} = ?`,ans,adaptiveLevel,`Because ${d} × ${ans} = ${d*ans}, ${d*ans} ÷ ${d} = ${ans}.`)
 }
 function fraction(){
  if(active.grade<3)return arithmetic();
  const type=pick(['whole','equiv','compare']);
- if(type==='whole'){let d=pick([2,3,4,5,6,8]),n=rand(1,d-1),u=rand(2,12+adaptiveLevel);return Q('Fractions','Fraction of Whole',`What is ${n}/${d} of ${d*u}?`,n*u,adaptiveLevel)}
- if(type==='equiv'){let d=pick([2,3,4,5,6]),n=rand(1,d-1),k=rand(2,5);return Q('Fractions','Equivalent Fractions',`${n}/${d} = ?/${d*k}. Enter the missing numerator.`,n*k,adaptiveLevel)}
- let d=pick([4,5,6,8,10]),a=rand(1,d-1),b=rand(1,d-1);if(a===b)b=(b%d)+1;return Q('Fractions','Compare Fractions',`Which numerator is larger: ${a}/${d} or ${b}/${d}?`,Math.max(a,b),adaptiveLevel)
+ if(type==='whole'){let d=pick([2,3,4,5,6,8]),n=rand(1,d-1),u=rand(2,12+adaptiveLevel);return Q('Fractions','Fraction of Whole',`What is ${n}/${d} of ${d*u}?`,n*u,adaptiveLevel,`First divide ${d*u} by ${d} to get ${u}. Then multiply ${u} × ${n} = ${n*u}.`)}
+ if(type==='equiv'){let d=pick([2,3,4,5,6]),n=rand(1,d-1),k=rand(2,5);return Q('Fractions','Equivalent Fractions',`${n}/${d} = ?/${d*k}. Enter the missing numerator.`,n*k,adaptiveLevel,`The denominator was multiplied by ${k}, so multiply the numerator by ${k} too: ${n} × ${k} = ${n*k}.`)}
+ let d=pick([4,5,6,8,10]),a=rand(1,d-1),b=rand(1,d-1);if(a===b)b=(b%d)+1;return Q('Fractions','Compare Fractions',`Which numerator is larger: ${a}/${d} or ${b}/${d}?`,Math.max(a,b),adaptiveLevel,`The denominators are equal, so compare the numerators ${a} and ${b}. The larger numerator is ${Math.max(a,b)}.`)
 }
 function geometry(){
- if(active.grade<3)return arithmetic();let l=rand(3,15+adaptiveLevel*2),w=rand(2,l),type=pick(['area','perimeter','missing']);
- if(type==='area')return Q('Geometry','Area',`Rectangle length ${l}, width ${w}. Area?`,l*w,adaptiveLevel);
- if(type==='perimeter')return Q('Geometry','Perimeter',`Rectangle length ${l}, width ${w}. Perimeter?`,2*(l+w),adaptiveLevel);
- return Q('Geometry','Missing Dimension',`A rectangle has perimeter ${2*(l+w)} and length ${l}. What is its width?`,w,adaptiveLevel)
+ if(active.grade<3)return arithmetic();let l=rand(3,15+adaptiveLevel*2),w=rand(2,l-1),type=pick(['area','perimeter','missing']);
+ if(type==='area')return Q('Geometry','Area',`Rectangle length ${l}, width ${w}. Area?`,l*w,adaptiveLevel,`Area = length × width. Multiply ${l} × ${w} = ${l*w} square units.`);
+ if(type==='perimeter')return Q('Geometry','Perimeter',`Rectangle length ${l}, width ${w}. Perimeter?`,2*(l+w),adaptiveLevel,`Perimeter = 2 × (length + width). Add ${l} + ${w} = ${l+w}, then double it: 2 × ${l+w} = ${2*(l+w)} units.`);
+ return Q('Geometry','Missing Dimension',`A rectangle has perimeter ${2*(l+w)} and length ${l}. What is its width?`,w,adaptiveLevel,`Use P = 2 × (L + W). Half of ${2*(l+w)} is ${l+w}. Subtract the length: ${l+w} − ${l} = ${w}.`)
 }
 function pattern(){
  let s=rand(1,35),d=rand(2,12+adaptiveLevel*2);
- if(adaptiveLevel>=3){let a=rand(2,6),x=rand(1,6);return Q('Reasoning','Number Pattern',`${x}, ${x+a}, ${x+3*a}, ${x+6*a}, ?`,x+10*a,adaptiveLevel)}
- return Q('Reasoning','Number Pattern',`${s}, ${s+d}, ${s+2*d}, ${s+3*d}, ?`,s+4*d,adaptiveLevel)
+ if(adaptiveLevel>=3){let a=rand(2,6),x=rand(1,6);return Q('Reasoning','Number Pattern',`${x}, ${x+a}, ${x+3*a}, ${x+6*a}, ?`,x+10*a,adaptiveLevel,`The increases are +${a}, +${2*a}, +${3*a}; the next increase is +${4*a}. So ${x+6*a} + ${4*a} = ${x+10*a}.`)}
+ return Q('Reasoning','Number Pattern',`${s}, ${s+d}, ${s+2*d}, ${s+3*d}, ?`,s+4*d,adaptiveLevel,`Each number increases by ${d}. Add ${d} to ${s+3*d}: ${s+3*d} + ${d} = ${s+4*d}.`)
 }
 function theory(){
- if(active.grade<3)return arithmetic();let a=pick([12,18,24,30,36,42,48]),b=pick([18,24,30,36,48,54,60]);return Q('Reasoning','GCF',`Greatest common factor of ${a} and ${b}?`,gcd(a,b),adaptiveLevel)
+ if(active.grade<3)return arithmetic();let a=pick([12,18,24,30,36,42,48]),b=pick([18,24,30,36,48,54,60]),g=gcd(a,b);return Q('Reasoning','GCF',`Greatest common factor of ${a} and ${b}?`,g,adaptiveLevel,`List or compare the factors of ${a} and ${b}. The greatest number that divides both evenly is ${g}.`)
 }
 function orderOps(){
  if(active.grade<4)return arithmetic();let a=rand(2,9),b=rand(2,9),c=rand(2,8),d=rand(2,6);
- return adaptiveLevel>=3?Q('Reasoning','Order of Operations',`${a} + ${b} × ${c} − ${d} = ?`,a+b*c-d,adaptiveLevel):Q('Reasoning','Order of Operations',`${a} + ${b} × ${c} = ?`,a+b*c,adaptiveLevel)
+ return adaptiveLevel>=3?Q('Reasoning','Order of Operations',`${a} + ${b} × ${c} − ${d} = ?`,a+b*c-d,adaptiveLevel,`Multiply first: ${b} × ${c} = ${b*c}. Then calculate ${a} + ${b*c} − ${d} = ${a+b*c-d}.`):Q('Reasoning','Order of Operations',`${a} + ${b} × ${c} = ?`,a+b*c,adaptiveLevel,`Multiply first: ${b} × ${c} = ${b*c}. Then add ${a}: ${a} + ${b*c} = ${a+b*c}.`)
 }
 function wordProblem(){
- if(active.grade<=2){let a=rand(10,40),b=rand(2,a-1);return Q('Word Problems','One Step',`Mia has ${a} stars and gives away ${b}. How many remain?`,a-b,adaptiveLevel)}
+ if(active.grade<=2){let a=rand(10,40),b=rand(2,a-1);return Q('Word Problems','One Step',`Mia has ${a} stars and gives away ${b}. How many remain?`,a-b,adaptiveLevel,`“Gives away” means subtract: ${a} − ${b} = ${a-b} stars remain.`)}
  let type=pick(['boxes','rate','groups']);
- if(type==='boxes'){let boxes=rand(3,9),each=rand(5,16),used=rand(4,18);return Q('Word Problems','Multi-Step',`${boxes} boxes have ${each} pencils each. ${used} pencils are used. How many remain?`,boxes*each-used,adaptiveLevel)}
- if(type==='rate'){let rate=rand(3,12),mins=rand(2,8);return Q('Word Problems','Rate',`A machine makes ${rate} parts per minute for ${mins} minutes. How many parts?`,rate*mins,adaptiveLevel)}
- let teams=rand(3,10),kids=rand(4,14);return Q('Word Problems','Equal Groups',`${teams} teams have ${kids} players each. How many players altogether?`,teams*kids,adaptiveLevel)
+ if(type==='boxes'){let boxes=rand(3,9),each=rand(5,16),used=rand(4,18);return Q('Word Problems','Multi-Step',`${boxes} boxes have ${each} pencils each. ${used} pencils are used. How many remain?`,boxes*each-used,adaptiveLevel,`First find all pencils: ${boxes} × ${each} = ${boxes*each}. Then subtract the ${used} used: ${boxes*each} − ${used} = ${boxes*each-used}.`)}
+ if(type==='rate'){let rate=rand(3,12),mins=rand(2,8);return Q('Word Problems','Rate',`A machine makes ${rate} parts per minute for ${mins} minutes. How many parts?`,rate*mins,adaptiveLevel,`Multiply the rate by the time: ${rate} parts × ${mins} minutes = ${rate*mins} parts.`)}
+ let teams=rand(3,10),kids=rand(4,14);return Q('Word Problems','Equal Groups',`${teams} teams have ${kids} players each. How many players altogether?`,teams*kids,adaptiveLevel,`There are ${teams} equal groups of ${kids}. Multiply: ${teams} × ${kids} = ${teams*kids} players.`)
 }
 function algebra(){
  if(active.grade<3)return arithmetic();
  let x=rand(2,15),a=rand(2,12),type=pick(['add','mult','twostep']);
  if(selectedChallengeLevel<=2)type=pick(['add','mult']);
- if(type==='add')return Q('Algebra','Missing Number',`? + ${a} = ${x+a}. What is the missing number?`,x,adaptiveLevel);
- if(type==='mult')return Q('Algebra','Unknown Factor',`${a} × ? = ${a*x}. What is the missing number?`,x,adaptiveLevel);
- let b=rand(2,8);return Q('Algebra','Two-Step Equation',`${a} × ? + ${b} = ${a*x+b}. What is the missing number?`,x,adaptiveLevel)
+ if(type==='add')return Q('Algebra','Missing Number',`? + ${a} = ${x+a}. What is the missing number?`,x,adaptiveLevel,`Undo the addition by subtracting ${a}: ${x+a} − ${a} = ${x}.`);
+ if(type==='mult')return Q('Algebra','Unknown Factor',`${a} × ? = ${a*x}. What is the missing number?`,x,adaptiveLevel,`Undo the multiplication by dividing: ${a*x} ÷ ${a} = ${x}.`);
+ let b=rand(2,8);return Q('Algebra','Two-Step Equation',`${a} × ? + ${b} = ${a*x+b}. What is the missing number?`,x,adaptiveLevel,`First subtract ${b}: ${a*x+b} − ${b} = ${a*x}. Then divide by ${a}: ${a*x} ÷ ${a} = ${x}.`)
 }
 function decimal(){
- if(active.grade<4)return arithmetic();let a=rand(10,99)/10,b=rand(10,99)/10;return Q('Arithmetic','Decimals',`${a.toFixed(1)} + ${b.toFixed(1)} = ?`,Math.round((a+b)*10)/10,adaptiveLevel)
+ if(active.grade<4)return arithmetic();let a=rand(10,99)/10,b=rand(10,99)/10,ans=Math.round((a+b)*10)/10;return Q('Arithmetic','Decimals',`${a.toFixed(1)} + ${b.toFixed(1)} = ?`,ans,adaptiveLevel,`Line up the decimal points and add: ${a.toFixed(1)} + ${b.toFixed(1)} = ${ans.toFixed(1)}.`)
 }
 function questionForTopic(topic){
  if(selectedTopic==='addsub')return addSubOnly();
@@ -943,9 +945,9 @@ function newQuestion(){
  active.recent=[q.sig,...active.recent].slice(0,250);return q
 }
 
-let qi=0,score=0,correct=0,attempts=0,streak=0,earnedMP=0,earnedXP=0,currentQ=null,timerId=null,timeLeft=0,questionStart=0,sessionTimes=[],accepting=false,bossHP=0,bossMode=false,startLevel=0,lastActivity=0;
+let qi=0,score=0,correct=0,attempts=0,streak=0,earnedMP=0,earnedXP=0,currentQ=null,timerId=null,timeLeft=0,questionStart=0,sessionTimes=[],sessionMistakes=[],accepting=false,bossHP=0,bossMode=false,startLevel=0,lastActivity=0;
 function startGame(){
- qi=score=correct=attempts=streak=earnedMP=earnedXP=0;sessionTimes=[];adaptiveLevel=Math.max(1,Math.min(4,challengeLevels[selectedChallengeLevel-1].adaptive+(currentMission.diff==='hard'?1:currentMission.diff==='easy'?-1:0)));bossMode=!!currentMission.boss;bossHP=bossMode?5:0;startLevel=level(active);clearInterval(timerId);show('game');$('bossBox').classList.toggle('hide',!bossMode);
+ qi=score=correct=attempts=streak=earnedMP=earnedXP=0;sessionTimes=[];sessionMistakes=[];adaptiveLevel=Math.max(1,Math.min(4,challengeLevels[selectedChallengeLevel-1].adaptive+(currentMission.diff==='hard'?1:currentMission.diff==='easy'?-1:0)));bossMode=!!currentMission.boss;bossHP=bossMode?5:0;startLevel=level(active);clearInterval(timerId);show('game');$('bossBox').classList.toggle('hide',!bossMode);
  const tt=mathTopics.find(x=>x.id===selectedTopic)||mathTopics[8];$('hudHero').textContent=avatars[active.avatar]?.emoji||'🧠';$('hudMission').textContent=`Level ${selectedChallengeLevel} • ${currentMission.name}`;$('hudTopic').textContent=tt.name;$('hudMP').textContent=`${active.mp} MP`;if(bossMode){$('bossEmoji').textContent='🐉';$('bossName').textContent='The Number Dragon';renderBoss()}
  nextQuestion()
 }
@@ -1039,6 +1041,7 @@ function submitAnswer(){
      successSound();celebrate();if(streak===5||streak===10)levelSound()
    }else{
      streak=0;
+     sessionMistakes.push({prompt:currentQ.prompt,topic:currentQ.topic,sub:currentQ.sub,given:String(raw).trim(),answer:currentQ.answer,solution:currentQ.solution,timedOut:false});
      $('feedback').textContent=`❌ Answer: ${currentQ.answer}`;
      $('feedback').style.color='var(--red)';
      failSound()
@@ -1065,6 +1068,7 @@ function timeoutQuestion(){
    attempts++;
    const elapsed=(Date.now()-questionStart)/1000;
    recordQuestion(false,elapsed);adapt(false,elapsed);streak=0;
+   sessionMistakes.push({prompt:currentQ.prompt,topic:currentQ.topic,sub:currentQ.sub,given:'No answer — time expired',answer:currentQ.answer,solution:currentQ.solution,timedOut:true});
    $('feedback').textContent=`⏰ Time! Answer: ${currentQ.answer}`;
    $('feedback').style.color='var(--red)';
    $('answerStatus').textContent='Next question coming up…';
@@ -1083,7 +1087,18 @@ function finishGame(bossDefeated){
  save();$('rScore').textContent=score;$('rXP').textContent='+'+earnedXP;$('rMP').textContent='+'+earnedMP;$('rAccuracy').textContent=acc+'%';
  $('resultMessage').textContent=bossDefeated?'🐉 Boss Defeated!':acc>=90?'🏆 Excellent Mission!':acc>=75?'⭐ Strong Work!':'💪 Training Makes Heroes Stronger!';
  $('rewardBox').classList.toggle('hide',!reward);if(reward)$('rewardBox').innerHTML=`<div class="big">${reward.icon}</div>Mystery Achievement Reward!<br><span class="small">${reward.name}</span>`;
+ $('mistakeReview').classList.add('hide');$('reviewMistakesBtn').textContent=sessionMistakes.length?`📘 Learn From My Mistakes (${sessionMistakes.length})`:'📘 Review My Perfect Mission';
  if(level(active)>startLevel)levelSound();focusTopic=null;show('results')
+}
+function renderMistakeReview(){
+ const panel=$('mistakeReview');
+ if(!panel.classList.contains('hide')){panel.classList.add('hide');$('reviewMistakesBtn').textContent=sessionMistakes.length?`📘 Learn From My Mistakes (${sessionMistakes.length})`:'📘 Review My Perfect Mission';return}
+ if(!sessionMistakes.length){
+   panel.innerHTML='<div class="perfectReview"><div class="big">🌟</div><b>Perfect mission—no mistakes to review!</b><br><span class="small">Explain one answer to a parent or teacher to make the learning stick.</span></div>';
+ }else{
+   panel.innerHTML=`<div class="mistakeIntro"><b>Learning turns mistakes into progress.</b><br><span class="small">Read each solution, then try to explain the steps in your own words.</span></div>`+sessionMistakes.map((m,i)=>`<article class="mistakeCard"><h4>Mistake ${i+1}: ${esc(m.topic)} — ${esc(m.sub)}</h4><div><b>Question:</b> ${esc(m.prompt)}</div><div class="mistakeAnswer"><div><b>Your answer</b><br>${esc(m.given)}</div><div><b>Correct answer</b><br>${esc(m.answer)}</div></div><div class="solutionSteps"><b>Step-by-step solution</b><br>${esc(m.solution)}</div></article>`).join('');
+ }
+ panel.classList.remove('hide');$('reviewMistakesBtn').textContent='▲ Hide Mistake Review';panel.scrollIntoView({behavior:'smooth',block:'start'})
 }
 function revealMysteryReward(){
  const pool=[{id:'starTrail',icon:'🌟',name:'Star Trail Effect'},{id:'bookCharm',icon:'📘',name:'Knowledge Charm'},{id:'crownSpark',icon:'👑',name:'Champion Spark'},{id:'gemBadge',icon:'💎',name:'Math Gem'}];
@@ -1191,6 +1206,7 @@ bindInput('answerInput',()=>{if($('feedback') && $('feedback').textContent.start
 bindClick('resultWorkshop',workshop);
 bindClick('resultAssess',showAssessment);
 bindClick('resultMap',renderWorlds);
+bindClick('reviewMistakesBtn',renderMistakeReview);
 
 bindClick('navHome',heroHome);
 bindClick('navAdventure',renderWorlds);
