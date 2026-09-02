@@ -1,4 +1,14 @@
-BUSTONIQ v0.12.1 — PREMIUM ENTRANCE & PARENT COMMAND CENTER
+BUSTONIQ v0.12.2 — PREMIUM PARENT CENTER & PASSWORD RECOVERY
+
+NEW IN v0.12.2
+- Completely redesigned the Parent Portal sign-in and setup experience
+- Added a 6-digit Family Recovery PIN for forgotten parent passwords
+- Password recovery preserves all child profiles, learning history and rewards
+- Recovery is temporarily locked for five minutes after five incorrect attempts
+- Existing families receive a recovery PIN after their next successful login
+- Parents can generate a new recovery PIN from Family Settings
+
+PREVIOUSLY IN v0.12.1
 
 NEW IN v0.12.1
 - Replaced the flat Parent Dashboard and Child Adventure entrance buttons
