@@ -6,22 +6,32 @@
 <meta name="theme-color" content="#172454">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="BustonIQ">
-<title>BustonIQ v0.7.3 Navigation Fix — Play. Learn. Level Up.</title>
+<meta name="description" content="BustonIQ is a parent-guided math adventure for Grades 1–5 with adaptive practice, progress insights and step-by-step mistake review.">
+<meta name="application-name" content="BustonIQ">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="BustonIQ — Play. Learn. Level Up.">
+<meta property="og:description" content="A parent-guided math adventure for Grades 1–5.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="bustoniq-logo.png">
+<title>BustonIQ — Play. Learn. Level Up.</title>
 <style>
 :root{
 --navy:#172454;--navy2:#253d7b;--blue:#416bc1;--gold:#ffd34e;--green:#2aaa6c;--red:#db4d52;
 --purple:#7457c8;--ink:#172033;--muted:#667085;--soft:#f3f5f9;--line:#e2e6ef;--sky:#dbe8ff;
 }
 *{box-sizing:border-box}
+html{color-scheme:light;scroll-behavior:smooth}
 body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at 12% 8%,#ffe66d 0 6%,transparent 7%),radial-gradient(circle at 88% 12%,#ff91c8 0 7%,transparent 8%),linear-gradient(145deg,#35c6f4 0%,#7657e8 48%,#ff78b6 100%);background-attachment:fixed;color:var(--ink);padding:14px}
 .app{width:100%;max-width:none;margin:0;padding:0 0 28px}
 .hide{display:none!important}
-.brand{text-align:center;color:white;margin:15px 0 18px}.brand h1{font-size:clamp(38px,8vw,60px);margin:0;font-weight:950;letter-spacing:-1.5px}.brand .tag{font-weight:900;font-size:18px}.brand .sub{font-size:13px;opacity:.86;margin-top:3px}
+.brand{text-align:center;color:white;margin:15px 0 18px}.brand h1{font-size:clamp(38px,8vw,60px);margin:0;font-weight:950;letter-spacing:-1.5px}.brand .tag{font-weight:900;font-size:18px}.brand .sub{font-size:14px;opacity:.9;margin-top:4px}
 .card{background:linear-gradient(180deg,#fff,#fffdf4);border:3px solid rgba(255,255,255,.78);border-radius:28px;padding:20px;margin:12px 0;box-shadow:0 16px 38px rgba(32,25,94,.22)}
-.title{font-size:19px;font-weight:950;margin-bottom:11px}.small{font-size:13px;color:var(--muted);line-height:1.45}.space{height:12px}
+.title{font-size:20px;font-weight:950;margin-bottom:11px}.small{font-size:14px;color:var(--muted);line-height:1.55}.space{height:12px}
 .grid{display:grid;gap:10px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
-.btn{width:100%;border:0;border-radius:18px;padding:15px 16px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 rgba(28,33,66,.16);transition:transform .08s ease}.btn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(28,33,66,.16)}.gold{background:var(--gold);color:#191919}.navy{background:var(--navy);color:#fff}.green{background:var(--green);color:#fff}.purple{background:var(--purple);color:#fff}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.danger{background:#fff0f0;border:1px solid #f0caca;color:#a22}
-input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:13px;font-size:17px;background:#fbfcfe;outline:none}input:focus,select:focus{border-color:#7b96d7}label{font-size:13px;font-weight:850;color:var(--muted)}
+.btn{width:100%;border:0;border-radius:18px;padding:15px 16px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 rgba(28,33,66,.16);transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}.btn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(28,33,66,.16)}.gold{background:linear-gradient(180deg,#ffe56e,var(--gold));color:#191919}.navy{background:linear-gradient(180deg,#274180,var(--navy));color:#fff}.green{background:linear-gradient(180deg,#3bc581,var(--green));color:#fff}.purple{background:linear-gradient(180deg,#8a6cdb,var(--purple));color:#fff}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.danger{background:#fff0f0;border:1px solid #f0caca;color:#a22}
+input,select{width:100%;border:2px solid var(--line);border-radius:13px;padding:13px;font-size:17px;background:#fbfcfe;outline:none}input:focus,select:focus{border-color:#7b96d7}label{font-size:14px;font-weight:850;color:var(--muted)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:4px solid #fff;box-shadow:0 0 0 7px #315fc4;position:relative;z-index:2}
+@media(hover:hover){.btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 rgba(28,33,66,.13),0 12px 24px #17245420;filter:saturate(1.06)}.profile:hover,.upgrade:hover{border-color:#b8c9ef;background:#f8fbff}}
 .notice{padding:11px 13px;background:#fff8d8;border-radius:12px;color:#705800;font-size:13px}
 .row{display:flex;gap:10px;align-items:center}.grow{flex:1;min-width:0}
 .profile{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:16px;margin-top:9px}.avatarMini{width:52px;height:52px;border-radius:50%;background:#edf1ff;display:grid;place-items:center;font-size:26px}.profile .main{flex:1}.profile b{display:block}.profile span{font-size:12px;color:var(--muted)}
@@ -251,6 +261,8 @@ body{padding:0!important;overflow-x:hidden}
   pointer-events:none;
 }
 .openingHero,.openingLogin{position:relative;z-index:1}
+.commercialEyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:8px;padding:8px 12px;border-radius:999px;background:rgba(7,31,85,.78);border:1px solid #ffffff80;color:#dff3ff;font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 8px 18px #00174438}
+.commercialEyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:#69e58c;box-shadow:0 0 0 4px #69e58c2b}
 .openingHero{
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   color:#fff;
@@ -305,6 +317,8 @@ body{padding:0!important;overflow-x:hidden}
   display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;color:#d9ebff
 }
 .openingFooter b{display:block;color:#fff;font-size:16px}.openingFooter span{font-size:10px}
+.openingTrust{margin-top:15px;padding:11px 12px;border-radius:14px;background:#061d55;color:#d9e9ff;text-align:center;font-size:13px;font-weight:800;line-height:1.45}
+.openingTrust strong{color:#fff}.openingLegal{margin-top:12px;text-align:center;color:#a9c2ea;font-size:12px;line-height:1.45}
 
 /* Make non-game forms less tiny and more game-like */
 #parentLogin,#childLogin,#pinScreen,#parentDash,#parentSettings,#childEditor,#avatarSelect,#heroHome,#dailyMissions,#workshop,#badgesScreen,#results,#assessment,#parentAssess,#weeklyReport{
@@ -347,6 +361,8 @@ body{padding:0!important;overflow-x:hidden}
   .practiceTopicRow{grid-template-columns:repeat(2,1fr)!important}
 }
 
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.avatarEmoji,.micon,.world .emoji,.correctPop,.spark{animation:none!important}.btn{transition:none}}
+
 
 #submitBtn:disabled{opacity:.62;cursor:not-allowed;transform:none!important}
 #answerInput:disabled{opacity:.75}
@@ -359,9 +375,10 @@ body{padding:0!important;overflow-x:hidden}
 <section id="welcome">
 <div class="openingScene">
   <div class="openingHero">
+    <div class="commercialEyebrow">BustonIQ Learning System • Beta</div>
     <img class="openingLogo" src="bustoniq-logo.png" alt="BustonIQ">
-    <h2>YOUR MATH ADVENTURE STARTS HERE!</h2>
-    <p>Choose your hero. Complete missions. Earn Math Points. Level up your skills.</p>
+    <h2>PLAY. LEARN. LEVEL UP.</h2>
+    <p>A parent-guided math adventure for Grades 1–5. Build skills through focused practice, meaningful progress and helpful mistake review.</p>
     <div class="openingBadges">
       <span class="openingBadge">🗺️ Adventure Worlds</span>
       <span class="openingBadge">🛡️ Build Your Hero</span>
@@ -370,17 +387,19 @@ body{padding:0!important;overflow-x:hidden}
     </div>
   </div>
   <div class="openingLogin">
-    <h3>ENTER BUSTONIQ</h3>
-    <div class="openingSub">Who is playing today?</div>
+    <h3>WELCOME TO BUSTONIQ</h3>
+    <div class="openingSub">Choose the right entrance to continue.</div>
     <div class="openingAccess">
-      <button class="btn navy" id="parentBtn"><span class="accessIcon">👨‍👩‍👧</span>PARENT PORTAL</button>
-      <button class="btn gold" id="childBtn"><span class="accessIcon">🎮</span>CHILD ADVENTURE</button>
+      <button class="btn navy" id="parentBtn"><span class="accessIcon">👨‍👩‍👧</span>PARENT DASHBOARD</button>
+      <button class="btn gold" id="childBtn"><span class="accessIcon">🎮</span>START CHILD ADVENTURE</button>
     </div>
     <div class="openingFooter">
       <div><b>⭐ Math Points</b><span>Earned through learning</span></div>
       <div><b>📊 Smart Assessment</b><span>Personal recommendations</span></div>
       <div><b>🦸 Hero Progress</b><span>Level up as you learn</span></div>
     </div>
+    <div class="openingTrust"><strong>Designed for focused learning:</strong> no advertisements, no public leaderboard and parent-managed child profiles.</div>
+    <div class="openingLegal">BustonIQ Beta • Progress is currently saved on this device and browser.</div>
   </div>
 </div>
 </section>

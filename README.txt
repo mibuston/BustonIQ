@@ -1,6 +1,17 @@
-BUSTONIQ v0.8.0 — LEARN FROM MY MISTAKES
+BUSTONIQ v0.9.0 — COMMERCIAL POLISH
 
 NEW
+- Refined the opening screen into a clearer commercial product experience.
+- Added a professional product description and browser/social metadata.
+- Clarified Parent Dashboard and Start Child Adventure entry points.
+- Added child-safety and local-progress disclosures on the opening screen.
+- Improved typography, button depth, hover behavior and keyboard focus visibility.
+- Added reduced-motion support and more readable labels and secondary text.
+- Added BustonIQ logo as the browser icon.
+
+PRESERVED FROM v0.8.0
+
+LEARNING REVIEW
 - Added a Learn From My Mistakes review at the end of every mission.
 - Records each missed or timed-out question during the current mission.
 - Shows the child's answer, correct answer, and a clear step-by-step solution.
