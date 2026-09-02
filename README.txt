@@ -1,6 +1,17 @@
-BUSTONIQ v0.9.0 — COMMERCIAL POLISH
+BUSTONIQ v0.10.0 — COMMERCIAL HERO EDITION
 
-NEW
+NEW HERO EXPERIENCE
+- Replaced the basic CSS character with six premium illustrated BustonIQ heroes.
+- Added commercial-quality Knight, Mage, Ninja, Space Explorer, Tech Hero and Adventurer artwork.
+- Redesigned My Hero as a cinematic character stage and Hero Command Center.
+- Upgraded avatar selection, child profiles, parent profiles, Adventure HUD and game HUD with matching hero artwork.
+- Preserved unlocked equipment and companions as premium gear chips on the hero identity panel.
+- Replaced oversized internal page branding with a compact commercial product header.
+- Added a responsive mobile layout for the new character stage and controls.
+
+PRESERVED FROM v0.9.0
+
+COMMERCIAL POLISH
 - Refined the opening screen into a clearer commercial product experience.
 - Added a professional product description and browser/social metadata.
 - Clarified Parent Dashboard and Start Child Adventure entry points.
